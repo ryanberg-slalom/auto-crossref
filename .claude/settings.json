@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -d /Users/ryan/Code/autox2/data/Event*)",
+      "Bash(pip3 list:*)",
+      "Bash(pip list:*)",
+      "Bash(node -e \"console.log\\(''''node ok: '''' + process.version\\)\")",
+      "Bash(npm list:*)",
+      "Read(//usr/local/**)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(npx pdf-parse:*)",
+      "Bash(node -e \"require\\(''pdf-parse''\\)\")",
+      "Bash(node -e \":*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

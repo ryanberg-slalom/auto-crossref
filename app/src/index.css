@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* BMW-inspired color palette */
+  --color-bmw-blue: #1c69d4;
+  --color-bmw-blue-light: #4d8fe0;
+  --color-bmw-blue-dark: #0f4a9c;
+  --color-bmw-navy: #003566;
+  --color-bmw-navy-dark: #001f3d;
+
+  /* Neutral surfaces (dark dashboard) */
+  --color-surface: #0a0e1a;
+  --color-surface-2: #111827;
+  --color-surface-3: #1e2535;
+  --color-border: #2a3348;
+  --color-border-subtle: #1c2438;
+
+  /* Text */
+  --color-fg: #f1f5f9;
+  --color-fg-muted: #94a3b8;
+  --color-fg-subtle: #64748b;
+
+  /* Semantic */
+  --color-primary: #1c69d4;
+  --color-primary-hover: #4d8fe0;
+  --color-accent: #e63946;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
+  /* Typography */
+  --font-sans: 'Mona Sans', system-ui, sans-serif;
+
+  /* Border radii */
+  --radius-sm: 0.375rem;
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-fg);
+  /* OpenType features: double-story a (cv01), tailed l (cv02), square G (cv03) */
+  font-feature-settings: "cv01" 1, "cv02" 1, "cv03" 1;
+}
+
+#root {
+  min-height: 100dvh;
+}
