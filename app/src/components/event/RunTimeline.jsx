@@ -2,7 +2,7 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   if (!runs || runs.length === 0) {
     return (
       <div
-        className="rounded-xl p-5 text-xs"
+        className="rounded p-5 text-xs"
         style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)', color: 'var(--color-fg-subtle)' }}
       >
         No run data available
@@ -15,7 +15,7 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
 
   return (
     <div
-      className="rounded-xl p-5"
+      className="rounded p-5"
       style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
     >
       <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--color-fg)' }}>
@@ -73,10 +73,11 @@ function RunRow({ run, bestRawTime, isDualRun }) {
 
   return (
     <div
-      className="flex items-center gap-3 px-3 py-2 rounded-lg text-xs"
+      className="flex items-center gap-3 px-3 py-2 text-xs"
       style={{
-        backgroundColor: isBest ? 'rgba(28, 105, 212, 0.12)' : 'var(--color-surface-3)',
-        border: isBest ? '1px solid rgba(28, 105, 212, 0.3)' : '1px solid transparent',
+        borderRadius: 'var(--radius)',
+        backgroundColor: isBest ? 'rgba(28, 105, 212, 0.06)' : 'var(--color-surface-3)',
+        border: isBest ? '1px solid rgba(28, 105, 212, 0.2)' : '1px solid var(--color-border-subtle)',
       }}
     >
       {/* Run number */}

@@ -6,32 +6,33 @@ import ChartCard from '../shared/ChartCard'
 
 const COLORS = {
   line: '#1c69d4',
-  dot: '#4d8fe0',
-  grid: '#2a3348',
-  fg: '#94a3b8',
-  fgSubtle: '#64748b',
-  surface3: '#1e2535',
+  dot: '#1c69d4',
+  grid: '#e5e7eb',
+  fg: '#6b7280',
+  fgSubtle: '#9ca3af',
 }
 
-function CustomTooltip({ active, payload, label }) {
+function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
   return (
     <div
-      className="rounded-lg px-3 py-2 text-xs"
+      className="px-3 py-2 text-xs"
       style={{
-        backgroundColor: '#1e2535',
-        border: '1px solid #2a3348',
-        color: '#f1f5f9',
+        backgroundColor: '#fff',
+        border: '1px solid #e5e7eb',
+        borderRadius: 4,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        color: '#111827',
         minWidth: 140,
       }}
     >
-      <div className="font-semibold mb-1" style={{ color: '#f1f5f9' }}>{d.label}</div>
-      <div style={{ color: '#94a3b8' }}>
+      <div className="font-semibold mb-1">{d.label}</div>
+      <div style={{ color: '#6b7280' }}>
         PAX rank: <span style={{ color: '#1c69d4', fontWeight: 600 }}>{d.rank}</span> of {d.total}
       </div>
-      <div style={{ color: '#94a3b8' }}>
-        Percentile: <span style={{ color: '#f1f5f9' }}>{d.percentile}%</span>
+      <div style={{ color: '#6b7280' }}>
+        Percentile: <span style={{ color: '#111827' }}>{d.percentile}%</span>
       </div>
     </div>
   )

@@ -6,10 +6,10 @@ import ChartCard from '../shared/ChartCard'
 
 const COLORS = {
   bar: '#1c69d4',
-  barBest: '#22c55e',
-  grid: '#2a3348',
-  fg: '#94a3b8',
-  fgSubtle: '#64748b',
+  barBest: '#16a34a',
+  grid: '#e5e7eb',
+  fg: '#6b7280',
+  fgSubtle: '#9ca3af',
 }
 
 function CustomTooltip({ active, payload }) {
@@ -17,15 +17,22 @@ function CustomTooltip({ active, payload }) {
   const d = payload[0].payload
   return (
     <div
-      className="rounded-lg px-3 py-2 text-xs"
-      style={{ backgroundColor: '#1e2535', border: '1px solid #2a3348', color: '#f1f5f9', minWidth: 170 }}
+      className="px-3 py-2 text-xs"
+      style={{
+        backgroundColor: '#fff',
+        border: '1px solid #e5e7eb',
+        borderRadius: 4,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        color: '#111827',
+        minWidth: 170,
+      }}
     >
       <div className="font-semibold mb-1">{d.label}</div>
-      <div style={{ color: '#94a3b8' }}>
+      <div style={{ color: '#6b7280' }}>
         Gap: <span style={{ color: '#1c69d4', fontWeight: 600 }}>{d.gapPct}%</span> ({d.gapSec > 0 ? '+' : ''}{d.gapSec}s)
       </div>
-      <div style={{ color: '#94a3b8' }}>
-        Leader: <span style={{ color: '#f1f5f9' }}>{d.leaderTime}s</span>
+      <div style={{ color: '#6b7280' }}>
+        Leader: <span style={{ color: '#111827' }}>{d.leaderTime}s</span>
       </div>
     </div>
   )
@@ -63,7 +70,7 @@ export default function GapBarChart({ data }) {
             width={40}
             tickFormatter={v => `${v}%`}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
           <Bar
             dataKey="gapPct"
             radius={[4, 4, 0, 0]}

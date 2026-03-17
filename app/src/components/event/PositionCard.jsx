@@ -4,7 +4,8 @@ export default function PositionCard({ title, rank, total, time, timeLabel, gapS
 
   return (
     <div
-      className="rounded-xl p-5 flex flex-col gap-3"
+      className="p-5 flex flex-col gap-3"
+      style={{ borderRadius: 'var(--radius-lg)' }}
       style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
     >
       <span

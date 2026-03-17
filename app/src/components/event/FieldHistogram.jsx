@@ -26,11 +26,17 @@ function CustomTooltip({ active, payload }) {
   const d = payload[0].payload
   return (
     <div
-      className="rounded-lg px-3 py-2 text-xs"
-      style={{ backgroundColor: '#1e2535', border: '1px solid #2a3348', color: '#f1f5f9' }}
+      className="px-3 py-2 text-xs"
+      style={{
+        backgroundColor: '#fff',
+        border: '1px solid #e5e7eb',
+        borderRadius: 4,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        color: '#111827',
+      }}
     >
       <div className="font-semibold">{d.range}</div>
-      <div style={{ color: '#94a3b8' }}>{d.count} driver{d.count !== 1 ? 's' : ''}</div>
+      <div style={{ color: '#6b7280' }}>{d.count} driver{d.count !== 1 ? 's' : ''}</div>
       {d.containsRyan && <div style={{ color: '#1c69d4' }}>← your time</div>}
     </div>
   )
@@ -42,7 +48,8 @@ export default function FieldHistogram({ paxResults, ryanIndexedTime }) {
 
   return (
     <div
-      className="rounded-xl p-5 flex flex-col gap-4"
+      className="p-5 flex flex-col gap-4"
+      style={{ borderRadius: 'var(--radius-lg)' }}
       style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
     >
       <div>
@@ -55,28 +62,28 @@ export default function FieldHistogram({ paxResults, ryanIndexedTime }) {
       </div>
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={histData} margin={{ top: 4, right: 8, left: 0, bottom: 0 }} barCategoryGap="8%">
-          <CartesianGrid strokeDasharray="3 3" stroke="#2a3348" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
           <XAxis
             dataKey="bin"
-            tick={{ fill: '#94a3b8', fontSize: 10 }}
+            tick={{ fill: '#6b7280', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
             interval="preserveStartEnd"
           />
           <YAxis
-            tick={{ fill: '#94a3b8', fontSize: 10 }}
+            tick={{ fill: '#6b7280', fontSize: 10 }}
             axisLine={false}
             tickLine={false}
             width={28}
             allowDecimals={false}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
           <Bar dataKey="count" radius={[3, 3, 0, 0]}>
             {histData.map((entry, i) => (
               <Cell
                 key={i}
-                fill={entry.containsRyan ? '#1c69d4' : '#2a3348'}
-                fillOpacity={entry.containsRyan ? 1 : 0.8}
+                fill={entry.containsRyan ? '#1c69d4' : '#d1d5db'}
+                fillOpacity={1}
               />
             ))}
           </Bar>

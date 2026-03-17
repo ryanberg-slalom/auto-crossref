@@ -5,11 +5,11 @@ import {
 import ChartCard from '../shared/ChartCard'
 
 const COLORS = {
-  line: '#f59e0b',
-  dot: '#fbbf24',
-  grid: '#2a3348',
-  fg: '#94a3b8',
-  fgSubtle: '#64748b',
+  line: '#d97706',
+  dot: '#d97706',
+  grid: '#e5e7eb',
+  fg: '#6b7280',
+  fgSubtle: '#9ca3af',
 }
 
 function CustomTooltip({ active, payload }) {
@@ -17,16 +17,20 @@ function CustomTooltip({ active, payload }) {
   const d = payload[0].payload
   return (
     <div
-      className="rounded-lg px-3 py-2 text-xs"
-      style={{ backgroundColor: '#1e2535', border: '1px solid #2a3348', color: '#f1f5f9', minWidth: 160 }}
+      className="px-3 py-2 text-xs"
+      style={{
+        backgroundColor: '#fff',
+        border: '1px solid #e5e7eb',
+        borderRadius: 4,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+        color: '#111827',
+        minWidth: 160,
+      }}
     >
       <div className="font-semibold mb-1">{d.label}</div>
-      <div style={{ color: '#94a3b8' }}>
-        Indexed: <span style={{ color: '#f59e0b', fontWeight: 600 }}>{d.indexed}s</span>
+      <div style={{ color: '#6b7280' }}>
+        Indexed: <span style={{ color: '#d97706', fontWeight: 600 }}>{d.indexed}s</span>
       </div>
-      {d.isDualRun && (
-        <div className="mt-0.5" style={{ color: '#64748b', fontSize: 10 }}>dual-run (sum of sessions)</div>
-      )}
     </div>
   )
 }

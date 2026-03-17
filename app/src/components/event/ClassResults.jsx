@@ -5,8 +5,8 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
 
   return (
     <div
-      className="rounded-xl overflow-hidden"
-      style={{ border: '1px solid var(--color-border)' }}
+      className="overflow-hidden"
+      style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)' }}
     >
       <div
         className="px-5 py-3 flex items-center justify-between"

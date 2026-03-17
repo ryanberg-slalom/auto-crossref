@@ -3,7 +3,8 @@ export default function PstCard({ indexedTime, pstRank, pstTotal, pstPercentile 
 
   return (
     <div
-      className="rounded-xl p-5 flex flex-col gap-3"
+      className="p-5 flex flex-col gap-3"
+      style={{ borderRadius: 'var(--radius-lg)' }}
       style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
     >
       <div className="flex items-center justify-between">
