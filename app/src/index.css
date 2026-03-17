@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
-
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('/MonaSansVF[wdth,wght,opsz,ital].ttf') format('truetype');
+  font-weight: 200 900;
+  font-style: normal italic;
+  font-display: swap;
+}
 
 @theme {
   /* BMW-inspired color palette */
@@ -53,8 +59,9 @@ body {
   font-family: var(--font-sans);
   background-color: var(--color-surface);
   color: var(--color-fg);
-  /* OpenType features: double-story a (cv01), tailed l (cv02), square G (cv03) */
-  font-feature-settings: "cv01" 1, "cv02" 1, "cv03" 1;
+  /* OpenType features: double-story a (ss05), tailed l (ss03) */
+  font-optical-sizing: auto;
+  font-feature-settings: "ss05" on, "ss03" on;
 }
 
 #root {
