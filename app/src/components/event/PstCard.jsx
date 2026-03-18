@@ -33,7 +33,7 @@ export default function PstCard({ indexedTime, pstRank, pstTotal, pstPercentile 
           <div className="flex flex-col gap-1">
             <div className="flex justify-between text-xs">
               <span className="text-fg-subtle">Your indexed time</span>
-              <span className="tabular-nums font-medium text-fg">{indexedTime}s</span>
+              <span className="tabular-nums font-medium text-fg">{Number(indexedTime).toFixed(3)}</span>
             </div>
             <div className="flex justify-between text-xs">
               <span className="text-fg-subtle">Beat</span>

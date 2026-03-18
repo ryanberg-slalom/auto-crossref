@@ -29,7 +29,7 @@ function CustomTooltip({ active, payload }) {
     >
       <div className="font-semibold mb-1">{d.label}</div>
       <div style={{ color: '#6b7280' }}>
-        Indexed: <span style={{ color: '#d97706', fontWeight: 600 }}>{d.indexed}s</span>
+        Indexed: <span style={{ color: '#d97706', fontWeight: 600 }}>{Number(d.indexed).toFixed(3)}</span>
       </div>
     </div>
   )
@@ -81,7 +81,7 @@ export default function IndexedTimeChart({ data }) {
             axisLine={false}
             tickLine={false}
             width={40}
-            tickFormatter={v => `${v}s`}
+            tickFormatter={v => `${v}`}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ stroke: COLORS.fgSubtle, strokeWidth: 1, strokeDasharray: '4 4' }} />
           <Line

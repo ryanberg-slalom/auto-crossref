@@ -191,6 +191,7 @@ The app is named **AutoX-Ref** (short for Autocross Reference, a play on "cross-
   3. Runtime dynamic colors from helper functions (e.g., `style={{ backgroundColor: venueColor(event.venue) }}`)
 - **Tailwind v4 `@theme`**: `--color-*` → `text-*`/`bg-*`/`border-*`; `--radius-*` → `rounded-*`; `--font-*` → `font-*`
 - **Opacity modifiers**: `bg-bmw-blue/10`, `border-bmw-blue/20`, `bg-warning/15`, etc.
+- **Time display**: All time values are shown to exactly 3 decimal places with no unit suffix — e.g. `60.100` not `60.1s`. Use `.toFixed(3)` at the display layer.
 - **DataTable `getRowClassName`** (not `getRowStyle`): pass `row => 'class string'`; Ryan highlight: `'bg-bmw-blue/5 outline outline-1 outline-bmw-blue/20 [outline-offset:-1px]'`
 - **DataTable column `meta`**: `{ thClassName: 'text-right', tdClassName: 'text-right' }` for per-column alignment
 

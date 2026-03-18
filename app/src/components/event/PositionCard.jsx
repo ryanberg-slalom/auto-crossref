@@ -29,14 +29,14 @@ export default function PositionCard({ title, rank, total, time, timeLabel, gapS
             {time && (
               <div className="flex justify-between text-xs">
                 <span className="text-fg-subtle">{timeLabel}</span>
-                <span className="tabular-nums font-medium text-fg">{time}s</span>
+                <span className="tabular-nums font-medium text-fg">{Number(time).toFixed(3)}</span>
               </div>
             )}
             {gapSeconds !== null && gapSeconds !== undefined && (
               <div className="flex justify-between text-xs">
                 <span className="text-fg-subtle">Gap to leader</span>
                 <span className="tabular-nums text-fg-muted">
-                  +{gapSeconds}s ({gapPct}%)
+                  +{Number(gapSeconds).toFixed(3)} ({gapPct}%)
                 </span>
               </div>
             )}

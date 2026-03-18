@@ -12,13 +12,13 @@ function fmt(n) {
 
 function DeltaCell({ value, ryanValue, isRyan }) {
   if (isRyan) {
-    return <span className="font-mono">{fmt(value)}s</span>
+    return <span className="font-mono">{fmt(value)}</span>
   }
   const delta = value - ryanValue
   const sign = delta > 0 ? '+' : ''
   return (
     <span className="font-mono">
-      {fmt(value)}s <span className="font-bold">({sign}{fmt(delta)})</span>
+      {fmt(value)} <span className="font-bold">({sign}{fmt(delta)})</span>
     </span>
   )
 }
@@ -119,7 +119,7 @@ export default function PstResults({ paxResults, ryan, ryanCar, ryanName = RYAN_
         columns={columns}
         data={rows}
         getRowClassName={row => row._isRyan
-          ? 'bg-bmw-blue/5 outline outline-1 outline-bmw-blue/20 [outline-offset:-1px]'
+          ? 'bg-bmw-blue/5 [box-shadow:inset_0_1px_0_0_rgba(28,105,212,0.2),inset_0_-1px_0_0_rgba(28,105,212,0.2)]'
           : ''}
       />
     </div>

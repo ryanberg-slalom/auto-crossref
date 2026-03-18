@@ -1,3 +1,5 @@
+const CONE_ICON = `${import.meta.env.BASE_URL}cone.svg`
+
 export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   if (!runs || runs.length === 0) {
     return (
@@ -30,14 +32,20 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
                   {sessionLabel}
                   {sessionBest && (
                     <span className="ml-2 normal-case text-fg-muted">
-                      best {sessionBest}s
+                      best {sessionBest.toFixed(3)}
                     </span>
                   )}
                 </div>
               )}
               <div className="flex flex-col gap-1.5">
-                {sessionRuns.map(run => (
-                  <RunRow key={run.run_number} run={run} bestRawTime={bestRawTime} isDualRun={isDualRun} />
+                {sessionRuns.map((run, i) => (
+                  <RunRow
+                    key={run.run_number}
+                    run={run}
+                    prevRun={i > 0 ? sessionRuns[i - 1] : null}
+                    bestRawTime={bestRawTime}
+                    isDualRun={isDualRun}
+                  />
                 ))}
               </div>
             </div>
@@ -48,7 +56,7 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
         <div className="mt-3 pt-3 flex justify-between text-xs border-t border-border-subtle">
           <span className="text-fg-subtle">Best time</span>
           <span className="tabular-nums font-semibold text-bmw-blue">
-            {bestRawTime}s
+            {Number(bestRawTime).toFixed(3)}
           </span>
         </div>
       )}
@@ -56,8 +64,12 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   )
 }
 
-function RunRow({ run, bestRawTime, isDualRun }) {
+function RunRow({ run, prevRun, bestRawTime, isDualRun }) {
   const isBest = !run.dnf && run.scored_time === bestRawTime && !isDualRun
+
+  const delta = prevRun && !run.dnf && prevRun.scored_time !== null && run.scored_time !== null
+    ? run.scored_time - prevRun.scored_time
+    : null
 
   return (
     <div
@@ -65,36 +77,36 @@ function RunRow({ run, bestRawTime, isDualRun }) {
         'flex items-center gap-3 px-3 py-2 text-xs rounded',
         isBest
           ? 'bg-bmw-blue/[6%] border border-bmw-blue/20'
-          : 'bg-surface-3 border border-border-subtle',
+          : run.cones > 0 && !run.dnf
+            ? 'bg-warning/10 border border-warning/20'
+            : 'bg-surface-3 border border-border-subtle',
       ].join(' ')}
     >
       <span className="w-5 text-center font-mono text-fg-subtle">
         {run.run_number}
       </span>
 
-      <span
-        className={[
-          'tabular-nums font-semibold flex-1',
-          run.dnf ? 'text-accent line-through' : isBest ? 'text-bmw-blue' : 'text-fg',
-        ].join(' ')}
-      >
-        {run.dnf ? 'DNF' : `${run.scored_time}s`}
+      <span className="flex items-center gap-1.5 tabular-nums font-mono font-semibold flex-1">
+        <span className={run.dnf ? 'text-accent line-through' : isBest ? 'text-bmw-blue' : 'text-fg'}>
+          {run.dnf ? 'DNF' : run.scored_time.toFixed(3)}
+        </span>
+        {run.cones > 0 && !run.dnf && (
+          <span className="flex flex-row gap-1 pl-2">
+            <img src={CONE_ICON} alt="cone" className="w-3.5 h-3.5 opacity-80" />
+            <span className="text-black font-extrabold">{run.cones}</span>
+          </span>
+        )}
       </span>
 
-      {run.cones > 0 && !run.dnf && (
-        <span className="px-1.5 py-0.5 rounded text-xs bg-warning/15 text-warning border border-warning/30">
-          +{run.cones} cone{run.cones !== 1 ? 's' : ''}
-        </span>
-      )}
       {run.dnf && (
         <span className="px-1.5 py-0.5 rounded text-xs bg-accent/15 text-accent border border-accent/30">
           DNF
         </span>
       )}
 
-      {run.cones > 0 && !run.dnf && (
-        <span className="tabular-nums text-xs text-fg-subtle">
-          base {run.base_time}s
+      {delta !== null && (
+        <span className={['tabular-nums font-mono text-xs', delta < 0 ? 'text-success' : 'text-fg-muted'].join(' ')}>
+          {delta > 0 ? '+' : ''}{delta.toFixed(3)}
         </span>
       )}
 

@@ -13,7 +13,7 @@ function buildHistogramData(indexedTimes, ryanTime, binWidth = 1) {
     const containsRyan = ryanTime >= lo && ryanTime < hi
     bins.push({
       bin: `${lo}`,
-      range: `${lo}–${hi}s`,
+      range: `${lo}–${hi}`,
       count,
       containsRyan,
     })

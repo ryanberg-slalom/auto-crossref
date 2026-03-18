@@ -118,7 +118,7 @@ function EventRow({ event: e, ryan: r, index: i, total, navigate }) {
         {r.pax_percentile}%
       </td>
       <td className="px-4 py-2.5 tabular-nums text-fg">
-        {r.official_indexed_time}s
+        {Number(r.official_indexed_time).toFixed(3)}
       </td>
       <td className={`px-4 py-2.5 tabular-nums ${r.pax_gap_pct < 5 ? 'text-success' : 'text-fg-muted'}`}>
         {r.pax_gap_pct !== null ? `+${r.pax_gap_pct}%` : '—'}

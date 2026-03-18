@@ -17,10 +17,10 @@ function CustomTooltip({ active, payload }) {
     <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[170px]">
       <div className="font-semibold mb-1">{d.label}</div>
       <div className="text-fg-muted">
-        Gap: <span className="text-bmw-blue font-semibold">{d.gapPct}%</span> ({d.gapSec > 0 ? '+' : ''}{d.gapSec}s)
+        Gap: <span className="text-bmw-blue font-semibold">{d.gapPct}%</span> ({d.gapSec > 0 ? '+' : ''}{Number(d.gapSec).toFixed(3)})
       </div>
       <div className="text-fg-muted">
-        Leader: <span className="text-fg">{d.leaderTime}s</span>
+        Leader: <span className="text-fg">{Number(d.leaderTime).toFixed(3)}</span>
       </div>
     </div>
   )

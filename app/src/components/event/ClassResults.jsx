@@ -43,13 +43,13 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
     helper.accessor('raw_time', {
       header: 'Raw',
       cell: info => (
-        <span className="tabular-nums text-fg">{info.getValue()}s</span>
+        <span className="tabular-nums text-fg">{Number(info.getValue()).toFixed(3)}</span>
       ),
     }),
     helper.accessor('indexed_time', {
       header: 'Indexed',
       cell: info => (
-        <span className="tabular-nums text-fg font-medium">{info.getValue()}s</span>
+        <span className="tabular-nums text-fg font-medium">{Number(info.getValue()).toFixed(3)}</span>
       ),
     }),
   ], [ryanName])
@@ -69,7 +69,7 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
         data={classDrivers}
         emptyMessage={`No ${classCode} drivers at this event`}
         getRowClassName={row => row.name === ryanName
-          ? 'bg-bmw-blue/5 outline outline-1 outline-bmw-blue/20 [outline-offset:-1px]'
+          ? 'bg-bmw-blue/5 [box-shadow:inset_0_1px_0_0_rgba(28,105,212,0.2),inset_0_-1px_0_0_rgba(28,105,212,0.2)]'
           : ''}
       />
     </div>
