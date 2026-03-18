@@ -1,5 +1,5 @@
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine, Cell,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from 'recharts'
 
 function buildHistogramData(indexedTimes, ryanTime, binWidth = 1) {
@@ -25,19 +25,10 @@ function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
   return (
-    <div
-      className="px-3 py-2 text-xs"
-      style={{
-        backgroundColor: '#fff',
-        border: '1px solid #e5e7eb',
-        borderRadius: 4,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-        color: '#111827',
-      }}
-    >
+    <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg">
       <div className="font-semibold">{d.range}</div>
-      <div style={{ color: '#6b7280' }}>{d.count} driver{d.count !== 1 ? 's' : ''}</div>
-      {d.containsRyan && <div style={{ color: '#1c69d4' }}>← your time</div>}
+      <div className="text-fg-muted">{d.count} driver{d.count !== 1 ? 's' : ''}</div>
+      {d.containsRyan && <div className="text-bmw-blue">← your time</div>}
     </div>
   )
 }
@@ -47,16 +38,10 @@ export default function FieldHistogram({ paxResults, ryanIndexedTime }) {
   const histData = buildHistogramData(times, ryanIndexedTime)
 
   return (
-    <div
-      className="p-5 flex flex-col gap-4"
-      style={{ borderRadius: 'var(--radius-lg)' }}
-      style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
-    >
+    <div className="p-5 flex flex-col gap-4 rounded-lg bg-surface-2 border border-border">
       <div>
-        <h3 className="text-sm font-semibold" style={{ color: 'var(--color-fg)' }}>
-          PAX Field Distribution
-        </h3>
-        <p className="text-xs mt-0.5" style={{ color: 'var(--color-fg-subtle)' }}>
+        <h3 className="text-sm font-semibold text-fg">PAX Field Distribution</h3>
+        <p className="text-xs mt-0.5 text-fg-subtle">
           Indexed time histogram — blue bar is your bin
         </p>
       </div>

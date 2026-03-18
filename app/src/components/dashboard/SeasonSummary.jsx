@@ -10,9 +10,12 @@ export default function SeasonSummary({ attendedEvents }) {
     ? Math.min(...singleEvents.map(e => e.ryan.official_indexed_time))
     : null
   const bestGapPct = Math.min(...attendedEvents.filter(e => e.ryan.pax_gap_pct !== null).map(e => e.ryan.pax_gap_pct))
+  const pstEvents = attendedEvents.filter(e => e.ryan.hypothetical_pst_rank !== null)
+  const bestPstRank = pstEvents.length ? Math.min(...pstEvents.map(e => e.ryan.hypothetical_pst_rank)) : null
+  const bestPstEvent = pstEvents.find(e => e.ryan.hypothetical_pst_rank === bestPstRank)
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
       <StatCard
         label="Events Attended"
         value={`${attended}/10`}
@@ -34,6 +37,13 @@ export default function SeasonSummary({ attendedEvents }) {
         value={`${bestGapPct}%`}
         sub="gap to PAX leader"
       />
+      {bestPstRank !== null && (
+        <StatCard
+          label="Best PST Rank"
+          value={`#${bestPstRank}`}
+          sub={`of ${bestPstEvent?.ryan?.hypothetical_pst_total} PST drivers`}
+        />
+      )}
     </div>
   )
 }

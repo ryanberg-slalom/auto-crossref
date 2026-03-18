@@ -8,6 +8,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Mona Sans Mono';
+  src: url('/MonaSansMonoVF[wght].ttf') format('truetype');
+  font-weight: 200 900;
+  font-display: swap;
+}
+
 @theme {
   /* BMW accent palette */
   --color-bmw-blue: #1c69d4;
@@ -39,6 +46,7 @@
 
   /* Typography */
   --font-sans: 'Mona Sans', system-ui, sans-serif;
+  --font-mono: 'Mona Sans Mono', ui-monospace, monospace;
 
   /* Radii — tighter */
   --radius-sm: 0.1875rem;

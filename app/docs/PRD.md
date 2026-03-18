@@ -68,10 +68,81 @@ PST (Pro Street Tire) is a catch-all indexed class where drivers from various st
 
 ### P2 — Future
 
-- Comparison view: overlay two events side-by-side
 - Season selector (multi-season support)
 - `add-event.js` utility to append new events to the dataset
 - Export chart as PNG
+
+---
+
+### P3 — Competitor Comparison
+
+Track and compare performance against a specific rival across the season.
+
+#### Entry Points
+
+**Expandable rows in results tables** (ClassResults, PstResults):
+- Clicking any non-Ryan competitor row expands it in place to reveal an inline comparison chart
+- The chart shows indexed times per event for Ryan and that competitor, for all events where the competitor appears in the data
+- Events where only one of them competed are still plotted with a single point (no connecting line for the absent party)
+- A short summary line in the expansion: e.g., "Ryan faster in 3 of 5 shared events · avg delta −0.842s"
+- A "Full comparison →" link in the expanded row navigates to the competitor detail page
+
+**DataTable API change needed:**
+- Add optional `getExpandedContent?: (row) => ReactNode` prop
+- Clicking a non-Ryan row toggles its expansion; clicking again collapses it
+- Only one row expanded at a time (collapsing the previous when a new one is opened)
+- Expanded content renders in a full-width row below the data row, with a subtle left accent border in the competitor's implied color
+
+#### Inline Comparison Chart
+
+- `ComposedChart` (Recharts) with two `Line` series: Ryan (bmw-blue) and competitor (fg-muted or a derived color)
+- X-axis: event numbers for events where *either* competed
+- Y-axis: indexed time (lower = better, y-axis label "Indexed time (s)")
+- Null/missing values for events where a party didn't compete render as gaps in the line
+- Dot markers at each data point; custom tooltip showing both times and the delta for that event
+- Height ~160px to keep the expansion compact
+
+#### Competitor Detail Page (`/competitor/:name`)
+
+Route: `/competitor/:encodedName`
+
+**Header section:**
+- "Ryan Berg vs [Competitor Name]"
+- Competitor's class and car (from most recent shared event)
+- Summary chips: N shared events · Ryan wins X · Competitor wins Y
+
+**Charts (full width):**
+- Indexed time over season: two overlaid lines (Ryan + competitor) across shared events
+- Delta chart: bar chart of `ryan_indexed − competitor_indexed` per event (negative = Ryan faster)
+
+**Head-to-head table:**
+- Columns: Event, Date, Venue, Ryan Indexed, Competitor Indexed, Delta, Winner
+- Rows sorted by event number
+- Winner column: color-coded "Ryan" (blue) or competitor name (muted) or "—" for tie
+- Rows for events where only one competed shown but greyed out
+
+**Navigation:** Back link to the event detail page for the most recently clicked event, and a breadcrumb `Season / Competitors / [Name]`.
+
+#### Data Notes
+
+- **No pipeline changes needed.** All competitor data is already present in `pax_results` on each event. The competitor lookup queries `events[].pax_results.find(d => d.name === competitorName)` client-side.
+- **Name matching:** exact string match on `name` field. Competitor names are stable within a season (Pronto Timing system uses consistent registration names).
+- **New hook:** `useCompetitor(name)` — iterates all attended events, joins each event's pax_results row (if present) with Ryan's data, returns an array of per-event comparison records.
+- **URL encoding:** competitor names with spaces use `encodeURIComponent` / React Router's `:name` param with `decodeURIComponent` in the page.
+
+#### New Files
+
+```
+src/
+  hooks/
+    useCompetitor.js          — aggregates competitor data across all events
+  components/
+    competitor/
+      ComparisonChart.jsx     — shared inline + detail chart (reused in both contexts)
+      HeadToHeadTable.jsx     — per-event breakdown table
+  pages/
+    CompetitorPage.jsx        — full comparison page
+```
 
 ---
 
@@ -95,6 +166,36 @@ PST (Pro Street Tire) is a catch-all indexed class where drivers from various st
 - **Color palette**: BMW-inspired — primary blue `#1c69d4`, dark navy `#003566`, black, white, neutral grays
 - **Typography**: Mona Sans variable font (Google Fonts)
   - OpenType features: 2-story `a` (cv01), tailed `l` (cv02), square capital `G` (cv03)
+  - Mona Sans Mono VF (`MonaSansMonoVF[wght].ttf`) registered as `--font-mono` for numeric columns
+
+### App Name
+
+The app is named **AutoX-Ref** (short for Autocross Reference, a play on "cross-reference"). Displayed in the sidebar brand area as `AutoX` + `-Ref` (blue accent on `-Ref`).
+
+### Layout
+
+- **Full-width navbar** (`h-12`, `sticky top-0`) — extends edge-to-edge with no max-width constraint
+- **Left sidebar** (`w-60`, `sticky top-12`, `h-[calc(100dvh-3rem)]`) — `bg-nav` matching the navbar, with `border-r`
+  - Top-left intersection of navbar and sidebar contains the brand logo + "AutoX-Ref" name
+  - Navigation sections: Dashboard (`HomeIcon`), Events (`CalendarDaysIcon`), Competitors (`UserGroupIcon`, disabled/soon)
+  - Events list: one item per event showing venue-colored dot, event number, short date + venue label; events Ryan didn't attend are dimmed and non-clickable
+- **Subnav bar** (`sticky top-12`, `min-h-[38px]`) — within the main content column; used for breadcrumbs and prev/next event nav
+- **Main content** — `flex-1` column to the right of the sidebar; `px-6 py-6` page padding
+
+### Styling Rules
+
+- **All DOM styling must use Tailwind utility classes.** Inline `style` props are only allowed for:
+  1. Truly dynamic computed values (e.g., `style={{ width: \`${barWidth}%\` }}` for progress bars)
+  2. Third-party library props that accept style objects (Recharts SVG attributes: `stroke`, `fill`, `tick`, `LabelList style`)
+  3. Runtime dynamic colors from helper functions (e.g., `style={{ backgroundColor: venueColor(event.venue) }}`)
+- **Tailwind v4 `@theme`**: `--color-*` → `text-*`/`bg-*`/`border-*`; `--radius-*` → `rounded-*`; `--font-*` → `font-*`
+- **Opacity modifiers**: `bg-bmw-blue/10`, `border-bmw-blue/20`, `bg-warning/15`, etc.
+- **DataTable `getRowClassName`** (not `getRowStyle`): pass `row => 'class string'`; Ryan highlight: `'bg-bmw-blue/5 outline outline-1 outline-bmw-blue/20 [outline-offset:-1px]'`
+- **DataTable column `meta`**: `{ thClassName: 'text-right', tdClassName: 'text-right' }` for per-column alignment
+
+### Dependencies
+
+- `@heroicons/react` v2 — used for sidebar navigation icons (`/20/solid` variant)
 
 ### Project Structure
 
@@ -102,12 +203,11 @@ PST (Pro Street Tire) is a catch-all indexed class where drivers from various st
 app/
   src/
     components/
-      layout/       AppShell, EventNav
-      dashboard/    SeasonSummary, PaxRankChart, RawRankChart, IndexedTimeChart,
-                    GapBarChart, PercentileChart
-      event/        EventHeader, RunTimeline, PositionCard, PstCard,
-                    FieldHistogram, ClassResults
-      shared/       StatCard, EventBadge, ScoringTypeBadge
+      layout/       AppShell (sidebar + full-width nav)
+      dashboard/    SeasonSummary, GapBarChart, PercentileChart, PstRankChart
+      event/        RunTimeline, PositionCard, PstCard,
+                    FieldHistogram, ClassResults, PstResults
+      shared/       StatCard, ChartCard, DataTable, venueColors.js
     data/
       season-2025.json     (generated by parse script)
     hooks/
@@ -127,7 +227,7 @@ app/
       compute-derived.js
   docs/
     PRD.md             ← this file
-    ARCHITECTURE.md
+    PROGRESS.md
 ```
 
 ### JSON Schema

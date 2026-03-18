@@ -3,10 +3,10 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
+import { venueColor } from '../shared/venueColors'
 
 const COLORS = {
   line: '#d97706',
-  dot: '#d97706',
   grid: '#e5e7eb',
   fg: '#6b7280',
   fgSubtle: '#9ca3af',
@@ -37,10 +37,11 @@ function CustomTooltip({ active, payload }) {
 
 function CustomDot(props) {
   const { cx, cy, payload, onClick } = props
+  const color = venueColor(payload.venue)
   return (
     <circle
       cx={cx} cy={cy} r={5}
-      fill={COLORS.dot} stroke={COLORS.line} strokeWidth={2}
+      fill={color} stroke={color} strokeWidth={2}
       style={{ cursor: 'pointer' }}
       onClick={() => onClick(payload)}
     />
@@ -51,11 +52,12 @@ export default function IndexedTimeChart({ data }) {
   const navigate = useNavigate()
 
   const chartData = data.map(e => ({
-    eventNum: `E${e.event_number}`,
+    eventNum: `#${e.event_number}`,
     indexed: e.ryan.official_indexed_time,
     isDualRun: e.scoring_type === 'dual_run',
     label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     id: e.id,
+    venue: e.venue,
   }))
 
   // Exclude dual-run events from single-course trend (different course/scoring)

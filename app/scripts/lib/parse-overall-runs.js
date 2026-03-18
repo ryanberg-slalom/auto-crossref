@@ -36,7 +36,11 @@ export function parseRyanRuns(text, eventConfig) {
 
   // Extract the segment after tires — runs appear here
   // Take enough chars to cover all expected runs + some buffer
-  const runsSegment = text.slice(tiresIdx + RYAN_TIRES.length, tiresIdx + RYAN_TIRES.length + 300)
+  // Strip trophy/position markers (e.g. "T2", "T1") that appear inline with run times
+  // in some PDFs and cause the following digit to be merged into the time value.
+  const runsSegment = text
+    .slice(tiresIdx + RYAN_TIRES.length, tiresIdx + RYAN_TIRES.length + 300)
+    .replace(/T\d/g, '')
 
   const runs = extractRunsFromSegment(runsSegment, runsPerSession, sessions)
 
@@ -162,4 +166,25 @@ function extractRunsFromSegment(segment, runsPerSession, sessions) {
   }
 
   return runs.slice(0, totalExpected)
+}
+
+/**
+ * Builds a map of { driverName → carString } by scanning the OVERALL PDF text.
+ * Format after name: "{year} {make model}{digits?}({gap}\" or "{year} {make model} {runTime}"
+ *
+ * @param {string} overallText
+ * @param {string[]} names - driver names to look up
+ * @returns {Map<string, string>}
+ */
+export function buildCarMap(overallText, names) {
+  const map = new Map()
+  for (const name of names) {
+    const idx = overallText.indexOf(name)
+    if (idx === -1) continue
+    const after = overallText.slice(idx + name.length, idx + name.length + 80)
+    // Match: 4-digit year + words, stopping before gap notation (\d*\() or a scored run time
+    const m = after.match(/^(\d{4} [^(]+?)(?=\d{0,3}\(|\d{2,3}\.\d{3})/)
+    if (m) map.set(name, m[1].trim())
+  }
+  return map
 }

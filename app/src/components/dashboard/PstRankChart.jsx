@@ -16,7 +16,6 @@ const TREND = {
   zmax: '#7f1d1d',
 }
 
-// Returns { slope, intercept } for least-squares linear fit over [{x, y}] points
 function linReg(points) {
   const n = points.length
   if (n < 2) return null
@@ -33,31 +32,36 @@ function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null
   const d = payload[0].payload
   return (
-    <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[150px]">
+    <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[160px]">
       <div className="font-semibold mb-1">{d.label}</div>
       <div className="text-fg-muted">
-        Beat <span style={{ color: venueColor(d.venue), fontWeight: 600 }}>{d.percentile}%</span> of field
+        PST rank: <span style={{ color: venueColor(d.venue), fontWeight: 600 }}>{d.rank}</span> of {d.total}
       </div>
       <div className="text-fg-muted">
-        {d.rank} of {d.total} drivers
+        Percentile: <span className="text-fg">{d.percentile}%</span>
       </div>
     </div>
   )
 }
 
-export default function PercentileChart({ data }) {
+export default function PstRankChart({ data }) {
   const navigate = useNavigate()
 
-  const base = data.map((e, i) => ({
-    i,
-    eventNum: `#${e.event_number}`,
-    percentile: e.ryan.pax_percentile,
-    rank: e.ryan.pax_rank,
-    total: e.ryan.pax_total,
-    label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
-    id: e.id,
-    venue: e.venue,
-  }))
+  const base = data
+    .filter(e => e.ryan.hypothetical_pst_rank !== null)
+    .map((e, i) => ({
+      i,
+      eventNum: `#${e.event_number}`,
+      percentile: e.ryan.hypothetical_pst_percentile,
+      rank: e.ryan.hypothetical_pst_rank,
+      total: e.ryan.hypothetical_pst_total,
+      barLabel: `${e.ryan.hypothetical_pst_percentile}% (${e.ryan.hypothetical_pst_rank} of ${e.ryan.hypothetical_pst_total})`,
+      label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
+      id: e.id,
+      venue: e.venue,
+    }))
+
+  if (base.length === 0) return null
 
   const michelinReg = linReg(base.filter(d => d.venue === 'michelin').map(d => ({ x: d.i, y: d.percentile })))
   const zmaxReg    = linReg(base.filter(d => d.venue === 'zmax').map(d => ({ x: d.i, y: d.percentile })))
@@ -69,7 +73,7 @@ export default function PercentileChart({ data }) {
   }))
 
   return (
-    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better">
+    <ChartCard title="Hypothetical PST Rank" subtitle="Where your indexed time places among PST competitors — higher is better">
       <ResponsiveContainer width="100%" height={260}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
@@ -97,9 +101,8 @@ export default function PercentileChart({ data }) {
             isAnimationActive={false}
           >
             <LabelList
-              dataKey="percentile"
+              dataKey="barLabel"
               position="top"
-              formatter={v => `${v}%`}
               style={{ fontSize: 11, fontWeight: 600, fill: COLORS.fg }}
             />
             {chartData.map(entry => (

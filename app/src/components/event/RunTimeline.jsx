@@ -1,10 +1,7 @@
 export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   if (!runs || runs.length === 0) {
     return (
-      <div
-        className="rounded p-5 text-xs"
-        style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)', color: 'var(--color-fg-subtle)' }}
-      >
+      <div className="rounded bg-surface-2 border border-border p-5 text-xs text-fg-subtle">
         No run data available
       </div>
     )
@@ -14,11 +11,8 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   const sessions = isDualRun ? ['a', 'b'] : ['a']
 
   return (
-    <div
-      className="rounded p-5"
-      style={{ backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
-    >
-      <h3 className="text-sm font-semibold mb-4" style={{ color: 'var(--color-fg)' }}>
+    <div className="rounded bg-surface-2 border border-border p-5">
+      <h3 className="text-sm font-semibold mb-4 text-fg">
         Run Times
       </h3>
       <div className={isDualRun ? 'grid grid-cols-2 gap-6' : 'flex flex-col gap-2'}>
@@ -32,13 +26,10 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
           return (
             <div key={session}>
               {sessionLabel && (
-                <div
-                  className="text-xs font-medium uppercase tracking-wider mb-2"
-                  style={{ color: 'var(--color-fg-subtle)' }}
-                >
+                <div className="text-xs font-medium uppercase tracking-wider mb-2 text-fg-subtle">
                   {sessionLabel}
                   {sessionBest && (
-                    <span className="ml-2 normal-case" style={{ color: 'var(--color-fg-muted)' }}>
+                    <span className="ml-2 normal-case text-fg-muted">
                       best {sessionBest}s
                     </span>
                   )}
@@ -54,12 +45,9 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
         })}
       </div>
       {!isDualRun && (
-        <div
-          className="mt-3 pt-3 flex justify-between text-xs"
-          style={{ borderTop: '1px solid var(--color-border-subtle)' }}
-        >
-          <span style={{ color: 'var(--color-fg-subtle)' }}>Best time</span>
-          <span className="tabular-nums font-semibold" style={{ color: 'var(--color-bmw-blue)' }}>
+        <div className="mt-3 pt-3 flex justify-between text-xs border-t border-border-subtle">
+          <span className="text-fg-subtle">Best time</span>
+          <span className="tabular-nums font-semibold text-bmw-blue">
             {bestRawTime}s
           </span>
         </div>
@@ -73,60 +61,45 @@ function RunRow({ run, bestRawTime, isDualRun }) {
 
   return (
     <div
-      className="flex items-center gap-3 px-3 py-2 text-xs"
-      style={{
-        borderRadius: 'var(--radius)',
-        backgroundColor: isBest ? 'rgba(28, 105, 212, 0.06)' : 'var(--color-surface-3)',
-        border: isBest ? '1px solid rgba(28, 105, 212, 0.2)' : '1px solid var(--color-border-subtle)',
-      }}
+      className={[
+        'flex items-center gap-3 px-3 py-2 text-xs rounded',
+        isBest
+          ? 'bg-bmw-blue/[6%] border border-bmw-blue/20'
+          : 'bg-surface-3 border border-border-subtle',
+      ].join(' ')}
     >
-      {/* Run number */}
-      <span
-        className="w-5 text-center font-mono"
-        style={{ color: 'var(--color-fg-subtle)' }}
-      >
+      <span className="w-5 text-center font-mono text-fg-subtle">
         {run.run_number}
       </span>
 
-      {/* Time */}
       <span
-        className="tabular-nums font-semibold flex-1"
-        style={{
-          color: run.dnf ? 'var(--color-accent)' : isBest ? 'var(--color-bmw-blue)' : 'var(--color-fg)',
-          textDecoration: run.dnf ? 'line-through' : 'none',
-        }}
+        className={[
+          'tabular-nums font-semibold flex-1',
+          run.dnf ? 'text-accent line-through' : isBest ? 'text-bmw-blue' : 'text-fg',
+        ].join(' ')}
       >
         {run.dnf ? 'DNF' : `${run.scored_time}s`}
       </span>
 
-      {/* Cone penalty */}
       {run.cones > 0 && !run.dnf && (
-        <span
-          className="px-1.5 py-0.5 rounded text-xs"
-          style={{ backgroundColor: 'rgba(245, 158, 11, 0.15)', color: 'var(--color-warning)', border: '1px solid rgba(245, 158, 11, 0.3)' }}
-        >
+        <span className="px-1.5 py-0.5 rounded text-xs bg-warning/15 text-warning border border-warning/30">
           +{run.cones} cone{run.cones !== 1 ? 's' : ''}
         </span>
       )}
       {run.dnf && (
-        <span
-          className="px-1.5 py-0.5 rounded text-xs"
-          style={{ backgroundColor: 'rgba(230, 57, 70, 0.15)', color: 'var(--color-accent)', border: '1px solid rgba(230, 57, 70, 0.3)' }}
-        >
+        <span className="px-1.5 py-0.5 rounded text-xs bg-accent/15 text-accent border border-accent/30">
           DNF
         </span>
       )}
 
-      {/* Base time (if cones) */}
       {run.cones > 0 && !run.dnf && (
-        <span className="tabular-nums text-xs" style={{ color: 'var(--color-fg-subtle)' }}>
+        <span className="tabular-nums text-xs text-fg-subtle">
           base {run.base_time}s
         </span>
       )}
 
-      {/* Best indicator */}
       {isBest && (
-        <span className="text-xs font-medium" style={{ color: 'var(--color-bmw-blue)' }}>
+        <span className="text-xs font-medium text-bmw-blue">
           best
         </span>
       )}

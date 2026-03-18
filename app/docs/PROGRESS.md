@@ -42,15 +42,16 @@
 
 - [x] `src/hooks/useSeasonData.js`
 - [x] `src/hooks/useEvent.js`
-- [x] `src/components/layout/AppShell.jsx` — sticky nav, BMW roundel logo
+- [x] `src/components/layout/AppShell.jsx` — full-width sticky navbar + left sidebar with event list, subnav, "AutoX-Ref" branding
 - [x] `src/components/shared/StatCard.jsx`
 - [x] `src/components/shared/ChartCard.jsx`
+- [x] `src/components/shared/DataTable.jsx` — TanStack Table wrapper, `getRowClassName`, column `meta` for alignment
+- [x] `src/components/shared/venueColors.js` — Michelin (navy) / ZMAX (red) color constants
 - [x] `src/components/dashboard/SeasonSummary.jsx` — 4 stat cards
-- [x] `src/components/dashboard/PaxRankChart.jsx` — inverted Y axis, click-through to event
-- [x] `src/components/dashboard/PercentileChart.jsx`
-- [x] `src/components/dashboard/IndexedTimeChart.jsx` — single-course events only
-- [x] `src/components/dashboard/GapBarChart.jsx` — best gap highlighted green
-- [x] `src/pages/DashboardPage.jsx` — charts grid + events table
+- [x] `src/components/dashboard/PercentileChart.jsx` — venue-colored bars + per-venue best-fit trend lines
+- [x] `src/components/dashboard/GapBarChart.jsx` — venue-colored bars, click-through to event
+- [x] `src/components/dashboard/PstRankChart.jsx` — percentile bars + trend lines + `(rank of total)` labels
+- [x] `src/pages/DashboardPage.jsx` — charts + events table with venue dots
 
 ---
 
@@ -61,17 +62,43 @@
 - [x] `src/components/event/RunTimeline.jsx` — runs with cone/DNF badges, session dividers for dual-run
 - [x] `src/components/event/FieldHistogram.jsx` — indexed time distribution, Ryan's bin highlighted
 - [x] `src/components/event/ClassResults.jsx` — FS class standings table
-- [x] `src/pages/EventDetailPage.jsx` — full event detail with prev/next navigation
+- [x] `src/components/event/PstResults.jsx` — PST hypothetical table with raw/PAX delta columns, Mona Sans Mono for numeric alignment
+- [x] `src/pages/EventDetailPage.jsx` — event header (title, venue, date, drivers), sticky subnav breadcrumb + persistent prev/next nav
 
 ---
 
-## Phase 4 — Future (not started)
+## Phase 4 — Infrastructure (not started)
 
 - [ ] `add-event.js` utility for appending new season events
 - [ ] Multi-season JSON structure (`season-2025.json`, `season-2026.json`)
 - [ ] Season selector in nav
-- [ ] Comparison view: overlay two events side-by-side
-- [ ] Export chart as PNG
+
+---
+
+## Phase 5 — Competitor Comparison (not started)
+
+Compare performance against a specific rival across all shared events.
+
+**DataTable changes:**
+- [ ] Add `getExpandedContent?: (row) => ReactNode` prop
+- [ ] Expand/collapse on row click; only one row open at a time
+- [ ] Expanded content renders in a full-width row below the data row
+
+**New hook:**
+- [ ] `src/hooks/useCompetitor.js` — takes a competitor name, joins their `pax_results` entries with Ryan's data across all events, returns per-event comparison records
+
+**Inline expansion (ClassResults + PstResults):**
+- [ ] Clicking a non-Ryan row expands to show `ComparisonChart` (compact, ~160px)
+- [ ] Summary line: shared event count, Ryan's win count, avg delta
+- [ ] "Full comparison →" link to `/competitor/:name`
+
+**New components:**
+- [ ] `src/components/competitor/ComparisonChart.jsx` — dual-line indexed time chart, reused in expansion and competitor page
+- [ ] `src/components/competitor/HeadToHeadTable.jsx` — per-event table (event, Ryan indexed, competitor indexed, delta, winner)
+
+**New page:**
+- [ ] `src/pages/CompetitorPage.jsx` — full `/competitor/:name` page with header, summary chips, charts, head-to-head table
+- [ ] Add route to React Router config
 
 ---
 

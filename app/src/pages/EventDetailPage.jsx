@@ -1,32 +1,41 @@
 import { useContext, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { useEvent } from '../hooks/useEvent'
 import { useSeasonData } from '../hooks/useSeasonData'
 import { SubnavContext } from '../contexts/SubnavContext'
+import { venueColor } from '../components/shared/venueColors'
 import PositionCard from '../components/event/PositionCard'
 import PstCard from '../components/event/PstCard'
 import RunTimeline from '../components/event/RunTimeline'
 import FieldHistogram from '../components/event/FieldHistogram'
 import ClassResults from '../components/event/ClassResults'
+import PstResults from '../components/event/PstResults'
 
 const RYAN_NAME = 'Ryan Berg'
 
-const NAV_BTN = {
-  background: 'none',
-  border: '1px solid var(--color-border)',
-  borderRadius: 'var(--radius)',
-  color: 'var(--color-fg-muted)',
-  cursor: 'pointer',
-  fontSize: 11,
-  padding: '2px 8px',
-  lineHeight: '20px',
+function NavIconBtn({ onClick, disabled, children }) {
+  return (
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={[
+        'flex items-center justify-center w-7 h-7 rounded border bg-transparent',
+        disabled
+          ? 'border-border text-fg-subtle opacity-30 cursor-not-allowed'
+          : 'border-border text-fg-muted cursor-pointer hover:text-fg hover:border-fg-muted',
+      ].join(' ')}
+    >
+      {children}
+    </button>
+  )
 }
 
 export default function EventDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const result = useEvent(id)
-  const { attendedEvents } = useSeasonData()
+  const { attendedEvents, subject } = useSeasonData()
   const setSubnav = useContext(SubnavContext)
 
   const sorted = [...attendedEvents].sort((a, b) => a.event_number - b.event_number)
@@ -36,51 +45,64 @@ export default function EventDetailPage() {
 
   useEffect(() => {
     if (!result) return
+
     const { event } = result
+    const venueName = event.venue === 'michelin' ? 'Michelin' : 'ZMAX'
     const dateStr = new Date(event.date + 'T12:00:00').toLocaleDateString('en-US', {
-      month: 'short', day: 'numeric', year: 'numeric',
+      month: 'short', day: 'numeric',
     })
 
     setSubnav(
-      <div className="flex items-center gap-1.5 w-full text-xs" style={{ color: 'var(--color-fg-muted)' }}>
-        <Link to="/" className="no-underline hover:underline" style={{ color: 'var(--color-fg-muted)' }}>
-          Season
-        </Link>
-        <span>/</span>
-        <span style={{ color: 'var(--color-fg)' }}>
-          Event {event.event_number} — {event.title}
+      <div className="flex items-center min-w-0 w-full gap-3">
+        {/* Event identity */}
+        <span className="text-xs font-semibold text-fg-subtle shrink-0">
+          #{event.event_number}
         </span>
-        {event.scoring_type === 'dual_run' && (
+        <span className="text-sm font-semibold text-fg truncate">
+          {event.title}
+        </span>
+
+        {/* Metadata pills */}
+        <div className="flex items-center gap-2 shrink-0 text-xs text-fg-muted">
+          <span className="text-fg-subtle">·</span>
           <span
-            className="px-1.5 font-medium"
-            style={{
-              color: 'var(--color-bmw-blue)',
-              border: '1px solid var(--color-bmw-blue)',
-              borderRadius: 'var(--radius-sm)',
-              opacity: 0.8,
-              fontSize: 10,
-            }}
+            className="flex items-center gap-1 font-medium"
+            style={{ color: venueColor(event.venue) }}
           >
-            Dual Run
+            <span className="text-[7px] leading-none">●</span>
+            {venueName}
           </span>
-        )}
-        <span style={{ color: 'var(--color-border)' }}>·</span>
-        <span>{dateStr}</span>
-        <span style={{ color: 'var(--color-border)' }}>·</span>
-        <span>{event.total_drivers_pax} drivers</span>
+          <span className="text-fg-subtle">·</span>
+          <span>{dateStr}</span>
+          <span className="text-fg-subtle">·</span>
+          <span>{event.total_drivers_pax} drivers</span>
+          {event.scoring_type === 'dual_run' && (
+            <>
+              <span className="text-fg-subtle">·</span>
+              <span className="font-medium px-1.5 py-px rounded-sm text-bmw-blue border border-bmw-blue/40 bg-bmw-blue/5">
+                Dual Run
+              </span>
+            </>
+          )}
+        </div>
 
         <div className="flex-1" />
 
-        {prevEvent && (
-          <button style={NAV_BTN} onClick={() => navigate(`/event/${prevEvent.id}`)}>
-            ← E{prevEvent.event_number}
-          </button>
-        )}
-        {nextEvent && (
-          <button style={NAV_BTN} onClick={() => navigate(`/event/${nextEvent.id}`)}>
-            E{nextEvent.event_number} →
-          </button>
-        )}
+        {/* Prev / next */}
+        <div className="flex items-center gap-1 shrink-0">
+          <NavIconBtn
+            disabled={!prevEvent}
+            onClick={() => navigate(`/event/${prevEvent.id}`)}
+          >
+            <ChevronLeftIcon className="w-4 h-4" />
+          </NavIconBtn>
+          <NavIconBtn
+            disabled={!nextEvent}
+            onClick={() => navigate(`/event/${nextEvent.id}`)}
+          >
+            <ChevronRightIcon className="w-4 h-4" />
+          </NavIconBtn>
+        </div>
       </div>
     )
     return () => setSubnav(null)
@@ -88,9 +110,9 @@ export default function EventDetailPage() {
 
   if (!result) {
     return (
-      <div className="text-sm" style={{ color: 'var(--color-fg-muted)' }}>
+      <div className="text-sm text-fg-muted">
         Event not found.{' '}
-        <Link to="/" style={{ color: 'var(--color-bmw-blue)' }}>Back to season</Link>
+        <Link to="/" className="text-bmw-blue">Back to season</Link>
       </div>
     )
   }
@@ -101,15 +123,8 @@ export default function EventDetailPage() {
   return (
     <div className="flex flex-col gap-5">
       {!event.ryan_attended || !ryan ? (
-        <div
-          className="p-8 text-center"
-          style={{
-            backgroundColor: 'var(--color-surface-2)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-lg)',
-          }}
-        >
-          <p className="text-sm" style={{ color: 'var(--color-fg-muted)' }}>
+        <div className="p-8 text-center bg-surface-2 border border-border rounded-lg">
+          <p className="text-sm text-fg-muted">
             Ryan did not attend this event.
           </p>
         </div>
@@ -162,6 +177,15 @@ export default function EventDetailPage() {
               ryanName={RYAN_NAME}
             />
           </div>
+
+          {event.pax_results.some(d => d.class_code?.startsWith('PST')) && (
+            <PstResults
+              paxResults={event.pax_results}
+              ryan={ryan}
+              ryanCar={subject?.car}
+              ryanName={RYAN_NAME}
+            />
+          )}
         </>
       )}
     </div>

@@ -3,10 +3,10 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
+import { venueColor } from '../shared/venueColors'
 
 const COLORS = {
   line: '#1c69d4',
-  dot: '#1c69d4',
   grid: '#e5e7eb',
   fg: '#6b7280',
   fgSubtle: '#9ca3af',
@@ -40,13 +40,14 @@ function CustomTooltip({ active, payload }) {
 
 function CustomDot(props) {
   const { cx, cy, payload, onClick } = props
+  const color = venueColor(payload.venue)
   return (
     <circle
       cx={cx}
       cy={cy}
       r={5}
-      fill={COLORS.dot}
-      stroke={COLORS.line}
+      fill={color}
+      stroke={color}
       strokeWidth={2}
       style={{ cursor: 'pointer' }}
       onClick={() => onClick(payload)}
@@ -58,12 +59,13 @@ export default function PaxRankChart({ data }) {
   const navigate = useNavigate()
 
   const chartData = data.map(e => ({
-    eventNum: `E${e.event_number}`,
+    eventNum: `#${e.event_number}`,
     rank: e.ryan.pax_rank,
     total: e.ryan.pax_total,
     percentile: e.ryan.pax_percentile,
     label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     id: e.id,
+    venue: e.venue,
   }))
 
   const maxRank = Math.max(...chartData.map(d => d.total))
