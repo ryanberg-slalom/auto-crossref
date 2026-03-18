@@ -35,15 +35,20 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="-mx-6 -mt-6 h-56 overflow-hidden">
+      <div className="-mx-6 -mt-20 h-72 overflow-hidden z-0 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
         <img
           src={`${import.meta.env.BASE_URL}cover-image-1-optimized.jpeg`}
           alt="Season cover"
           className="w-full h-full object-cover"
         />
+        {/* <img
+          src={`${import.meta.env.BASE_URL}558766540_10116331002846307_1863611152442060381_n.jpg`}
+          alt="Season cover"
+          className="w-full h-full object-cover"
+        /> */}
       </div>
 
-      <div className="-mt-12 relative z-10">
+      <div className="-mt-24 relative z-10">
         <SeasonSummary attendedEvents={sorted} />
       </div>
 

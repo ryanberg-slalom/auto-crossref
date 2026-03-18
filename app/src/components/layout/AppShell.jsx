@@ -73,7 +73,7 @@ export default function AppShell({ children }) {
             </span>
           </div>
           {/* Navbar content — injected by pages */}
-          <div className="flex-1 flex items-center min-w-0 px-5">
+          <div className="flex-1 flex items-center min-w-0 px-5 [box-shadow:0_4px_12px_0_rgba(0,0,0,0.06)] [clip-path:inset(0px_0px_-20px_0px)]">
             {subnav}
           </div>
         </header>
