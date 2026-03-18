@@ -13,7 +13,7 @@ const COLORS = {
 
 const TREND = {
   michelin: '#001a40',
-  zmax: '#7f1d1d',
+  zmax: '#7a1414',
 }
 
 // Returns { slope, intercept } for least-squares linear fit over [{x, y}] points
@@ -91,6 +91,7 @@ export default function PercentileChart({ data }) {
           <Bar
             dataKey="percentile"
             radius={[4, 4, 0, 0]}
+            maxBarSize={64}
             minPointSize={4}
             onClick={d => navigate(`/event/${d.id}`)}
             style={{ cursor: 'pointer' }}

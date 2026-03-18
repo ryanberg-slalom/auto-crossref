@@ -3,7 +3,7 @@ export default function PositionCard({ title, rank, total, time, timeLabel, gapS
 
   return (
     <div className="p-5 flex flex-col gap-3 rounded-lg bg-surface-2 border border-border">
-      <span className="text-xs font-medium uppercase tracking-wider text-fg-subtle">
+      <span className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
         {title}
       </span>
 

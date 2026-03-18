@@ -57,7 +57,7 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+        <h2 className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
           {classCode} Class Results
         </h2>
         <span className="text-xs text-fg-muted">

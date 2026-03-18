@@ -108,7 +108,7 @@ export default function PstResults({ paxResults, ryan, ryanCar, ryanName = RYAN_
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+        <h2 className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
           PST Results (Hypothetical)
         </h2>
         <span className="text-xs text-fg-muted">

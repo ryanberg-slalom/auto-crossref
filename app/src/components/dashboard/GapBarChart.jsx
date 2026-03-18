@@ -61,6 +61,7 @@ export default function GapBarChart({ data }) {
           <Bar
             dataKey="gapPct"
             radius={[4, 4, 0, 0]}
+            maxBarSize={64}
             onClick={(d) => navigate(`/event/${d.id}`)}
             style={{ cursor: 'pointer' }}
           >

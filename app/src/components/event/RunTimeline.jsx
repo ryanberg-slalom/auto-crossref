@@ -12,7 +12,7 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
 
   return (
     <div className="rounded bg-surface-2 border border-border p-5">
-      <h3 className="text-sm font-semibold mb-4 text-fg">
+      <h3 className="text-sm font-extrabold mb-4 text-fg">
         Run Times
       </h3>
       <div className={isDualRun ? 'grid grid-cols-2 gap-6' : 'flex flex-col gap-2'}>

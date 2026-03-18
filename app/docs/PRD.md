@@ -164,6 +164,7 @@ src/
 
 - **Aesthetic**: High-quality SaaS analytics dashboard (Linear, Vercel analytics style)
 - **Color palette**: BMW-inspired — primary blue `#1c69d4`, dark navy `#003566`, black, white, neutral grays
+- **Venue colors**: Michelin `#003566` (dark navy), ZMAX `#C92120` (red). Trend line variants: Michelin `#001a40`, ZMAX `#7a1414`
 - **Typography**: Mona Sans variable font (Google Fonts)
   - OpenType features: 2-story `a` (cv01), tailed `l` (cv02), square capital `G` (cv03)
   - Mona Sans Mono VF (`MonaSansMonoVF[wght].ttf`) registered as `--font-mono` for numeric columns

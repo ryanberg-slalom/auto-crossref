@@ -40,7 +40,7 @@ export default function FieldHistogram({ paxResults, ryanIndexedTime }) {
   return (
     <div className="p-5 flex flex-col gap-4 rounded-lg bg-surface-2 border border-border">
       <div>
-        <h3 className="text-sm font-semibold text-fg">PAX Field Distribution</h3>
+        <h3 className="text-sm font-extrabold text-fg">PAX Field Distribution</h3>
         <p className="text-xs mt-0.5 text-fg-subtle">
           Indexed time histogram — blue bar is your bin
         </p>
@@ -63,7 +63,7 @@ export default function FieldHistogram({ paxResults, ryanIndexedTime }) {
             allowDecimals={false}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
-          <Bar dataKey="count" radius={[3, 3, 0, 0]}>
+          <Bar dataKey="count" radius={[3, 3, 0, 0]} maxBarSize={64}>
             {histData.map((entry, i) => (
               <Cell
                 key={i}

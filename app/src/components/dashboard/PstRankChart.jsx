@@ -13,7 +13,7 @@ const COLORS = {
 
 const TREND = {
   michelin: '#001a40',
-  zmax: '#7f1d1d',
+  zmax: '#7a1414',
 }
 
 function linReg(points) {
@@ -95,6 +95,7 @@ export default function PstRankChart({ data }) {
           <Bar
             dataKey="percentile"
             radius={[4, 4, 0, 0]}
+            maxBarSize={64}
             minPointSize={4}
             onClick={d => navigate(`/event/${d.id}`)}
             style={{ cursor: 'pointer' }}

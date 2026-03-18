@@ -4,7 +4,7 @@ export default function PstCard({ indexedTime, pstRank, pstTotal, pstPercentile 
   return (
     <div className="p-5 flex flex-col gap-3 rounded-lg bg-surface-2 border border-border">
       <div className="flex items-center justify-between">
-        <span className="text-xs font-medium uppercase tracking-wider text-fg-subtle">
+        <span className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
           Hypothetical PST
         </span>
         <span className="text-xs px-2 py-0.5 rounded bg-surface-3 text-fg-subtle border border-border">
