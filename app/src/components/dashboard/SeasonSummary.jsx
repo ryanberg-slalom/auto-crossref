@@ -25,7 +25,6 @@ export default function SeasonSummary({ attendedEvents }) {
         label="Best PAX Rank"
         value={`#${bestRank}`}
         sub={`of ${attendedEvents.find(e => e.ryan.pax_rank === bestRank)?.ryan?.pax_total} drivers`}
-        accent
       />
       <StatCard
         label="Best Percentile"

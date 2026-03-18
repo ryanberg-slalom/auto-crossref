@@ -10,7 +10,7 @@ export default function PositionCard({ title, rank, total, time, timeLabel, gapS
       {rank ? (
         <>
           <div className="flex items-baseline gap-2">
-            <span className="text-4xl font-bold tracking-tight text-bmw-blue">
+            <span className="text-4xl font-bold tracking-tight text-fg">
               #{rank}
             </span>
             <span className="text-sm text-fg-muted">
@@ -20,7 +20,7 @@ export default function PositionCard({ title, rank, total, time, timeLabel, gapS
 
           <div className="h-1.5 rounded-full overflow-hidden bg-surface-3">
             <div
-              className="h-full rounded-full bg-bmw-blue opacity-70"
+              className="h-full rounded-full bg-fg opacity-70"
               style={{ width: `${barWidth}%` }}
             />
           </div>
