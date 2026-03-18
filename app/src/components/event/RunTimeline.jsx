@@ -91,11 +91,18 @@ function RunRow({ run, prevRun, bestRawTime, isDualRun }) {
           {run.dnf ? 'DNF' : run.scored_time.toFixed(3)}
         </span>
         {run.cones > 0 && !run.dnf && (
-          <span className="flex flex-row gap-1 pl-2">
-            <img src={CONE_ICON} alt="cone" className="w-3.5 h-3.5 opacity-80" />
-            <span className="text-black font-extrabold">{run.cones}</span>
+          <span className="flex flex-row gap-0.5 pl-2" title={`${run.cones} cone${run.cones !== 1 ? 's' : ''}`}>
+            {Array.from({ length: run.cones }).map((_, i) => (
+              <img key={i} src={CONE_ICON} alt="cone" className="w-3.5 h-3.5 opacity-80" />
+            ))}
           </span>
         )}
+
+        {isBest && (
+        <span className="pl-2 text-xs font-extrabold uppercase text-bmw-blue">
+          best
+        </span>
+      )}
       </span>
 
       {run.dnf && (
@@ -110,11 +117,6 @@ function RunRow({ run, prevRun, bestRawTime, isDualRun }) {
         </span>
       )}
 
-      {isBest && (
-        <span className="text-xs font-medium text-bmw-blue">
-          best
-        </span>
-      )}
     </div>
   )
 }
