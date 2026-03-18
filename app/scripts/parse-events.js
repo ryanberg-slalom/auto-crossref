@@ -19,7 +19,7 @@ import { parseRyanRuns, buildCarMap } from './lib/parse-overall-runs.js'
 import { computeDerived } from './lib/compute-derived.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const DATA_DIR = join(__dirname, '../../data')
+const DATA_DIR = join(__dirname, '../../data/2025')
 const OUTPUT = join(__dirname, '../src/data/season-2025.json')
 
 const RYAN_NAME = 'Ryan Berg'

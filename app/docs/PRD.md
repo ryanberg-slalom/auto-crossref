@@ -20,7 +20,7 @@ Single user (Ryan Berg), personal use only. No auth required.
 
 ## Data Sources
 
-- **30 PDFs** across 10 event subdirectories in `/data/`, all text-extractable (Pronto Timing System output)
+- **30 PDFs** across 10 event subdirectories in `/data/2025/`, all text-extractable (Pronto Timing System output)
   - `*_OVERALL.pdf` — per-driver individual run times, cone penalties, DNFs, organized by class
   - `*_PAX.pdf` / `*_Indexed.pdf` — full field ranked by `raw_time × PAX_factor`; shows each driver's class index
   - `*_RAW.pdf` — full field ranked by raw elapsed time
