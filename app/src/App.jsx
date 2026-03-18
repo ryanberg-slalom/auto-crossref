@@ -5,7 +5,7 @@ import EventDetailPage from './pages/EventDetailPage'
 
 export default function App() {
   return (
-    <BrowserRouter basename="/autox2">
+    <BrowserRouter>
       <AppShell>
         <Routes>
           <Route path="/" element={<DashboardPage />} />

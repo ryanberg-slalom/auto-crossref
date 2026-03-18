@@ -172,7 +172,7 @@ src/
 
 ### App Name
 
-The app is named **AutoX-Ref** (short for Autocross Reference, a play on "cross-reference"). Displayed in the sidebar brand area as `AutoX` + `-Ref` (blue accent on `-Ref`).
+The app is named **Auto Crossref** (short for Autocross Reference, a play on "cross-reference"). Displayed in the sidebar brand area as `Auto` + `Crossref` (blue accent on `Crossref`).
 
 ### Layout
 

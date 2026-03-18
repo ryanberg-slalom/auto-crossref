@@ -68,8 +68,8 @@ export default function AppShell({ children }) {
             <div className="w-[22px] h-[22px] rounded-[3px] flex items-center justify-center text-white text-[8px] font-bold tracking-[0.05em] shrink-0 bg-[linear-gradient(135deg,var(--color-bmw-blue)_50%,var(--color-bmw-navy)_50%)]">
               AX
             </div>
-            <span className="text-sm font-semibold text-fg tracking-tight">
-              AutoX<span className="text-bmw-blue">-Ref</span>
+            <span className="text-sm font-black text-fg tracking-tight">
+              Auto <span className="text-bmw-blue">Crossref</span>
             </span>
           </div>
           {/* Navbar content — injected by pages */}
