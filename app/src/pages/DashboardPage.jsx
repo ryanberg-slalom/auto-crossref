@@ -18,7 +18,7 @@ export default function DashboardPage() {
   useEffect(() => {
     setSubnav(
       <div className="flex items-center gap-3 min-w-0 w-full">
-        <span className="text-sm font-semibold text-fg">Dashboard</span>
+        <span className="text-sm font-extrabold text-fg">Dashboard</span>
         <span className="text-fg-subtle text-xs">·</span>
         <span className="text-xs text-fg-muted">{season} Season</span>
         <div className="flex-1" />

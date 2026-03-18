@@ -58,7 +58,7 @@ export default function EventDetailPage() {
         <span className="text-xs font-semibold text-fg-subtle shrink-0">
           #{event.event_number}
         </span>
-        <span className="text-sm font-semibold text-fg truncate">
+        <span className="text-sm font-extrabold text-fg truncate">
           {event.title}
         </span>
 
