@@ -35,7 +35,17 @@ export default function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <SeasonSummary attendedEvents={sorted} />
+      <div className="-mx-6 -mt-6 h-56 overflow-hidden">
+        <img
+          src={`${import.meta.env.BASE_URL}cover-image-1-optimized.jpeg`}
+          alt="Season cover"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      <div className="-mt-12 relative z-10">
+        <SeasonSummary attendedEvents={sorted} />
+      </div>
 
       <div className="flex flex-col gap-4">
         <PercentileChart data={sorted} />

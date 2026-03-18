@@ -71,6 +71,7 @@ PST (Pro Street Tire) is a catch-all indexed class where drivers from various st
 - Season selector (multi-season support)
 - `add-event.js` utility to append new events to the dataset
 - Export chart as PNG
+- **Cone summary on dashboard**: Aggregate cone penalty data across the season. Possible views: total cones hit per event (bar chart), cone penalty seconds lost per event, season total. Helps identify whether cone penalties are improving or worsening over time — a distinct signal from raw pace.
 
 ---
 
