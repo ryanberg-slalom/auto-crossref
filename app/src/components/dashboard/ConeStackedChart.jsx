@@ -46,7 +46,6 @@ export default function ConeStackedChart({ data }) {
   const chartData = coneChartData(data)
   if (chartData.length === 0) return null
 
-  const tickMap = Object.fromEntries(chartData.map(d => [d.id, d.tick]))
   const yearBands = getYearBands(chartData)
 
   return (
@@ -78,14 +77,15 @@ export default function ConeStackedChart({ data }) {
               x2={band.x2}
               fill={band.fill}
               strokeOpacity={0}
-              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -2 }}
+
               ifOverflow="extendDomain"
             />
           ))}
           <XAxis
             dataKey="id"
-            tickFormatter={id => tickMap[id] ?? id}
-            tick={{ fill: COLORS.fg, fontSize: 11 }}
+            ticks={yearBands.map(b => b.x1)}
+            tickFormatter={id => String(id).split('-')[0]}
+            tick={{ fill: 'rgba(0,0,0,0.45)', fontSize: 9 }}
             axisLine={false}
             tickLine={false}
           />
