@@ -18214,9 +18214,9 @@
       "season": 2025,
       "event_number": 8,
       "date": "2025-09-20",
-      "title": "Event 8",
-      "venue": "zmax",
-      "scoring_type": "single",
+      "title": "Event 8 Dual Run",
+      "venue": "michelin",
+      "scoring_type": "dual_run",
       "ryan_attended": true,
       "total_drivers_pax": 71,
       "total_drivers_raw": 74,
@@ -19467,15 +19467,6 @@
           {
             "run_number": 2,
             "session": "a",
-            "base_time": 41.57,
-            "scored_time": 43.57,
-            "cones": 1,
-            "dnf": false,
-            "rerun": false
-          },
-          {
-            "run_number": 3,
-            "session": "b",
             "base_time": 39.608,
             "scored_time": 41.608,
             "cones": 1,
@@ -19483,7 +19474,25 @@
             "rerun": false
           },
           {
+            "run_number": 3,
+            "session": "a",
+            "base_time": 38.331,
+            "scored_time": 38.331,
+            "cones": 0,
+            "dnf": false,
+            "rerun": false
+          },
+          {
             "run_number": 4,
+            "session": "b",
+            "base_time": 39.57,
+            "scored_time": 41.57,
+            "cones": 1,
+            "dnf": false,
+            "rerun": false
+          },
+          {
+            "run_number": 5,
             "session": "b",
             "base_time": 39.975,
             "scored_time": 39.975,
@@ -19492,19 +19501,10 @@
             "rerun": false
           },
           {
-            "run_number": 5,
+            "run_number": 6,
             "session": "b",
             "base_time": 39.643,
             "scored_time": 39.643,
-            "cones": 0,
-            "dnf": false,
-            "rerun": false
-          },
-          {
-            "run_number": 6,
-            "session": "b",
-            "base_time": 38.331,
-            "scored_time": 38.331,
             "cones": 0,
             "dnf": false,
             "rerun": false
