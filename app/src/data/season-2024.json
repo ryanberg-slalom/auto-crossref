@@ -17,8 +17,8 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": true,
-      "total_drivers_pax": 169,
-      "total_drivers_raw": 166,
+      "total_drivers_pax": 168,
+      "total_drivers_raw": 165,
       "pax_results": [
         {
           "pos": 1,
@@ -1648,16 +1648,6 @@
           "indexed_time": 53.585
         },
         {
-          "pos": 166,
-          "name": "Michael Smith",
-          "class_code": "NOVC",
-          "car_number": "64",
-          "raw_time": 53.753,
-          "pax_index": 1,
-          "indexed_time": 53.753,
-          "car": "2022 Porsche 911"
-        },
-        {
           "pos": 167,
           "name": "Adrian Simmons",
           "class_code": "STO",
@@ -2773,13 +2763,6 @@
           "raw_time": 58.542
         },
         {
-          "pos": 168,
-          "name": "Cameron Brown",
-          "class_code": "NOVA",
-          "car_number": "19",
-          "raw_time": 58.59
-        },
-        {
           "pos": 170,
           "name": "Mark Soucie",
           "class_code": "CS",
@@ -2916,13 +2899,13 @@
         "best_raw_time": 52.403,
         "official_indexed_time": 42.656,
         "pax_rank": 64,
-        "pax_total": 169,
-        "pax_percentile": 62.1,
+        "pax_total": 168,
+        "pax_percentile": 61.9,
         "pax_leader_time": 38.832,
         "pax_gap_seconds": 3.824,
         "pax_gap_pct": 9.85,
         "raw_rank": 81,
-        "raw_total": 166,
+        "raw_total": 165,
         "raw_leader_time": 43.205,
         "raw_gap_seconds": 9.198,
         "raw_gap_pct": 21.29,
@@ -4715,8 +4698,8 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": true,
-      "total_drivers_pax": 196,
-      "total_drivers_raw": 170,
+      "total_drivers_pax": 171,
+      "total_drivers_raw": 169,
       "pax_results": [
         {
           "pos": 1,
@@ -6337,16 +6320,6 @@
           "car": "2019 Hyundai Veloster Turbo"
         },
         {
-          "pos": 163,
-          "name": "Joseph Romano",
-          "class_code": "NOVA",
-          "car_number": "56",
-          "raw_time": 64.156,
-          "pax_index": 1,
-          "indexed_time": 64.156,
-          "car": "1997 BMW 328is"
-        },
-        {
           "pos": 164,
           "name": "Joe Pinzone",
           "class_code": "STO",
@@ -6355,16 +6328,6 @@
           "pax_index": 1,
           "indexed_time": 64.254,
           "car": "1994 exo exo"
-        },
-        {
-          "pos": 165,
-          "name": "David Browning",
-          "class_code": "NOVB",
-          "car_number": "32",
-          "raw_time": 64.278,
-          "pax_index": 1,
-          "indexed_time": 64.278,
-          "car": "2004 Acura RSX"
         },
         {
           "pos": 166,
@@ -6377,26 +6340,6 @@
           "car": "1993 Toyota MR2"
         },
         {
-          "pos": 167,
-          "name": "Seth Berky",
-          "class_code": "NOVC",
-          "car_number": "14",
-          "raw_time": 66.193,
-          "pax_index": 1,
-          "indexed_time": 66.193,
-          "car": "1999 Mazda Miata"
-        },
-        {
-          "pos": 168,
-          "name": "Christopher Cranford",
-          "class_code": "NOVA",
-          "car_number": "71",
-          "raw_time": 66.402,
-          "pax_index": 1,
-          "indexed_time": 66.402,
-          "car": "2022 Mazda MX5"
-        },
-        {
           "pos": 169,
           "name": "G.H. Sharp",
           "class_code": "STO",
@@ -6405,16 +6348,6 @@
           "pax_index": 1,
           "indexed_time": 66.452,
           "car": "2023 Hyundai Elantra N"
-        },
-        {
-          "pos": 170,
-          "name": "Shaun Lindquist",
-          "class_code": "NOVC",
-          "car_number": "99",
-          "raw_time": 67.205,
-          "pax_index": 1,
-          "indexed_time": 67.205,
-          "car": "1999 Ford Mustang SVT Cobra"
         },
         {
           "pos": 171,
@@ -6437,16 +6370,6 @@
           "car": "1997 Honda Prelude"
         },
         {
-          "pos": 173,
-          "name": "Corey Mayo",
-          "class_code": "NOVA",
-          "car_number": "28",
-          "raw_time": 69.162,
-          "pax_index": 1,
-          "indexed_time": 69.162,
-          "car": "2000 Mazda MX5 Miata"
-        },
-        {
           "pos": 174,
           "name": "Ryan Cheek",
           "class_code": "MOD/AM",
@@ -6455,16 +6378,6 @@
           "pax_index": 1,
           "indexed_time": 69.516,
           "car": "2021 American X Kart"
-        },
-        {
-          "pos": 175,
-          "name": "Gregory Moore",
-          "class_code": "NOVB",
-          "car_number": "94",
-          "raw_time": 69.575,
-          "pax_index": 1,
-          "indexed_time": 69.575,
-          "car": "2019 Ford Mustang GT PP2"
         },
         {
           "pos": 176,
@@ -6477,16 +6390,6 @@
           "car": "2007 Chrysler 300c"
         },
         {
-          "pos": 177,
-          "name": "Eric Parker",
-          "class_code": "NOVC",
-          "car_number": "27",
-          "raw_time": 71.011,
-          "pax_index": 1,
-          "indexed_time": 71.011,
-          "car": "2011 Volkswagen CC"
-        },
-        {
           "pos": 178,
           "name": "RYAN CHEEK",
           "class_code": "STO",
@@ -6494,136 +6397,6 @@
           "raw_time": 71.043,
           "pax_index": 1,
           "indexed_time": 71.043
-        },
-        {
-          "pos": 179,
-          "name": "Joseph Marchica",
-          "class_code": "NOVC",
-          "car_number": "24",
-          "raw_time": 71.126,
-          "pax_index": 1,
-          "indexed_time": 71.126,
-          "car": "1993 Toyota MR2"
-        },
-        {
-          "pos": 180,
-          "name": "Matthew Berky",
-          "class_code": "NOVB",
-          "car_number": "11",
-          "raw_time": 71.386,
-          "pax_index": 1,
-          "indexed_time": 71.386,
-          "car": "2009 Mazda MX-5 Miata"
-        },
-        {
-          "pos": 181,
-          "name": "Keith Bradley",
-          "class_code": "NOVA",
-          "car_number": "6",
-          "raw_time": 71.701,
-          "pax_index": 1,
-          "indexed_time": 71.701,
-          "car": "2007 Ford Mustang Club Sport"
-        },
-        {
-          "pos": 182,
-          "name": "Derek Morgan",
-          "class_code": "NOVA",
-          "car_number": "215",
-          "raw_time": 71.733,
-          "pax_index": 1,
-          "indexed_time": 71.733,
-          "car": "2022 Porsche Boxster"
-        },
-        {
-          "pos": 183,
-          "name": "Shawn Barnes",
-          "class_code": "NOVB",
-          "car_number": "22",
-          "raw_time": 71.797,
-          "pax_index": 1,
-          "indexed_time": 71.797,
-          "car": "2018 Mazda MX5"
-        },
-        {
-          "pos": 184,
-          "name": "Alena Sabitava",
-          "class_code": "NOVC",
-          "car_number": "18",
-          "raw_time": 71.894,
-          "pax_index": 1,
-          "indexed_time": 71.894,
-          "car": "2023 Chevrolet Camaro"
-        },
-        {
-          "pos": 185,
-          "name": "Kevin Carlisle",
-          "class_code": "NOVA",
-          "car_number": "463",
-          "raw_time": 72.745,
-          "pax_index": 1,
-          "indexed_time": 72.745,
-          "car": "Honda Civic"
-        },
-        {
-          "pos": 186,
-          "name": "Scott Stahlman",
-          "class_code": "NOVA",
-          "car_number": "108",
-          "raw_time": 72.983,
-          "pax_index": 1,
-          "indexed_time": 72.983,
-          "car": "1997 Mazda Miata"
-        },
-        {
-          "pos": 187,
-          "name": "Eric Horlbeck",
-          "class_code": "NOVC",
-          "car_number": "13",
-          "raw_time": 73.704,
-          "pax_index": 1,
-          "indexed_time": 73.704,
-          "car": "1991 BMW 325is"
-        },
-        {
-          "pos": 188,
-          "name": "Ben Horlbeck",
-          "class_code": "NOVA",
-          "car_number": "18",
-          "raw_time": 73.89,
-          "pax_index": 1,
-          "indexed_time": 73.89,
-          "car": "2001 BMW 330i"
-        },
-        {
-          "pos": 189,
-          "name": "Todd McClaugherty",
-          "class_code": "NOVB",
-          "car_number": "20",
-          "raw_time": 73.918,
-          "pax_index": 1,
-          "indexed_time": 73.918,
-          "car": "2003 Mini Cooper S"
-        },
-        {
-          "pos": 190,
-          "name": "Spencer Nichols",
-          "class_code": "NOVC",
-          "car_number": "23",
-          "raw_time": 74.749,
-          "pax_index": 1,
-          "indexed_time": 74.749,
-          "car": "1971 Datsun 240Z"
-        },
-        {
-          "pos": 191,
-          "name": "Dale Kirchner",
-          "class_code": "NOVB",
-          "car_number": "42",
-          "raw_time": 75.924,
-          "pax_index": 1,
-          "indexed_time": 75.924,
-          "car": "1988 Honda CRX"
         },
         {
           "pos": 192,
@@ -6634,46 +6407,6 @@
           "pax_index": 0.91,
           "indexed_time": 77.651,
           "car": "2017 Factory Five 818C"
-        },
-        {
-          "pos": 193,
-          "name": "Caroline Wisse",
-          "class_code": "NOVC",
-          "car_number": "12",
-          "raw_time": 77.683,
-          "pax_index": 1,
-          "indexed_time": 77.683,
-          "car": "2003 Mazda Miata"
-        },
-        {
-          "pos": 194,
-          "name": "Andrew Tauber",
-          "class_code": "NOVC",
-          "car_number": "65",
-          "raw_time": 77.739,
-          "pax_index": 1,
-          "indexed_time": 77.739,
-          "car": "2013 Chevrolet Corvette"
-        },
-        {
-          "pos": 195,
-          "name": "Jeremiah Hill",
-          "class_code": "NOVB",
-          "car_number": "55",
-          "raw_time": 82.542,
-          "pax_index": 1,
-          "indexed_time": 82.542,
-          "car": "1965 Factory5 Roadster"
-        },
-        {
-          "pos": 196,
-          "name": "Matthew Mondrowski",
-          "class_code": "NOVC",
-          "car_number": "7",
-          "raw_time": 82.819,
-          "pax_index": 1,
-          "indexed_time": 82.819,
-          "car": "2006 Cadillac DTS"
         }
       ],
       "raw_results": [
@@ -7229,13 +6962,6 @@
           "class_code": "PST",
           "car_number": "13",
           "raw_time": 64.122
-        },
-        {
-          "pos": 80,
-          "name": "Joseph Romano",
-          "class_code": "NOVA",
-          "car_number": "56",
-          "raw_time": 64.156
         },
         {
           "pos": 81,
@@ -7913,13 +7639,13 @@
         "best_raw_time": 65.192,
         "official_indexed_time": 53.066,
         "pax_rank": 73,
-        "pax_total": 196,
-        "pax_percentile": 62.8,
+        "pax_total": 171,
+        "pax_percentile": 57.3,
         "pax_leader_time": 48.625,
         "pax_gap_seconds": 4.441,
         "pax_gap_pct": 9.13,
-        "raw_rank": 97,
-        "raw_total": 170,
+        "raw_rank": 96,
+        "raw_total": 169,
         "raw_leader_time": 55.916,
         "raw_gap_seconds": 9.276,
         "raw_gap_pct": 16.59,
@@ -9061,8 +8787,8 @@
       "venue": "zmax",
       "scoring_type": "dual_run",
       "ryan_attended": true,
-      "total_drivers_pax": 63,
-      "total_drivers_raw": 58,
+      "total_drivers_pax": 61,
+      "total_drivers_raw": 56,
       "pax_results": [
         {
           "pos": 1,
@@ -9604,16 +9330,6 @@
           "car": "2022 Subaru BRZ"
         },
         {
-          "pos": 55,
-          "name": "Brian Mitchell",
-          "class_code": "NOVA",
-          "car_number": "7",
-          "raw_time": 119.695,
-          "pax_index": 1,
-          "indexed_time": 119.695,
-          "car": "2002 Mazda Miata"
-        },
-        {
           "pos": 56,
           "name": "Jean Markowski",
           "class_code": "M/FS",
@@ -9632,16 +9348,6 @@
           "pax_index": 0.824,
           "indexed_time": 874.207,
           "car": "2004 Porsche 911 C2 CAB"
-        },
-        {
-          "pos": 58,
-          "name": "Marc Hutchison",
-          "class_code": "NOVA",
-          "car_number": "013",
-          "raw_time": 1061.493,
-          "pax_index": 1,
-          "indexed_time": 1061.493,
-          "car": "2021 Honda Civic Type R"
         },
         {
           "pos": 59,
@@ -10018,13 +9724,6 @@
           "raw_time": 118.665
         },
         {
-          "pos": 47,
-          "name": "Brian Mitchell",
-          "class_code": "NOVA",
-          "car_number": "7",
-          "raw_time": 119.695
-        },
-        {
           "pos": 48,
           "name": "Sam Evans",
           "class_code": "BS",
@@ -10086,13 +9785,6 @@
           "class_code": "AS",
           "car_number": "14",
           "raw_time": 1060.931
-        },
-        {
-          "pos": 59,
-          "name": "Marc Hutchison",
-          "class_code": "NOVA",
-          "car_number": "013",
-          "raw_time": 1061.493
         },
         {
           "pos": 60,
@@ -10165,13 +9857,13 @@
         "best_raw_time": 113.747,
         "official_indexed_time": 92.59,
         "pax_rank": 32,
-        "pax_total": 63,
-        "pax_percentile": 49.2,
+        "pax_total": 61,
+        "pax_percentile": 47.5,
         "pax_leader_time": 0,
         "pax_gap_seconds": 92.59,
         "pax_gap_pct": null,
         "raw_rank": 35,
-        "raw_total": 58,
+        "raw_total": 56,
         "raw_leader_time": 100.977,
         "raw_gap_seconds": 12.77,
         "raw_gap_pct": 12.65,
@@ -12340,7 +12032,7 @@
       "scoring_type": "single",
       "ryan_attended": true,
       "total_drivers_pax": 141,
-      "total_drivers_raw": 141,
+      "total_drivers_raw": 140,
       "pax_results": [
         {
           "pos": 1,
@@ -14720,13 +14412,6 @@
           "raw_time": 74.681
         },
         {
-          "pos": 139,
-          "name": "Gregrios Thanos",
-          "class_code": "NOVA",
-          "car_number": "154",
-          "raw_time": 75.47
-        },
-        {
           "pos": 140,
           "name": "Keith Carpenter",
           "class_code": "XA",
@@ -14792,7 +14477,7 @@
         "pax_gap_seconds": 3.771,
         "pax_gap_pct": 7.97,
         "raw_rank": 81,
-        "raw_total": 141,
+        "raw_total": 140,
         "raw_leader_time": 52.785,
         "raw_gap_seconds": 9.985,
         "raw_gap_pct": 18.92,

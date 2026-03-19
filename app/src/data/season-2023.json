@@ -1726,7 +1726,7 @@
       "venue": "zmax",
       "scoring_type": "dual_run",
       "ryan_attended": true,
-      "total_drivers_pax": 193,
+      "total_drivers_pax": 185,
       "total_drivers_raw": 185,
       "pax_results": [
         {
@@ -2806,16 +2806,6 @@
           "car": "2016 Scion FRS"
         },
         {
-          "pos": 109,
-          "name": "Joshua Harvey",
-          "class_code": "NOVB",
-          "car_number": "74",
-          "raw_time": 133.862,
-          "pax_index": 1,
-          "indexed_time": 133.862,
-          "car": "2017 Subaru WRX"
-        },
-        {
           "pos": 110,
           "name": "Joseph Pinzone",
           "class_code": "R/DM",
@@ -2856,16 +2846,6 @@
           "car": "2022 Subaru BRZ"
         },
         {
-          "pos": 115,
-          "name": "Justin Hall",
-          "class_code": "NOVB",
-          "car_number": "32",
-          "raw_time": 142.467,
-          "pax_index": 1,
-          "indexed_time": 142.467,
-          "car": "1994 Ford Mustang"
-        },
-        {
           "pos": 116,
           "name": "Aaron Brainerd",
           "class_code": "STO",
@@ -2874,66 +2854,6 @@
           "pax_index": 1,
           "indexed_time": 143.666,
           "car": "1988 VW Scirocco"
-        },
-        {
-          "pos": 118,
-          "name": "Scott Smith",
-          "class_code": "NOVB",
-          "car_number": "957",
-          "raw_time": 145.212,
-          "pax_index": 1,
-          "indexed_time": 145.212,
-          "car": "1973 Chevrolet Camaro"
-        },
-        {
-          "pos": 120,
-          "name": "Allison Lambert",
-          "class_code": "NOVB",
-          "car_number": "67",
-          "raw_time": 149.712,
-          "pax_index": 1,
-          "indexed_time": 149.712,
-          "car": "2011 Volkswagen GTI"
-        },
-        {
-          "pos": 122,
-          "name": "Dana Lyons",
-          "class_code": "NOVB",
-          "car_number": "111",
-          "raw_time": 157.787,
-          "pax_index": 1,
-          "indexed_time": 157.787,
-          "car": "2006 Lotus Elise"
-        },
-        {
-          "pos": 123,
-          "name": "Jacob Harris",
-          "class_code": "NOVB",
-          "car_number": "81",
-          "raw_time": 161.667,
-          "pax_index": 1,
-          "indexed_time": 161.667,
-          "car": "2004 Mitsubishi Eclipse"
-        },
-        {
-          "pos": 124,
-          "name": "Steve Hall",
-          "class_code": "NOVB",
-          "car_number": "47",
-          "raw_time": 164.185,
-          "pax_index": 1,
-          "indexed_time": 164.185,
-          "car": "2003 Mazda MazdaSpeed Protege"
-        },
-        {
-          "pos": 128,
-          "name": "Caleb Kendrick",
-          "class_code": "NOVB",
-          "car_number": "57",
-          "raw_time": 175.43,
-          "pax_index": 1,
-          "indexed_time": 175.43,
-          "car": "2005 Ford Mustang"
         },
         {
           "pos": 129,
@@ -5033,8 +4953,8 @@
         "best_raw_time": 145.982,
         "official_indexed_time": 118.683,
         "pax_rank": 77,
-        "pax_total": 193,
-        "pax_percentile": 60.1,
+        "pax_total": 185,
+        "pax_percentile": 58.4,
         "pax_leader_time": 101.261,
         "pax_gap_seconds": 17.422,
         "pax_gap_pct": 17.21,
@@ -5061,7 +4981,7 @@
       "scoring_type": "single",
       "ryan_attended": true,
       "total_drivers_pax": 88,
-      "total_drivers_raw": 89,
+      "total_drivers_raw": 87,
       "pax_results": [
         {
           "pos": 1,
@@ -6506,13 +6426,6 @@
           "raw_time": 50.206
         },
         {
-          "pos": 88,
-          "name": "Asa Pranikoff",
-          "class_code": "NOVB",
-          "car_number": "397",
-          "raw_time": 50.457
-        },
-        {
           "pos": 91,
           "name": "Felipe Pipe Monserrate",
           "class_code": "HCR",
@@ -6546,13 +6459,6 @@
           "class_code": "CAM",
           "car_number": "12",
           "raw_time": 53.897
-        },
-        {
-          "pos": 100,
-          "name": "Arthur Honer",
-          "class_code": "NOVB",
-          "car_number": "61",
-          "raw_time": 55.315
         },
         {
           "pos": 101,
@@ -6629,7 +6535,7 @@
         "pax_gap_seconds": 2.344,
         "pax_gap_pct": 6.79,
         "raw_rank": 42,
-        "raw_total": 89,
+        "raw_total": 87,
         "raw_leader_time": 39.725,
         "raw_gap_seconds": 5.594,
         "raw_gap_pct": 14.08,
@@ -6650,8 +6556,8 @@
       "venue": "zmax",
       "scoring_type": "dual_run",
       "ryan_attended": true,
-      "total_drivers_pax": 160,
-      "total_drivers_raw": 153,
+      "total_drivers_pax": 155,
+      "total_drivers_raw": 147,
       "pax_results": [
         {
           "pos": 1,
@@ -8040,16 +7946,6 @@
           "car": "2021 Ford Mustang"
         },
         {
-          "pos": 140,
-          "name": "Justin Hall",
-          "class_code": "NOVB",
-          "car_number": "32",
-          "raw_time": 1075.582,
-          "pax_index": 1,
-          "indexed_time": 1075.582,
-          "car": "1994 Ford Mustang"
-        },
-        {
           "pos": 141,
           "name": "Tristan Stephens",
           "class_code": "MISC1",
@@ -8137,46 +8033,6 @@
           "raw_time": 1074.841,
           "pax_index": 1,
           "indexed_time": 1074.841
-        },
-        {
-          "pos": 150,
-          "name": "Joseph Higginbotham",
-          "class_code": "NOVB",
-          "car_number": "47",
-          "raw_time": 1072.603,
-          "pax_index": 1,
-          "indexed_time": 1072.603,
-          "car": "2019 VW Golf R"
-        },
-        {
-          "pos": 151,
-          "name": "Joseph Marchica",
-          "class_code": "NOVB",
-          "car_number": "124",
-          "raw_time": 1074.277,
-          "pax_index": 1,
-          "indexed_time": 1074.277,
-          "car": "1993 Toyota MR2 Turbo"
-        },
-        {
-          "pos": 152,
-          "name": "Michael Wyatt",
-          "class_code": "NOVB",
-          "car_number": "171",
-          "raw_time": 1074.781,
-          "pax_index": 1,
-          "indexed_time": 1074.781,
-          "car": "2007 Mazda Miata"
-        },
-        {
-          "pos": 153,
-          "name": "Richard Hooper",
-          "class_code": "NOVB",
-          "car_number": "2",
-          "raw_time": 1102.327,
-          "pax_index": 1,
-          "indexed_time": 1102.327,
-          "car": "2022 Dodge Challenger"
         },
         {
           "pos": 154,
@@ -8720,13 +8576,6 @@
           "raw_time": 142.542
         },
         {
-          "pos": 68,
-          "name": "Asa Pranikoff",
-          "class_code": "NOVB",
-          "car_number": "397",
-          "raw_time": 142.775
-        },
-        {
           "pos": 69,
           "name": "Ken Bury",
           "class_code": "M",
@@ -9119,13 +8968,6 @@
           "raw_time": 1072.408
         },
         {
-          "pos": 135,
-          "name": "Joseph Higginbotham",
-          "class_code": "NOVB",
-          "car_number": "47",
-          "raw_time": 1072.603
-        },
-        {
           "pos": 137,
           "name": "David Murdock",
           "class_code": "R",
@@ -9168,20 +9010,6 @@
           "raw_time": 1074.206
         },
         {
-          "pos": 146,
-          "name": "Joseph Marchica",
-          "class_code": "NOVB",
-          "car_number": "124",
-          "raw_time": 1074.277
-        },
-        {
-          "pos": 147,
-          "name": "Michael Wyatt",
-          "class_code": "NOVB",
-          "car_number": "171",
-          "raw_time": 1074.781
-        },
-        {
           "pos": 148,
           "name": "Benadetta Pinzone",
           "class_code": "STO",
@@ -9201,13 +9029,6 @@
           "class_code": "MISC1",
           "car_number": "1",
           "raw_time": 1075.55
-        },
-        {
-          "pos": 152,
-          "name": "Justin Hall",
-          "class_code": "NOVB",
-          "car_number": "32",
-          "raw_time": 1075.582
         },
         {
           "pos": 153,
@@ -9313,13 +9134,6 @@
           "class_code": "BS",
           "car_number": "65",
           "raw_time": 1094.073
-        },
-        {
-          "pos": 181,
-          "name": "Richard Hooper",
-          "class_code": "NOVB",
-          "car_number": "2",
-          "raw_time": 1102.327
         }
       ],
       "ryan": {
@@ -9403,13 +9217,13 @@
         "best_raw_time": 138.267,
         "official_indexed_time": 112.411,
         "pax_rank": 49,
-        "pax_total": 160,
-        "pax_percentile": 69.4,
+        "pax_total": 155,
+        "pax_percentile": 68.4,
         "pax_leader_time": 0,
         "pax_gap_seconds": 112.411,
         "pax_gap_pct": null,
         "raw_rank": 54,
-        "raw_total": 153,
+        "raw_total": 147,
         "raw_leader_time": 121.08,
         "raw_gap_seconds": 17.187,
         "raw_gap_pct": 14.19,
@@ -15282,7 +15096,7 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": true,
-      "total_drivers_pax": 125,
+      "total_drivers_pax": 124,
       "total_drivers_raw": 123,
       "pax_results": [
         {
@@ -16455,16 +16269,6 @@
           "car": "2015 Chevrolet SS"
         },
         {
-          "pos": 118,
-          "name": "Jesse Mullins",
-          "class_code": "NOVB",
-          "car_number": "4",
-          "raw_time": 59.177,
-          "pax_index": 1,
-          "indexed_time": 59.177,
-          "car": "2019 Volkswagen GTI"
-        },
-        {
           "pos": 119,
           "name": "Kathy Groce",
           "class_code": "XP",
@@ -17443,8 +17247,8 @@
         "best_raw_time": 59.786,
         "official_indexed_time": 48.606,
         "pax_rank": 54,
-        "pax_total": 125,
-        "pax_percentile": 56.8,
+        "pax_total": 124,
+        "pax_percentile": 56.5,
         "pax_leader_time": 44.312,
         "pax_gap_seconds": 4.294,
         "pax_gap_pct": 9.69,
@@ -17470,8 +17274,8 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": false,
-      "total_drivers_pax": 75,
-      "total_drivers_raw": 70,
+      "total_drivers_pax": 70,
+      "total_drivers_raw": 65,
       "pax_results": [
         {
           "pos": 1,
@@ -18113,46 +17917,6 @@
           "car": "2018 Porsche GT3"
         },
         {
-          "pos": 65,
-          "name": "Alex Conlon",
-          "class_code": "NOVA",
-          "car_number": "917",
-          "raw_time": 103.406,
-          "pax_index": 1,
-          "indexed_time": 103.406,
-          "car": "2001 BMW Z3"
-        },
-        {
-          "pos": 66,
-          "name": "Justin Johnson",
-          "class_code": "NOVA",
-          "car_number": "77",
-          "raw_time": 108.832,
-          "pax_index": 1,
-          "indexed_time": 108.832,
-          "car": "2012 Ford GT500"
-        },
-        {
-          "pos": 67,
-          "name": "Jared McQuagge",
-          "class_code": "NOVA",
-          "car_number": "44",
-          "raw_time": 109.567,
-          "pax_index": 1,
-          "indexed_time": 109.567,
-          "car": "2003 Chevrolet Corvette"
-        },
-        {
-          "pos": 68,
-          "name": "Ken Poyner",
-          "class_code": "NOVA",
-          "car_number": "21",
-          "raw_time": 110.859,
-          "pax_index": 1,
-          "indexed_time": 110.859,
-          "car": "2008 Mazda MX5"
-        },
-        {
           "pos": 69,
           "name": "Ernie Torres",
           "class_code": "XP",
@@ -18161,16 +17925,6 @@
           "pax_index": 0.884,
           "indexed_time": 925.537,
           "car": "VW"
-        },
-        {
-          "pos": 70,
-          "name": "Rob Crouch",
-          "class_code": "NOVA",
-          "car_number": "22",
-          "raw_time": 1056.232,
-          "pax_index": 1,
-          "indexed_time": 1056.232,
-          "car": "1986 Porsche 944"
         },
         {
           "pos": 71,
@@ -18644,13 +18398,6 @@
           "raw_time": 103.034
         },
         {
-          "pos": 61,
-          "name": "Alex Conlon",
-          "class_code": "NOVA",
-          "car_number": "917",
-          "raw_time": 103.406
-        },
-        {
           "pos": 62,
           "name": "Ashley Ludwick",
           "class_code": "R",
@@ -18663,27 +18410,6 @@
           "class_code": "R",
           "car_number": "77",
           "raw_time": 107.132
-        },
-        {
-          "pos": 65,
-          "name": "Justin Johnson",
-          "class_code": "NOVA",
-          "car_number": "77",
-          "raw_time": 108.832
-        },
-        {
-          "pos": 67,
-          "name": "Jared McQuagge",
-          "class_code": "NOVA",
-          "car_number": "44",
-          "raw_time": 109.567
-        },
-        {
-          "pos": 68,
-          "name": "Ken Poyner",
-          "class_code": "NOVA",
-          "car_number": "21",
-          "raw_time": 110.859
         },
         {
           "pos": 69,
@@ -18705,13 +18431,6 @@
           "class_code": "XP",
           "car_number": "108",
           "raw_time": 1046.988
-        },
-        {
-          "pos": 74,
-          "name": "Rob Crouch",
-          "class_code": "NOVA",
-          "car_number": "22",
-          "raw_time": 1056.232
         }
       ],
       "ryan": null

@@ -18,7 +18,7 @@
       "scoring_type": "single",
       "ryan_attended": false,
       "total_drivers_pax": 136,
-      "total_drivers_raw": 136,
+      "total_drivers_raw": 135,
       "pax_results": [
         {
           "pos": 1,
@@ -2320,13 +2320,6 @@
           "raw_time": 76.584
         },
         {
-          "pos": 135,
-          "name": "Richard Newman",
-          "class_code": "NOVC",
-          "car_number": "148",
-          "raw_time": 79.403
-        },
-        {
           "pos": 136,
           "name": "Russ Myers",
           "class_code": "EST",
@@ -2346,7 +2339,7 @@
       "scoring_type": "dual_run",
       "ryan_attended": true,
       "total_drivers_pax": 190,
-      "total_drivers_raw": 192,
+      "total_drivers_raw": 190,
       "pax_results": [
         {
           "pos": 1,
@@ -4608,13 +4601,6 @@
           "raw_time": 126.176
         },
         {
-          "pos": 53,
-          "name": "John Fink iv",
-          "class_code": "NOVB",
-          "car_number": "33",
-          "raw_time": 126.205
-        },
-        {
           "pos": 54,
           "name": "Pat Bounds",
           "class_code": "STO",
@@ -5168,13 +5154,6 @@
           "raw_time": 165.793
         },
         {
-          "pos": 138,
-          "name": "David De Pena",
-          "class_code": "NOVB",
-          "car_number": "181",
-          "raw_time": 220.674
-        },
-        {
           "pos": 139,
           "name": "Jon Nwanagu",
           "class_code": "STO",
@@ -5692,8 +5671,8 @@
         "pax_leader_time": 95.842,
         "pax_gap_seconds": 11.164,
         "pax_gap_pct": 11.65,
-        "raw_rank": 77,
-        "raw_total": 192,
+        "raw_rank": 76,
+        "raw_total": 190,
         "raw_leader_time": 112.755,
         "raw_gap_seconds": 18.219,
         "raw_gap_pct": 16.16,
@@ -5715,7 +5694,7 @@
       "scoring_type": "single",
       "ryan_attended": true,
       "total_drivers_pax": 158,
-      "total_drivers_raw": 159,
+      "total_drivers_raw": 158,
       "pax_results": [
         {
           "pos": 1,
@@ -8391,13 +8370,6 @@
           "raw_time": 66.529
         },
         {
-          "pos": 187,
-          "name": "Kelly Smith",
-          "class_code": "NOVC",
-          "car_number": "922",
-          "raw_time": 66.761
-        },
-        {
           "pos": 188,
           "name": "Nathan White",
           "class_code": "FS",
@@ -8463,7 +8435,7 @@
         "pax_gap_seconds": 4.03,
         "pax_gap_pct": 9.72,
         "raw_rank": 81,
-        "raw_total": 159,
+        "raw_total": 158,
         "raw_leader_time": 46.558,
         "raw_gap_seconds": 9.108,
         "raw_gap_pct": 19.56,
@@ -8485,7 +8457,7 @@
       "scoring_type": "single",
       "ryan_attended": true,
       "total_drivers_pax": 191,
-      "total_drivers_raw": 190,
+      "total_drivers_raw": 189,
       "pax_results": [
         {
           "pos": 1,
@@ -11440,13 +11412,6 @@
           "raw_time": 66.028
         },
         {
-          "pos": 151,
-          "name": "Triantafilos Scoumis",
-          "class_code": "NOVC",
-          "car_number": "300",
-          "raw_time": 66.066
-        },
-        {
           "pos": 152,
           "name": "Ariel Rudolph",
           "class_code": "R",
@@ -11771,7 +11736,7 @@
         "pax_gap_seconds": 5.887,
         "pax_gap_pct": 12.59,
         "raw_rank": 126,
-        "raw_total": 190,
+        "raw_total": 189,
         "raw_leader_time": 51.881,
         "raw_gap_seconds": 12.556,
         "raw_gap_pct": 24.2,
@@ -11792,7 +11757,7 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": false,
-      "total_drivers_pax": 119,
+      "total_drivers_pax": 118,
       "total_drivers_raw": 116,
       "pax_results": [
         {
@@ -12973,16 +12938,6 @@
           "pax_index": 0.846,
           "indexed_time": 140.404,
           "car": "2025 Subaru Outback"
-        },
-        {
-          "pos": 119,
-          "name": "Terese Weaver",
-          "class_code": "NOVC",
-          "car_number": "21",
-          "raw_time": 190.186,
-          "pax_index": 1,
-          "indexed_time": 190.186,
-          "car": "2024 Volkswagen GTI 380 SE"
         }
       ],
       "raw_results": [
@@ -14993,7 +14948,7 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": true,
-      "total_drivers_pax": 124,
+      "total_drivers_pax": 123,
       "total_drivers_raw": 122,
       "pax_results": [
         {
@@ -16173,16 +16128,6 @@
           "car": "2000 Chevrolet Corvette"
         },
         {
-          "pos": 119,
-          "name": "Carmine Milone",
-          "class_code": "NOVA",
-          "car_number": "113",
-          "raw_time": 61.958,
-          "pax_index": 1,
-          "indexed_time": 61.958,
-          "car": "2003 Mitsubishi Lancer Evo"
-        },
-        {
           "pos": 120,
           "name": "Sam Vogus",
           "class_code": "R/DST",
@@ -17134,8 +17079,8 @@
         "best_raw_time": 64.379,
         "official_indexed_time": 52.598,
         "pax_rank": 73,
-        "pax_total": 124,
-        "pax_percentile": 41.1,
+        "pax_total": 123,
+        "pax_percentile": 40.7,
         "pax_leader_time": 47.263,
         "pax_gap_seconds": 5.335,
         "pax_gap_pct": 11.29,
@@ -19596,7 +19541,7 @@
       "scoring_type": "single",
       "ryan_attended": true,
       "total_drivers_pax": 112,
-      "total_drivers_raw": 115,
+      "total_drivers_raw": 114,
       "pax_results": [
         {
           "pos": 1,
@@ -21420,13 +21365,6 @@
           "raw_time": 64.081
         },
         {
-          "pos": 111,
-          "name": "Reesie McGuigan",
-          "class_code": "NOVA",
-          "car_number": "38",
-          "raw_time": 64.264
-        },
-        {
           "pos": 112,
           "name": "Todd Cohen",
           "class_code": "FS",
@@ -21576,7 +21514,7 @@
         "pax_gap_seconds": 5.002,
         "pax_gap_pct": 11.61,
         "raw_rank": 65,
-        "raw_total": 115,
+        "raw_total": 114,
         "raw_leader_time": 50.277,
         "raw_gap_seconds": 8.581,
         "raw_gap_pct": 17.07,

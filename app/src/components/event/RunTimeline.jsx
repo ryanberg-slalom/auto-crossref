@@ -90,8 +90,8 @@ function RunRow({ run, prevRun, sessionBest }) {
       </span>
 
       <span className="flex items-center gap-1.5 tabular-nums font-mono font-semibold flex-1">
-        <span className={run.dnf ? 'text-accent line-through' : isBest ? 'text-bmw-blue' : 'text-fg'}>
-          {run.dnf ? 'DNF' : run.scored_time.toFixed(3)}
+        <span className={run.dnf ? 'text-accent line-through' : run.rerun ? 'text-fg-subtle' : isBest ? 'text-bmw-blue' : 'text-fg'}>
+          {run.dnf ? 'DNF' : run.rerun ? 'RRN' : run.scored_time.toFixed(3)}
         </span>
         {run.cones > 0 && !run.dnf && (
           <span className="flex flex-row gap-0.5 pl-2" title={`${run.cones} cone${run.cones !== 1 ? 's' : ''}`}>

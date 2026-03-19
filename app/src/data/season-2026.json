@@ -17,8 +17,8 @@
       "venue": "zmax",
       "scoring_type": "single",
       "ryan_attended": true,
-      "total_drivers_pax": 195,
-      "total_drivers_raw": 179,
+      "total_drivers_pax": 167,
+      "total_drivers_raw": 167,
       "pax_results": [
         {
           "pos": 1,
@@ -1560,16 +1560,6 @@
           "car": "1991 Toyota MR2"
         },
         {
-          "pos": 155,
-          "name": "Zachary Grassburger",
-          "class_code": "NOVC",
-          "car_number": "27",
-          "raw_time": 68.918,
-          "pax_index": 1,
-          "indexed_time": 68.918,
-          "car": "2016 Subaru WRX"
-        },
-        {
           "pos": 156,
           "name": "Liam Flynn",
           "class_code": "XA",
@@ -1620,26 +1610,6 @@
           "car": "Fiat 124 Abarth"
         },
         {
-          "pos": 161,
-          "name": "Holt Gorrell",
-          "class_code": "NOVA",
-          "car_number": "81",
-          "raw_time": 70.904,
-          "pax_index": 1,
-          "indexed_time": 70.904,
-          "car": "2024 Mazda MX-5"
-        },
-        {
-          "pos": 162,
-          "name": "Azhar Rehman",
-          "class_code": "NOVC",
-          "car_number": "10",
-          "raw_time": 71.546,
-          "pax_index": 1,
-          "indexed_time": 71.546,
-          "car": "2015 Porsche GT3"
-        },
-        {
           "pos": 163,
           "name": "Guy Tenini",
           "class_code": "FS",
@@ -1660,26 +1630,6 @@
           "car": "2007 Honda Fit"
         },
         {
-          "pos": 165,
-          "name": "Nathan Paschal",
-          "class_code": "NOVB",
-          "car_number": "86",
-          "raw_time": 72.052,
-          "pax_index": 1,
-          "indexed_time": 72.052,
-          "car": "Toyota GR86"
-        },
-        {
-          "pos": 166,
-          "name": "Jeremy Brinkworth",
-          "class_code": "NOVC",
-          "car_number": "9",
-          "raw_time": 72.112,
-          "pax_index": 1,
-          "indexed_time": 72.112,
-          "car": "2021 BMW M8"
-        },
-        {
           "pos": 167,
           "name": "Colin Nelson",
           "class_code": "R/AM",
@@ -1688,16 +1638,6 @@
           "pax_index": 1,
           "indexed_time": 72.443,
           "car": "1999 Mazda Miata"
-        },
-        {
-          "pos": 168,
-          "name": "Matthew Ham",
-          "class_code": "NOVA",
-          "car_number": "13",
-          "raw_time": 72.999,
-          "pax_index": 1,
-          "indexed_time": 72.999,
-          "car": "2019 BMW M240i"
         },
         {
           "pos": 169,
@@ -1710,36 +1650,6 @@
           "car": "1993 Honda Del Sol"
         },
         {
-          "pos": 170,
-          "name": "Austin Proctor",
-          "class_code": "NOVB",
-          "car_number": "997",
-          "raw_time": 74.126,
-          "pax_index": 1,
-          "indexed_time": 74.126,
-          "car": "2008 Porsche 911 Cabriolet"
-        },
-        {
-          "pos": 171,
-          "name": "Bill DeYoung",
-          "class_code": "NOVA",
-          "car_number": "66",
-          "raw_time": 74.234,
-          "pax_index": 1,
-          "indexed_time": 74.234,
-          "car": "2023 Chevrolet Corvette Z51"
-        },
-        {
-          "pos": 172,
-          "name": "Isaiah Alvarado-Ramirez",
-          "class_code": "NOVA",
-          "car_number": "634",
-          "raw_time": 74.376,
-          "pax_index": 1,
-          "indexed_time": 74.376,
-          "car": "2017 Toyota 86"
-        },
-        {
           "pos": 173,
           "name": "Joe Paskiewicz",
           "class_code": "XB",
@@ -1748,26 +1658,6 @@
           "pax_index": 0.859,
           "indexed_time": 74.773,
           "car": "1975 MG B"
-        },
-        {
-          "pos": 174,
-          "name": "Josephine Nelan",
-          "class_code": "NOVA",
-          "car_number": "2",
-          "raw_time": 75.709,
-          "pax_index": 1,
-          "indexed_time": 75.709,
-          "car": "1998 Lotus Elise"
-        },
-        {
-          "pos": 175,
-          "name": "Rob Sosebee",
-          "class_code": "NOVB",
-          "car_number": "71",
-          "raw_time": 75.9,
-          "pax_index": 1,
-          "indexed_time": 75.9,
-          "car": "1995 BMW 325i"
         },
         {
           "pos": 176,
@@ -1790,76 +1680,6 @@
           "car": "1996 Subaru WRX"
         },
         {
-          "pos": 178,
-          "name": "Tucker Graves",
-          "class_code": "NOVB",
-          "car_number": "11",
-          "raw_time": 76.118,
-          "pax_index": 1,
-          "indexed_time": 76.118,
-          "car": "2016 Volkswagen GTI"
-        },
-        {
-          "pos": 179,
-          "name": "Kevin Guzman",
-          "class_code": "NOVA",
-          "car_number": "67",
-          "raw_time": 76.427,
-          "pax_index": 1,
-          "indexed_time": 76.427,
-          "car": "2019 Nissan 370z"
-        },
-        {
-          "pos": 180,
-          "name": "Ken Miles",
-          "class_code": "NOVA",
-          "car_number": "1",
-          "raw_time": 76.491,
-          "pax_index": 1,
-          "indexed_time": 76.491,
-          "car": "2024 BMW M2"
-        },
-        {
-          "pos": 181,
-          "name": "Brandon Carlson",
-          "class_code": "NOVA",
-          "car_number": "58",
-          "raw_time": 77.821,
-          "pax_index": 1,
-          "indexed_time": 77.821,
-          "car": "2019 Mazda MX-5 Miata"
-        },
-        {
-          "pos": 182,
-          "name": "Eric Towery",
-          "class_code": "NOVC",
-          "car_number": "75",
-          "raw_time": 77.839,
-          "pax_index": 1,
-          "indexed_time": 77.839,
-          "car": "1990 Mazda Miata"
-        },
-        {
-          "pos": 183,
-          "name": "Zach Rackley",
-          "class_code": "NOVC",
-          "car_number": "84",
-          "raw_time": 78.001,
-          "pax_index": 1,
-          "indexed_time": 78.001,
-          "car": "2005 Ford Mustang"
-        },
-        {
-          "pos": 184,
-          "name": "Talena Stewart",
-          "class_code": "NOVB",
-          "car_number": "8",
-          "raw_time": 78.028,
-          "pax_index": 1,
-          "indexed_time": 78.028,
-          "car": "2024 Toyota Corolla GR"
-        },
-        {
           "pos": 185,
           "name": "Mark Soucie",
           "class_code": "STO",
@@ -1868,106 +1688,6 @@
           "pax_index": 1,
           "indexed_time": 78.055,
           "car": "2017 Fiat 124 Spider"
-        },
-        {
-          "pos": 186,
-          "name": "Georgia (June) Landry",
-          "class_code": "NOVA",
-          "car_number": "155",
-          "raw_time": 78.773,
-          "pax_index": 1,
-          "indexed_time": 78.773,
-          "car": "1990 Mazda MX-5 Miata"
-        },
-        {
-          "pos": 187,
-          "name": "Logan Duncan",
-          "class_code": "NOVA",
-          "car_number": "18",
-          "raw_time": 78.854,
-          "pax_index": 1,
-          "indexed_time": 78.854,
-          "car": "2005 Mini Cooper S"
-        },
-        {
-          "pos": 188,
-          "name": "Bryton Webber",
-          "class_code": "NOVC",
-          "car_number": "29",
-          "raw_time": 79.065,
-          "pax_index": 1,
-          "indexed_time": 79.065,
-          "car": "2000 Honda Accord"
-        },
-        {
-          "pos": 189,
-          "name": "Allison Sosebee",
-          "class_code": "NOVB",
-          "car_number": "103",
-          "raw_time": 79.393,
-          "pax_index": 1,
-          "indexed_time": 79.393,
-          "car": "2001 BMW Z3"
-        },
-        {
-          "pos": 190,
-          "name": "Sujan Guditi",
-          "class_code": "NOVB",
-          "car_number": "12",
-          "raw_time": 81.475,
-          "pax_index": 1,
-          "indexed_time": 81.475,
-          "car": "2004 Mazda Miata"
-        },
-        {
-          "pos": 191,
-          "name": "Kevin Patel",
-          "class_code": "NOVC",
-          "car_number": "26",
-          "raw_time": 82.843,
-          "pax_index": 1,
-          "indexed_time": 82.843,
-          "car": "2022 Kia K5"
-        },
-        {
-          "pos": 192,
-          "name": "Federico Cardoso",
-          "class_code": "NOVC",
-          "car_number": "17",
-          "raw_time": 83.261,
-          "pax_index": 1,
-          "indexed_time": 83.261,
-          "car": "2017 Ford Shelby GT350"
-        },
-        {
-          "pos": 193,
-          "name": "Brenden Rogan",
-          "class_code": "NOVC",
-          "car_number": "56",
-          "raw_time": 85.622,
-          "pax_index": 1,
-          "indexed_time": 85.622,
-          "car": "2004 Mazda Miata"
-        },
-        {
-          "pos": 194,
-          "name": "Charlie Knight",
-          "class_code": "NOVC",
-          "car_number": "46",
-          "raw_time": 88.605,
-          "pax_index": 1,
-          "indexed_time": 88.605,
-          "car": "2002 Volvo V70XC"
-        },
-        {
-          "pos": 195,
-          "name": "Vic Venettozzi",
-          "class_code": "NOVC",
-          "car_number": "38",
-          "raw_time": 103.202,
-          "pax_index": 1,
-          "indexed_time": 103.202,
-          "car": "1966 Triumph Spitfire"
         }
       ],
       "raw_results": [
@@ -2546,13 +2266,6 @@
           "raw_time": 68.897
         },
         {
-          "pos": 83,
-          "name": "Zachary Grassburger",
-          "class_code": "NOVC",
-          "car_number": "27",
-          "raw_time": 68.918
-        },
-        {
           "pos": 84,
           "name": "Arthur McDonald",
           "class_code": "DS",
@@ -2784,13 +2497,6 @@
           "raw_time": 71.385
         },
         {
-          "pos": 118,
-          "name": "Azhar Rehman",
-          "class_code": "NOVC",
-          "car_number": "10",
-          "raw_time": 71.546
-        },
-        {
           "pos": 119,
           "name": "Justin Bitar",
           "class_code": "DST",
@@ -2810,13 +2516,6 @@
           "class_code": "R",
           "car_number": "25",
           "raw_time": 72.089
-        },
-        {
-          "pos": 123,
-          "name": "Jeremy Brinkworth",
-          "class_code": "NOVC",
-          "car_number": "9",
-          "raw_time": 72.112
         },
         {
           "pos": 124,
@@ -3071,20 +2770,6 @@
           "raw_time": 77.813
         },
         {
-          "pos": 170,
-          "name": "Eric Towery",
-          "class_code": "NOVC",
-          "car_number": "75",
-          "raw_time": 77.839
-        },
-        {
-          "pos": 171,
-          "name": "Zach Rackley",
-          "class_code": "NOVC",
-          "car_number": "84",
-          "raw_time": 78.001
-        },
-        {
           "pos": 173,
           "name": "Mark Soucie",
           "class_code": "STO",
@@ -3106,25 +2791,11 @@
           "raw_time": 78.236
         },
         {
-          "pos": 177,
-          "name": "Logan Duncan",
-          "class_code": "NOVA",
-          "car_number": "18",
-          "raw_time": 78.854
-        },
-        {
           "pos": 178,
           "name": "Frank Vessell",
           "class_code": "BST",
           "car_number": "98",
           "raw_time": 78.886
-        },
-        {
-          "pos": 179,
-          "name": "Bryton Webber",
-          "class_code": "NOVC",
-          "car_number": "29",
-          "raw_time": 79.065
         },
         {
           "pos": 180,
@@ -3155,32 +2826,11 @@
           "raw_time": 81.332
         },
         {
-          "pos": 186,
-          "name": "Kevin Patel",
-          "class_code": "NOVC",
-          "car_number": "26",
-          "raw_time": 82.843
-        },
-        {
-          "pos": 187,
-          "name": "Federico Cardoso",
-          "class_code": "NOVC",
-          "car_number": "17",
-          "raw_time": 83.261
-        },
-        {
           "pos": 188,
           "name": "Sydney Thompson",
           "class_code": "CS",
           "car_number": "181",
           "raw_time": 85.156
-        },
-        {
-          "pos": 189,
-          "name": "Brenden Rogan",
-          "class_code": "NOVC",
-          "car_number": "56",
-          "raw_time": 85.622
         },
         {
           "pos": 190,
@@ -3204,25 +2854,11 @@
           "raw_time": 87.643
         },
         {
-          "pos": 193,
-          "name": "Charlie Knight",
-          "class_code": "NOVC",
-          "car_number": "46",
-          "raw_time": 88.605
-        },
-        {
           "pos": 194,
           "name": "Nolan Pesola",
           "class_code": "HS",
           "car_number": "66",
           "raw_time": 91.978
-        },
-        {
-          "pos": 195,
-          "name": "Vic Venettozzi",
-          "class_code": "NOVC",
-          "car_number": "38",
-          "raw_time": 103.202
         }
       ],
       "ryan": {
@@ -3279,13 +2915,13 @@
         "best_raw_time": 67.279,
         "official_indexed_time": 54.967,
         "pax_rank": 53,
-        "pax_total": 195,
-        "pax_percentile": 72.8,
+        "pax_total": 167,
+        "pax_percentile": 68.3,
         "pax_leader_time": 51.09,
         "pax_gap_seconds": 3.877,
         "pax_gap_pct": 7.59,
         "raw_rank": 61,
-        "raw_total": 179,
+        "raw_total": 167,
         "raw_leader_time": 55.617,
         "raw_gap_seconds": 11.662,
         "raw_gap_pct": 20.97,

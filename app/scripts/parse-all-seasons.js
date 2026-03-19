@@ -68,7 +68,9 @@ function loadPaxCache(eventDir) {
   const cachePath = join(eventDir, 'pax-extracted.json')
   if (!existsSync(cachePath)) return null
   try {
-    return JSON.parse(readFileSync(cachePath, 'utf8'))
+    const data = JSON.parse(readFileSync(cachePath, 'utf8'))
+    // Strip novice entries that slipped past the extraction prompt (NOVA, NOVB, NOVC, etc.)
+    return data.filter(d => !/^NOV/i.test(d.class_code))
   } catch {
     return null
   }
@@ -83,7 +85,8 @@ function loadRawCache(eventDir) {
   const cachePath = join(eventDir, 'raw-extracted.json')
   if (!existsSync(cachePath)) return null
   try {
-    return JSON.parse(readFileSync(cachePath, 'utf8'))
+    const data = JSON.parse(readFileSync(cachePath, 'utf8'))
+    return data.filter(d => !/^NOV/i.test(d.class_code))
   } catch {
     return null
   }
