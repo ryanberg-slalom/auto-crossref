@@ -5,6 +5,7 @@ import {
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
 import { venueColor } from '../shared/venueColors'
+import { tireChangeLines } from './chartUtils.jsx'
 
 const COLORS = {
   grid: '#e5e7eb',
@@ -39,7 +40,7 @@ function getYearBands(chartData) {
     year,
     x1: yearMap[year].ids[0],
     x2: yearMap[year].ids[yearMap[year].ids.length - 1],
-    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.03)' : 'transparent',
+    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.07)' : 'transparent',
   }))
 }
 
@@ -78,7 +79,6 @@ export default function PstRankChart({ data }) {
 
   if (base.length === 0) return null
 
-  const tickMap = Object.fromEntries(base.map(d => [d.id, d.tick]))
 
   const overallReg = linReg(base.map(d => ({ x: d.i, y: d.percentile })))
   const slope = overallReg?.slope ?? null
@@ -108,14 +108,14 @@ export default function PstRankChart({ data }) {
               x2={band.x2}
               fill={band.fill}
               strokeOpacity={0}
-              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -18 }}
               ifOverflow="extendDomain"
             />
           ))}
           <XAxis
             dataKey="id"
-            tickFormatter={id => tickMap[id] ?? id}
-            tick={{ fill: COLORS.fg, fontSize: 11 }}
+            ticks={yearBands.map(b => b.x1)}
+            tickFormatter={id => String(id).split('-')[0]}
+            tick={{ fill: 'rgba(0,0,0,0.45)', fontSize: 9 }}
             axisLine={false}
             tickLine={false}
           />
@@ -128,6 +128,7 @@ export default function PstRankChart({ data }) {
             tickFormatter={v => `${v}%`}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
+          {tireChangeLines(chartData)}
           <Bar
             dataKey="percentile"
             radius={[4, 4, 0, 0]}

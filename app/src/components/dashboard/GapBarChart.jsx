@@ -4,6 +4,7 @@ import {
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
 import { venueColor } from '../shared/venueColors'
+import { tireChangeLines } from './chartUtils.jsx'
 
 const COLORS = {
   grid: '#e5e7eb',
@@ -37,7 +38,7 @@ function getYearBands(chartData) {
     year,
     x1: yearMap[year].ids[0],
     x2: yearMap[year].ids[yearMap[year].ids.length - 1],
-    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.03)' : 'transparent',
+    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.07)' : 'transparent',
   }))
 }
 
@@ -70,7 +71,7 @@ export default function GapBarChart({ data }) {
     venue: e.venue,
   })).filter(d => d.gapPct !== null)
 
-  const tickMap = Object.fromEntries(allPoints.map(d => [d.id, d.tick]))
+
   const yearBands = getYearBands(allPoints)
 
   const overallReg = linReg(allPoints.map((d, i) => ({ x: i, y: d.gapPct })))
@@ -98,14 +99,14 @@ export default function GapBarChart({ data }) {
               x2={band.x2}
               fill={band.fill}
               strokeOpacity={0}
-              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -2 }}
               ifOverflow="extendDomain"
             />
           ))}
           <XAxis
             dataKey="id"
-            tickFormatter={id => tickMap[id] ?? id}
-            tick={{ fill: COLORS.fg, fontSize: 11 }}
+            ticks={yearBands.map(b => b.x1)}
+            tickFormatter={id => String(id).split('-')[0]}
+            tick={{ fill: 'rgba(0,0,0,0.45)', fontSize: 9 }}
             axisLine={false}
             tickLine={false}
           />
@@ -117,6 +118,7 @@ export default function GapBarChart({ data }) {
             tickFormatter={v => `${v}%`}
           />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
+          {tireChangeLines(chartData)}
           <Bar
             dataKey="gapPct"
             radius={[4, 4, 0, 0]}
