@@ -1,5 +1,6 @@
 import StatCard from '../shared/StatCard'
 import { computeConeStats } from './coneUtils.js'
+import { pluralize } from '../../utils/pluralize.js'
 
 export default function ConeStats({ attendedEvents }) {
   const {
@@ -30,11 +31,11 @@ export default function ConeStats({ attendedEvents }) {
       />
       <StatCard labelClassName="text-orange-700"
         label="Longest Clean Streak"
-        value={`${longestStreak} runs`}
+        value={pluralize(longestStreak, 'run')}
       />
       <StatCard labelClassName="text-orange-700"
         label="Current Streak"
-        value={`${currentStreak} runs`}
+        value={pluralize(currentStreak, 'run')}
         sub={lastConeSub}
       />
     </div>

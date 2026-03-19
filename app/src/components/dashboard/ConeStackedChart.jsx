@@ -50,7 +50,24 @@ export default function ConeStackedChart({ data }) {
   const yearBands = getYearBands(chartData)
 
   return (
-    <ChartCard title="Run Breakdown" subtitle="Clean, coned, and DNF runs per event">
+    <ChartCard
+      title="Run Breakdown"
+      subtitle="Clean, coned, and DNF runs per event"
+      headerRight={
+        <div className="flex items-center gap-3 text-xs text-fg-muted">
+          {[
+            { label: 'Clean', color: COLORS.clean },
+            { label: 'Coned', color: COLORS.coned },
+            { label: 'DNF',   color: COLORS.dnf },
+          ].map(({ label, color }) => (
+            <span key={label} className="flex items-center gap-1.5">
+              <span className="inline-block w-2.5 h-2.5 rounded-sm" style={{ backgroundColor: color, opacity: 0.85 }} />
+              {label}
+            </span>
+          ))}
+        </div>
+      }
+    >
       <ResponsiveContainer width="100%" height={200}>
         <BarChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />

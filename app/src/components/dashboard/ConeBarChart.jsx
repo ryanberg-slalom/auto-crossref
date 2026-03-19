@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import ChartCard from '../shared/ChartCard'
 import { linReg, TrendBadge } from './chartUtils.jsx'
 import { coneChartData } from './coneUtils.js'
+import { pluralize } from '../../utils/pluralize.js'
 
 const CONE_ICON = `${import.meta.env.BASE_URL}cone.svg`
-const CONE_W = 16   // px — width of each cone icon
-const CONE_H = 22   // px — height of each cone icon (matches SVG ~1.38 aspect ratio)
+const CONE_W = 16    // px — width of each cone icon
+const MAX_CONE_H = 28 // px — max height per cone; scales down if many cones
+const CHART_H = 160  // px — fixed chart area height
 
 export default function ConeBarChart({ data }) {
   const navigate = useNavigate()
@@ -15,7 +17,7 @@ export default function ConeBarChart({ data }) {
   const overallReg = linReg(base.map(d => ({ x: d.i, y: d.totalCones })))
   const slope = overallReg?.slope ?? null
   const maxCones = Math.max(...base.map(d => d.totalCones), 1)
-  const chartH = maxCones * CONE_H
+  const coneH = Math.min(MAX_CONE_H, Math.floor(CHART_H / maxCones))
 
   return (
     <ChartCard
@@ -23,12 +25,12 @@ export default function ConeBarChart({ data }) {
       subtitle="Total cones hit — lower is better"
       headerRight={<TrendBadge slope={slope} positiveIsGood={false} decimals={2} />}
     >
-      <div className="flex items-end gap-0.5 overflow-x-auto">
+      <div className="flex items-end gap-0.5">
         {base.map(d => (
           <EventColumn
             key={d.id}
             d={d}
-            chartH={chartH}
+            coneH={coneH}
             onClick={() => navigate(`/event/${d.id}`)}
           />
         ))}
@@ -37,7 +39,7 @@ export default function ConeBarChart({ data }) {
   )
 }
 
-function EventColumn({ d, chartH, onClick }) {
+function EventColumn({ d, coneH, onClick }) {
   return (
     <div
       className="relative flex flex-col items-center cursor-pointer group"
@@ -51,14 +53,14 @@ function EventColumn({ d, chartH, onClick }) {
           Cones: <span className="text-fg font-semibold">{d.totalCones}</span>
         </div>
         <div className="text-fg-muted">
-          {d.conedRuns} coned run{d.conedRuns !== 1 ? 's' : ''} of {d.totalRuns}
+          {pluralize(d.conedRuns, 'coned run')} of {d.totalRuns}
         </div>
       </div>
 
       {/* Cone stack — flex-col-reverse so first cone sits at the bottom */}
       <div
         className="flex flex-col-reverse items-center justify-start"
-        style={{ height: chartH }}
+        style={{ height: CHART_H }}
       >
         {d.totalCones === 0
           ? <div className="w-3 h-px bg-border rounded" />
@@ -67,7 +69,7 @@ function EventColumn({ d, chartH, onClick }) {
                 key={i}
                 src={CONE_ICON}
                 alt="cone"
-                style={{ width: CONE_W, height: CONE_H }}
+                style={{ width: CONE_W, height: coneH }}
                 className="object-contain"
               />
             ))
