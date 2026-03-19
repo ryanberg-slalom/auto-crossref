@@ -110,12 +110,16 @@ Return ONLY JSON with no explanation, preamble, or markdown:
   ]
 }
 
-Format detection:
-- "two_session": column headers include both "Course 1" AND "Course 2"
-- "single_session": only "Course 1" header
+Format detection — "two_session" if ANY of these column header pairs appear together:
+- "Course 1" AND "Course 2"
+- "Morning" AND "Afternoon"
+- "AM" AND "PM"
+- "Day 1" AND "Day 2"
+- "Session 1" AND "Session 2"
+Otherwise "single_session".
 
 Ryan's run rules:
-- session: "a" for Course 1 / first session, "b" for Course 2 / second session
+- session: "a" for the first session (Course 1 / Morning / AM / Day 1), "b" for the second (Course 2 / Afternoon / PM / Day 2)
 - displayed_time: time as printed (includes cone penalties). null if DNF.
 - cones: count from (N) suffix. 0 if clean.
 - base_time: displayed_time - (cones * 2). null if DNF.
