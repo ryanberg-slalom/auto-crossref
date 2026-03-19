@@ -7,7 +7,7 @@
  * Generates: season-2023.json, season-2024.json, season-2025.json, season-2026.json
  */
 
-import { readdirSync, writeFileSync } from 'fs'
+import { readdirSync, readFileSync, existsSync, writeFileSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -57,6 +57,99 @@ async function extractText(pdfPath) {
   }
 }
 
+// ---- Claude extraction cache helpers ----
+
+/**
+ * Load Claude-extracted PAX data if available. Returns array in same format as parsePaxResults.
+ * @param {string} eventDir
+ * @returns {Array|null}
+ */
+function loadPaxCache(eventDir) {
+  const cachePath = join(eventDir, 'pax-extracted.json')
+  if (!existsSync(cachePath)) return null
+  try {
+    return JSON.parse(readFileSync(cachePath, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Load Claude-extracted RAW data if available. Returns array in same format as parseRawResults.
+ * @param {string} eventDir
+ * @returns {Array|null}
+ */
+function loadRawCache(eventDir) {
+  const cachePath = join(eventDir, 'raw-extracted.json')
+  if (!existsSync(cachePath)) return null
+  try {
+    return JSON.parse(readFileSync(cachePath, 'utf8'))
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Load Claude-extracted FINAL data and derive Ryan's runs + car map.
+ * @param {string} eventDir
+ * @param {string} ryanName
+ * @returns {{ ryanEntry: object|null, carMap: Map<string,string> }|null}
+ */
+function loadFinalCache(eventDir, ryanName) {
+  const cachePath = join(eventDir, 'final-extracted.json')
+  if (!existsSync(cachePath)) return null
+  try {
+    const data = JSON.parse(readFileSync(cachePath, 'utf8'))
+
+    // Build car map from the cars array
+    const carMap = new Map()
+    for (const entry of (data.cars ?? [])) {
+      if (entry.name && entry.car) carMap.set(entry.name, entry.car)
+    }
+
+    // Ryan's entry is in data.ryan
+    const ryanEntry = data.ryan ?? null
+
+    return { ryanEntry, carMap }
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Convert a Claude-extracted final entry's runs to the app's internal run format.
+ * Claude uses { session:'a'|'b', base_time, scored_time, cones, dnf, rerun }
+ * which already matches the app schema.
+ */
+function mapFinalRuns(ryanEntry, meta) {
+  if (!ryanEntry?.runs?.length) return null
+
+  const runs = ryanEntry.runs.map((r, i) => ({
+    run_number: r.run_number ?? i + 1,
+    session: r.session ?? 'a',
+    base_time: r.base_time ?? null,
+    scored_time: r.scored_time ?? null,
+    cones: r.cones ?? 0,
+    dnf: r.dnf ?? false,
+    rerun: r.rerun ?? false,
+  }))
+
+  // Compute best_raw_time
+  let bestRawTime = null
+  if (meta.sessions === 1) {
+    const valid = runs.filter(r => !r.dnf && !r.rerun && r.scored_time !== null)
+    if (valid.length > 0) bestRawTime = Math.min(...valid.map(r => r.scored_time))
+  } else {
+    const sessionA = runs.filter(r => r.session === 'a' && !r.dnf && !r.rerun && r.scored_time !== null)
+    const sessionB = runs.filter(r => r.session === 'b' && !r.dnf && !r.rerun && r.scored_time !== null)
+    const bestA = sessionA.length > 0 ? Math.min(...sessionA.map(r => r.scored_time)) : null
+    const bestB = sessionB.length > 0 ? Math.min(...sessionB.map(r => r.scored_time)) : null
+    if (bestA !== null && bestB !== null) bestRawTime = parseFloat((bestA + bestB).toFixed(3))
+  }
+
+  return { runs, best_raw_time: bestRawTime }
+}
+
 // ---- Season configs ----
 
 const SEASONS = [
@@ -85,6 +178,15 @@ const SEASONS = [
       11: { date: '2023-11-11', title: 'AX11 Racing For Heroes Tour',  runsPerSession: 4, sessions: 2, venue: 'zmax'     },
     },
     RUN_OVERRIDES: {
+      // Claude extracted 6 runs but run 6 is the PDF's "best score" column, not a real run.
+      // Actual event: single session, 5 runs. Times confirmed via PAX raw_time = 45.319.
+      3: [
+        { run_number: 1, session: 'a', base_time: 48.650, scored_time: 48.650, cones: 0, dnf: false, rerun: false },
+        { run_number: 2, session: 'a', base_time: 48.048, scored_time: 48.048, cones: 0, dnf: false, rerun: false },
+        { run_number: 3, session: 'a', base_time: 45.744, scored_time: 45.744, cones: 0, dnf: false, rerun: false },
+        { run_number: 4, session: 'a', base_time: 45.624, scored_time: 47.624, cones: 1, dnf: false, rerun: false },
+        { run_number: 5, session: 'a', base_time: 45.319, scored_time: 45.319, cones: 0, dnf: false, rerun: false },
+      ],
       // PDF extraction produces wrong session order; values confirmed against official results.
       4: [
         { run_number: 1, session: 'a', base_time: 76.503, scored_time: 76.503, cones: 0, dnf: false, rerun: false },
@@ -303,7 +405,17 @@ async function processSeason(config) {
     }
 
     // --- PAX results ---
-    if (paxFile) {
+    const paxCache = loadPaxCache(eventDir)
+    if (paxCache) {
+      eventData.pax_results = paxCache
+      eventData.total_drivers_pax = paxCache.length
+      console.log(`  PAX (cache): ${paxCache.length} drivers`)
+      const ryanPax = paxCache.find(d => d.name === RYAN_NAME)
+      if (ryanPax) {
+        eventData.ryan_attended = true
+        console.log(`  Ryan found in PAX: pos=${ryanPax.pos}, indexed=${ryanPax.indexed_time}, pax=${ryanPax.pax_index}`)
+      }
+    } else if (paxFile) {
       try {
         const paxText = await extractText(join(eventDir, paxFile))
         const paxDrivers = parsePaxResults(paxText)
@@ -321,7 +433,12 @@ async function processSeason(config) {
     }
 
     // --- RAW results ---
-    if (rawFile) {
+    const rawCache = loadRawCache(eventDir)
+    if (rawCache) {
+      eventData.raw_results = rawCache
+      eventData.total_drivers_raw = rawCache.length
+      console.log(`  RAW (cache): ${rawCache.length} drivers`)
+    } else if (rawFile) {
       try {
         const rawText = await extractText(join(eventDir, rawFile))
         const rawDrivers = parseRawResults(rawText)
@@ -341,8 +458,52 @@ async function processSeason(config) {
       ryanIndexedTime = ryanPaxEntry.indexed_time
     }
 
-    // --- Car info for all drivers ---
-    if (overallFile) {
+    // --- Car info for all drivers + Ryan's runs (prefer Claude cache) ---
+    const finalCache = loadFinalCache(eventDir, RYAN_NAME)
+    if (finalCache) {
+      // Apply car info from cache
+      let carHits = 0
+      for (const driver of eventData.pax_results) {
+        if (finalCache.carMap.has(driver.name)) {
+          driver.car = finalCache.carMap.get(driver.name)
+          carHits++
+        }
+      }
+      console.log(`  Car info (cache): ${carHits}/${eventData.pax_results.length} drivers matched`)
+
+      // Ryan's runs from cache
+      if (eventData.ryan_attended && finalCache.ryanEntry) {
+        let ryanRunData = mapFinalRuns(finalCache.ryanEntry, meta)
+        if (ryanRunData) {
+          if (RUN_OVERRIDES[eventNum]) {
+            ryanRunData.runs = RUN_OVERRIDES[eventNum]
+            ryanRunData.best_raw_time = null  // will be recomputed below
+            console.log(`  Ryan runs: using manual override for event ${eventNum}`)
+          } else {
+            console.log(`  Ryan runs (cache): ${ryanRunData.runs.length} runs, best=${ryanRunData.best_raw_time}`)
+          }
+          if (ryanIndexedTime !== null && ryanRawTime !== null) {
+            const derived = computeDerived({
+              paxResults: eventData.pax_results,
+              rawResults: eventData.raw_results,
+              ryanIndexedTime,
+              ryanRawTime,
+              ryanName: RYAN_NAME,
+              ryanClassCode: subject.class,
+            })
+            eventData.ryan = {
+              car_number: ryanPaxEntry?.car_number ?? '',
+              class_code: subject.class,
+              pax_index: ryanPaxEntry?.pax_index ?? null,
+              runs: ryanRunData.runs,
+              best_raw_time: ryanRawTime,
+              official_indexed_time: ryanIndexedTime,
+              ...derived,
+            }
+          }
+        }
+      }
+    } else if (overallFile) {
       try {
         const overallTextForCars = await extractText(join(eventDir, overallFile))
         const names = eventData.pax_results.map(d => d.name)
@@ -355,50 +516,51 @@ async function processSeason(config) {
       } catch (err) {
         console.warn(`  Car map extraction failed: ${err.message}`)
       }
-    }
 
-    // --- Ryan's runs ---
-    if (eventData.ryan_attended && overallFile) {
-      try {
-        const overallText = await extractText(join(eventDir, overallFile))
-        const ryanRunData = parseRyanRuns(overallText, {
-          runsPerSession: meta.runsPerSession,
-          sessions: meta.sessions,
-        })
+      if (eventData.ryan_attended) {
+        try {
+          const overallText = await extractText(join(eventDir, overallFile))
+          const ryanRunData = parseRyanRuns(overallText, {
+            runsPerSession: meta.runsPerSession,
+            sessions: meta.sessions,
+          })
 
-        if (ryanRunData) {
-          if (RUN_OVERRIDES[eventNum]) {
-            ryanRunData.runs = RUN_OVERRIDES[eventNum]
-            console.log(`  Ryan runs: using manual override for event ${eventNum}`)
-          } else {
-            console.log(`  Ryan runs: ${ryanRunData.runs.length} runs, best=${ryanRunData.best_raw_time}`)
-          }
+          if (ryanRunData) {
+            if (RUN_OVERRIDES[eventNum]) {
+              ryanRunData.runs = RUN_OVERRIDES[eventNum]
+              console.log(`  Ryan runs: using manual override for event ${eventNum}`)
+            } else {
+              console.log(`  Ryan runs: ${ryanRunData.runs.length} runs, best=${ryanRunData.best_raw_time}`)
+            }
 
-          if (ryanIndexedTime !== null && ryanRawTime !== null) {
-            const derived = computeDerived({
-              paxResults: eventData.pax_results,
-              rawResults: eventData.raw_results,
-              ryanIndexedTime,
-              ryanRawTime,
-              ryanName: RYAN_NAME,
-              ryanClassCode: subject.class,
-            })
+            if (ryanIndexedTime !== null && ryanRawTime !== null) {
+              const derived = computeDerived({
+                paxResults: eventData.pax_results,
+                rawResults: eventData.raw_results,
+                ryanIndexedTime,
+                ryanRawTime,
+                ryanName: RYAN_NAME,
+                ryanClassCode: subject.class,
+              })
 
-            eventData.ryan = {
-              car_number: ryanPaxEntry?.car_number ?? '',
-              class_code: subject.class,
-              pax_index: ryanPaxEntry?.pax_index ?? null,
-              runs: ryanRunData.runs,
-              best_raw_time: ryanRawTime,
-              official_indexed_time: ryanIndexedTime,
-              ...derived,
+              eventData.ryan = {
+                car_number: ryanPaxEntry?.car_number ?? '',
+                class_code: subject.class,
+                pax_index: ryanPaxEntry?.pax_index ?? null,
+                runs: ryanRunData.runs,
+                best_raw_time: ryanRawTime,
+                official_indexed_time: ryanIndexedTime,
+                ...derived,
+              }
             }
           }
+        } catch (err) {
+          console.error(`  OVERALL parse error: ${err.message}`)
         }
-      } catch (err) {
-        console.error(`  OVERALL parse error: ${err.message}`)
       }
-    } else if (eventData.ryan_attended && ryanIndexedTime !== null) {
+    }
+
+    if (eventData.ryan_attended && !eventData.ryan && ryanIndexedTime !== null) {
       const derived = computeDerived({
         paxResults: eventData.pax_results,
         rawResults: eventData.raw_results,

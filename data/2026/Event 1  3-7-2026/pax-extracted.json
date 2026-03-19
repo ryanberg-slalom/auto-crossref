@@ -1,0 +1,1757 @@
+[
+  {
+    "pos": 1,
+    "name": "Jonathan Bennett",
+    "class_code": "PRT/SMF",
+    "car_number": "68",
+    "raw_time": 59.615,
+    "pax_index": 0.857,
+    "indexed_time": 51.09
+  },
+  {
+    "pos": 2,
+    "name": "Mike Kuhn",
+    "class_code": "PRT/SSP",
+    "car_number": "196",
+    "raw_time": 59.642,
+    "pax_index": 0.86,
+    "indexed_time": 51.292
+  },
+  {
+    "pos": 3,
+    "name": "Tim White",
+    "class_code": "PRT/SM",
+    "car_number": "165",
+    "raw_time": 59.492,
+    "pax_index": 0.87,
+    "indexed_time": 51.758
+  },
+  {
+    "pos": 4,
+    "name": "Will Teller",
+    "class_code": "PST/AST",
+    "car_number": "184",
+    "raw_time": 62.126,
+    "pax_index": 0.836,
+    "indexed_time": 51.937
+  },
+  {
+    "pos": 5,
+    "name": "Kevin Wenzel",
+    "class_code": "PST/AST",
+    "car_number": "172",
+    "raw_time": 62.126,
+    "pax_index": 0.836,
+    "indexed_time": 51.937
+  },
+  {
+    "pos": 6,
+    "name": "Todd Kaley",
+    "class_code": "PST/CS",
+    "car_number": "37",
+    "raw_time": 63.814,
+    "pax_index": 0.814,
+    "indexed_time": 51.945
+  },
+  {
+    "pos": 7,
+    "name": "Geoffrey Zimmer",
+    "class_code": "PRT/FSP",
+    "car_number": "177",
+    "raw_time": 62.404,
+    "pax_index": 0.833,
+    "indexed_time": 51.983
+  },
+  {
+    "pos": 8,
+    "name": "Sam Dougherty",
+    "class_code": "MOD/KM",
+    "car_number": "167",
+    "raw_time": 55.617,
+    "pax_index": 0.936,
+    "indexed_time": 52.058
+  },
+  {
+    "pos": 9,
+    "name": "Jacob Cloninger",
+    "class_code": "PST/SSC",
+    "car_number": "19",
+    "raw_time": 64.788,
+    "pax_index": 0.808,
+    "indexed_time": 52.349
+  },
+  {
+    "pos": 10,
+    "name": "Lenny Woolcock",
+    "class_code": "DST",
+    "car_number": "183",
+    "raw_time": 64.107,
+    "pax_index": 0.82,
+    "indexed_time": 52.568
+  },
+  {
+    "pos": 11,
+    "name": "Peter Schnore",
+    "class_code": "PST/CST",
+    "car_number": "99",
+    "raw_time": 63.478,
+    "pax_index": 0.829,
+    "indexed_time": 52.623
+  },
+  {
+    "pos": 12,
+    "name": "James Gunnels",
+    "class_code": "PST/DST",
+    "car_number": "17",
+    "raw_time": 64.182,
+    "pax_index": 0.82,
+    "indexed_time": 52.629
+  },
+  {
+    "pos": 13,
+    "name": "William Bostic",
+    "class_code": "PST/SSC",
+    "car_number": "171",
+    "raw_time": 65.161,
+    "pax_index": 0.808,
+    "indexed_time": 52.65
+  },
+  {
+    "pos": 14,
+    "name": "Mike Casino",
+    "class_code": "PST/AST",
+    "car_number": "72",
+    "raw_time": 62.981,
+    "pax_index": 0.836,
+    "indexed_time": 52.652
+  },
+  {
+    "pos": 15,
+    "name": "Will King",
+    "class_code": "PST/AST",
+    "car_number": "84",
+    "raw_time": 63.08,
+    "pax_index": 0.836,
+    "indexed_time": 52.735
+  },
+  {
+    "pos": 16,
+    "name": "Steven Matchett",
+    "class_code": "BS",
+    "car_number": "75",
+    "raw_time": 64.24,
+    "pax_index": 0.823,
+    "indexed_time": 52.87
+  },
+  {
+    "pos": 17,
+    "name": "Jake Jackson",
+    "class_code": "CAM/CAM",
+    "car_number": "29",
+    "raw_time": 63.861,
+    "pax_index": 0.828,
+    "indexed_time": 52.877
+  },
+  {
+    "pos": 18,
+    "name": "Nicholas Rogowski",
+    "class_code": "PST/BST",
+    "car_number": "3",
+    "raw_time": 63.434,
+    "pax_index": 0.835,
+    "indexed_time": 52.967
+  },
+  {
+    "pos": 19,
+    "name": "Nathan Brainerd",
+    "class_code": "PRT/FSP",
+    "car_number": "77",
+    "raw_time": 63.701,
+    "pax_index": 0.833,
+    "indexed_time": 53.063
+  },
+  {
+    "pos": 20,
+    "name": "John Fink",
+    "class_code": "PST/AS",
+    "car_number": "33",
+    "raw_time": 63.947,
+    "pax_index": 0.83,
+    "indexed_time": 53.076
+  },
+  {
+    "pos": 21,
+    "name": "Scott Good",
+    "class_code": "XP",
+    "car_number": "109",
+    "raw_time": 59.529,
+    "pax_index": 0.892,
+    "indexed_time": 53.1
+  },
+  {
+    "pos": 22,
+    "name": "Garrett Howell",
+    "class_code": "ES",
+    "car_number": "5",
+    "raw_time": 67.436,
+    "pax_index": 0.788,
+    "indexed_time": 53.14
+  },
+  {
+    "pos": 23,
+    "name": "Jon Nwanagu",
+    "class_code": "PST/AS",
+    "car_number": "196",
+    "raw_time": 64.069,
+    "pax_index": 0.83,
+    "indexed_time": 53.177
+  },
+  {
+    "pos": 24,
+    "name": "Dan Cochran",
+    "class_code": "PST/AS",
+    "car_number": "98",
+    "raw_time": 64.296,
+    "pax_index": 0.83,
+    "indexed_time": 53.366
+  },
+  {
+    "pos": 25,
+    "name": "Gregory Gorrell",
+    "class_code": "XP",
+    "car_number": "9",
+    "raw_time": 59.87,
+    "pax_index": 0.892,
+    "indexed_time": 53.404
+  },
+  {
+    "pos": 26,
+    "name": "Josh Smathers",
+    "class_code": "AST",
+    "car_number": "29",
+    "raw_time": 63.955,
+    "pax_index": 0.836,
+    "indexed_time": 53.466
+  },
+  {
+    "pos": 27,
+    "name": "Jeffrey Harris",
+    "class_code": "PST/BS",
+    "car_number": "175",
+    "raw_time": 64.967,
+    "pax_index": 0.823,
+    "indexed_time": 53.468
+  },
+  {
+    "pos": 28,
+    "name": "Chase Helm",
+    "class_code": "PST/DS",
+    "car_number": "31",
+    "raw_time": 65.961,
+    "pax_index": 0.811,
+    "indexed_time": 53.494
+  },
+  {
+    "pos": 29,
+    "name": "Andrew Stafford",
+    "class_code": "HS",
+    "car_number": "118",
+    "raw_time": 68.658,
+    "pax_index": 0.78,
+    "indexed_time": 53.553
+  },
+  {
+    "pos": 30,
+    "name": "Steve Waters",
+    "class_code": "PST/AS",
+    "car_number": "96",
+    "raw_time": 64.562,
+    "pax_index": 0.83,
+    "indexed_time": 53.586
+  },
+  {
+    "pos": 31,
+    "name": "Chris Schmid",
+    "class_code": "PST/SSC",
+    "car_number": "89",
+    "raw_time": 66.32,
+    "pax_index": 0.808,
+    "indexed_time": 53.587
+  },
+  {
+    "pos": 32,
+    "name": "Frank Forcino",
+    "class_code": "PST/BS",
+    "car_number": "75",
+    "raw_time": 65.263,
+    "pax_index": 0.823,
+    "indexed_time": 53.711
+  },
+  {
+    "pos": 33,
+    "name": "Peter Bruschi",
+    "class_code": "CAM/CAM",
+    "car_number": "6",
+    "raw_time": 64.915,
+    "pax_index": 0.828,
+    "indexed_time": 53.75
+  },
+  {
+    "pos": 34,
+    "name": "Daniel Wendel",
+    "class_code": "MOD/KM",
+    "car_number": "44",
+    "raw_time": 57.444,
+    "pax_index": 0.936,
+    "indexed_time": 53.768
+  },
+  {
+    "pos": 35,
+    "name": "Eric Ward",
+    "class_code": "AST",
+    "car_number": "91",
+    "raw_time": 64.337,
+    "pax_index": 0.836,
+    "indexed_time": 53.786
+  },
+  {
+    "pos": 36,
+    "name": "Michael Charest",
+    "class_code": "CAM/CAM",
+    "car_number": "30",
+    "raw_time": 65.681,
+    "pax_index": 0.819,
+    "indexed_time": 53.793
+  },
+  {
+    "pos": 37,
+    "name": "Marcus Luttrell",
+    "class_code": "DST",
+    "car_number": "92",
+    "raw_time": 65.669,
+    "pax_index": 0.82,
+    "indexed_time": 53.849
+  },
+  {
+    "pos": 38,
+    "name": "Randall Wilcox",
+    "class_code": "XP",
+    "car_number": "173",
+    "raw_time": 60.372,
+    "pax_index": 0.892,
+    "indexed_time": 53.852
+  },
+  {
+    "pos": 39,
+    "name": "G.H. Sharp",
+    "class_code": "PST/GS",
+    "car_number": "46",
+    "raw_time": 66.834,
+    "pax_index": 0.809,
+    "indexed_time": 54.069
+  },
+  {
+    "pos": 40,
+    "name": "Josh Fowler",
+    "class_code": "PST/BS",
+    "car_number": "7",
+    "raw_time": 65.882,
+    "pax_index": 0.823,
+    "indexed_time": 54.221
+  },
+  {
+    "pos": 41,
+    "name": "Sami Kravetz",
+    "class_code": "PRT/SSP",
+    "car_number": "96",
+    "raw_time": 63.296,
+    "pax_index": 0.86,
+    "indexed_time": 54.435
+  },
+  {
+    "pos": 42,
+    "name": "Justin Schaeffer",
+    "class_code": "MOD/KM",
+    "car_number": "187",
+    "raw_time": 58.185,
+    "pax_index": 0.936,
+    "indexed_time": 54.461
+  },
+  {
+    "pos": 43,
+    "name": "Sean Minehart",
+    "class_code": "PRT/EM",
+    "car_number": "81",
+    "raw_time": 59.467,
+    "pax_index": 0.916,
+    "indexed_time": 54.472
+  },
+  {
+    "pos": 44,
+    "name": "John Fink iv",
+    "class_code": "R/AS",
+    "car_number": "33",
+    "raw_time": 65.669,
+    "pax_index": 0.83,
+    "indexed_time": 54.505
+  },
+  {
+    "pos": 45,
+    "name": "Matthew Nordberg",
+    "class_code": "GS",
+    "car_number": "76",
+    "raw_time": 67.494,
+    "pax_index": 0.809,
+    "indexed_time": 54.603
+  },
+  {
+    "pos": 46,
+    "name": "William Huneycutt",
+    "class_code": "AST",
+    "car_number": "19",
+    "raw_time": 65.393,
+    "pax_index": 0.836,
+    "indexed_time": 54.669
+  },
+  {
+    "pos": 47,
+    "name": "Joe Price",
+    "class_code": "GS",
+    "car_number": "89",
+    "raw_time": 67.618,
+    "pax_index": 0.809,
+    "indexed_time": 54.703
+  },
+  {
+    "pos": 48,
+    "name": "Andrew Aul",
+    "class_code": "PST/BS",
+    "car_number": "144",
+    "raw_time": 66.663,
+    "pax_index": 0.823,
+    "indexed_time": 54.864
+  },
+  {
+    "pos": 49,
+    "name": "Dakota Mackinnon",
+    "class_code": "CAM/CAM",
+    "car_number": "3",
+    "raw_time": 66.268,
+    "pax_index": 0.828,
+    "indexed_time": 54.87
+  },
+  {
+    "pos": 50,
+    "name": "Brian Castellano",
+    "class_code": "GS",
+    "car_number": "24",
+    "raw_time": 67.842,
+    "pax_index": 0.809,
+    "indexed_time": 54.884
+  },
+  {
+    "pos": 51,
+    "name": "Aaron Magloire",
+    "class_code": "PST/CST",
+    "car_number": "2",
+    "raw_time": 66.293,
+    "pax_index": 0.829,
+    "indexed_time": 54.957
+  },
+  {
+    "pos": 52,
+    "name": "Matt Carson",
+    "class_code": "ES",
+    "car_number": "12",
+    "raw_time": 69.751,
+    "pax_index": 0.788,
+    "indexed_time": 54.964
+  },
+  {
+    "pos": 53,
+    "name": "Ryan Berg",
+    "class_code": "PST/FS",
+    "car_number": "21",
+    "raw_time": 67.279,
+    "pax_index": 0.817,
+    "indexed_time": 54.967
+  },
+  {
+    "pos": 54,
+    "name": "Eric Adams",
+    "class_code": "HS",
+    "car_number": "16",
+    "raw_time": 70.537,
+    "pax_index": 0.78,
+    "indexed_time": 55.019
+  },
+  {
+    "pos": 55,
+    "name": "Chris Cranford",
+    "class_code": "SP/CSP",
+    "car_number": "71",
+    "raw_time": 64.155,
+    "pax_index": 0.858,
+    "indexed_time": 55.045
+  },
+  {
+    "pos": 56,
+    "name": "Duane Black",
+    "class_code": "DS",
+    "car_number": "17",
+    "raw_time": 67.941,
+    "pax_index": 0.811,
+    "indexed_time": 55.1
+  },
+  {
+    "pos": 57,
+    "name": "Doug Keiler",
+    "class_code": "FS",
+    "car_number": "154",
+    "raw_time": 67.576,
+    "pax_index": 0.817,
+    "indexed_time": 55.21
+  },
+  {
+    "pos": 58,
+    "name": "Brett Caine",
+    "class_code": "PST/CS",
+    "car_number": "81",
+    "raw_time": 67.955,
+    "pax_index": 0.814,
+    "indexed_time": 55.315
+  },
+  {
+    "pos": 59,
+    "name": "Jackson Price",
+    "class_code": "GST",
+    "car_number": "43",
+    "raw_time": 68.145,
+    "pax_index": 0.812,
+    "indexed_time": 55.334
+  },
+  {
+    "pos": 60,
+    "name": "Ross Pendergast-Pedersen",
+    "class_code": "PST/XB",
+    "car_number": "85",
+    "raw_time": 64.421,
+    "pax_index": 0.859,
+    "indexed_time": 55.338
+  },
+  {
+    "pos": 61,
+    "name": "Chuck Pyanowski",
+    "class_code": "PRT/CM",
+    "car_number": "190",
+    "raw_time": 61.779,
+    "pax_index": 0.896,
+    "indexed_time": 55.354
+  },
+  {
+    "pos": 62,
+    "name": "Matthew Wood-Thornhill",
+    "class_code": "GS",
+    "car_number": "19",
+    "raw_time": 68.444,
+    "pax_index": 0.809,
+    "indexed_time": 55.371
+  },
+  {
+    "pos": 63,
+    "name": "Ravi Patel",
+    "class_code": "R/CS",
+    "car_number": "22",
+    "raw_time": 68.313,
+    "pax_index": 0.814,
+    "indexed_time": 55.607
+  },
+  {
+    "pos": 64,
+    "name": "Chris Kempfer",
+    "class_code": "CAM/CAM",
+    "car_number": "53",
+    "raw_time": 65.687,
+    "pax_index": 0.847,
+    "indexed_time": 55.637
+  },
+  {
+    "pos": 65,
+    "name": "Terry Baker",
+    "class_code": "FS",
+    "car_number": "147",
+    "raw_time": 68.237,
+    "pax_index": 0.817,
+    "indexed_time": 55.75
+  },
+  {
+    "pos": 66,
+    "name": "Dylan Yuknis",
+    "class_code": "PST/SSC",
+    "car_number": "87",
+    "raw_time": 69.022,
+    "pax_index": 0.808,
+    "indexed_time": 55.77
+  },
+  {
+    "pos": 67,
+    "name": "Jashua Rodriguez",
+    "class_code": "EST",
+    "car_number": "93",
+    "raw_time": 68.551,
+    "pax_index": 0.815,
+    "indexed_time": 55.869
+  },
+  {
+    "pos": 68,
+    "name": "Arthur McDonald",
+    "class_code": "DS",
+    "car_number": "71",
+    "raw_time": 68.927,
+    "pax_index": 0.811,
+    "indexed_time": 55.9
+  },
+  {
+    "pos": 69,
+    "name": "Jon Furr",
+    "class_code": "XP",
+    "car_number": "42",
+    "raw_time": 63,
+    "pax_index": 0.892,
+    "indexed_time": 56.196
+  },
+  {
+    "pos": 70,
+    "name": "Jacques Bene",
+    "class_code": "PRT/DP",
+    "car_number": "157",
+    "raw_time": 65.158,
+    "pax_index": 0.863,
+    "indexed_time": 56.231
+  },
+  {
+    "pos": 71,
+    "name": "Sean Rice",
+    "class_code": "R/GS",
+    "car_number": "34",
+    "raw_time": 69.613,
+    "pax_index": 0.809,
+    "indexed_time": 56.317
+  },
+  {
+    "pos": 72,
+    "name": "Drew Thompson",
+    "class_code": "CST",
+    "car_number": "56",
+    "raw_time": 68.018,
+    "pax_index": 0.829,
+    "indexed_time": 56.387
+  },
+  {
+    "pos": 73,
+    "name": "Jason Graves",
+    "class_code": "CAM/CAM",
+    "car_number": "81",
+    "raw_time": 67.036,
+    "pax_index": 0.847,
+    "indexed_time": 56.779
+  },
+  {
+    "pos": 74,
+    "name": "Christopher Shearer",
+    "class_code": "XU",
+    "car_number": "988",
+    "raw_time": 65.15,
+    "pax_index": 0.872,
+    "indexed_time": 56.811
+  },
+  {
+    "pos": 75,
+    "name": "Kyle Payne",
+    "class_code": "SS",
+    "car_number": "666",
+    "raw_time": 67.634,
+    "pax_index": 0.84,
+    "indexed_time": 56.813
+  },
+  {
+    "pos": 76,
+    "name": "Brian Garman",
+    "class_code": "EST",
+    "car_number": "15",
+    "raw_time": 69.742,
+    "pax_index": 0.815,
+    "indexed_time": 56.84
+  },
+  {
+    "pos": 77,
+    "name": "John Emerson",
+    "class_code": "HS",
+    "car_number": "18",
+    "raw_time": 72.879,
+    "pax_index": 0.78,
+    "indexed_time": 56.846
+  },
+  {
+    "pos": 78,
+    "name": "Connor Dorony",
+    "class_code": "XA",
+    "car_number": "46",
+    "raw_time": 66.083,
+    "pax_index": 0.861,
+    "indexed_time": 56.897
+  },
+  {
+    "pos": 79,
+    "name": "Ehren Foley",
+    "class_code": "BS",
+    "car_number": "57",
+    "raw_time": 69.17,
+    "pax_index": 0.823,
+    "indexed_time": 56.927
+  },
+  {
+    "pos": 80,
+    "name": "Scott Johns",
+    "class_code": "CAM/CAM",
+    "car_number": "7",
+    "raw_time": 67.25,
+    "pax_index": 0.847,
+    "indexed_time": 56.961
+  },
+  {
+    "pos": 81,
+    "name": "Caleb Kendrick",
+    "class_code": "DS",
+    "car_number": "57",
+    "raw_time": 70.297,
+    "pax_index": 0.811,
+    "indexed_time": 57.011
+  },
+  {
+    "pos": 82,
+    "name": "Curtis Staples",
+    "class_code": "FS",
+    "car_number": "47",
+    "raw_time": 69.792,
+    "pax_index": 0.817,
+    "indexed_time": 57.02
+  },
+  {
+    "pos": 83,
+    "name": "Em Huneycutt",
+    "class_code": "GST",
+    "car_number": "17",
+    "raw_time": 70.347,
+    "pax_index": 0.812,
+    "indexed_time": 57.122
+  },
+  {
+    "pos": 84,
+    "name": "Randall Snider",
+    "class_code": "CAM/CAM",
+    "car_number": "11",
+    "raw_time": 69.834,
+    "pax_index": 0.819,
+    "indexed_time": 57.194
+  },
+  {
+    "pos": 85,
+    "name": "Jack Brinkley",
+    "class_code": "ES",
+    "car_number": "29",
+    "raw_time": 72.666,
+    "pax_index": 0.788,
+    "indexed_time": 57.261
+  },
+  {
+    "pos": 86,
+    "name": "Ean Bass",
+    "class_code": "EST",
+    "car_number": "44",
+    "raw_time": 70.285,
+    "pax_index": 0.815,
+    "indexed_time": 57.282
+  },
+  {
+    "pos": 87,
+    "name": "Clark Kirkland",
+    "class_code": "CAM/CAM",
+    "car_number": "4",
+    "raw_time": 69.235,
+    "pax_index": 0.828,
+    "indexed_time": 57.327
+  },
+  {
+    "pos": 88,
+    "name": "Nathan Carson",
+    "class_code": "DS",
+    "car_number": "42",
+    "raw_time": 70.731,
+    "pax_index": 0.811,
+    "indexed_time": 57.363
+  },
+  {
+    "pos": 89,
+    "name": "Shawn Fowler",
+    "class_code": "CAM/CAM",
+    "car_number": "73",
+    "raw_time": 69.359,
+    "pax_index": 0.828,
+    "indexed_time": 57.429
+  },
+  {
+    "pos": 90,
+    "name": "Tim Matijow",
+    "class_code": "XP",
+    "car_number": "119",
+    "raw_time": 64.419,
+    "pax_index": 0.892,
+    "indexed_time": 57.462
+  },
+  {
+    "pos": 91,
+    "name": "Bryan Lalonde",
+    "class_code": "CAM/CAM",
+    "car_number": "63",
+    "raw_time": 70.195,
+    "pax_index": 0.819,
+    "indexed_time": 57.49
+  },
+  {
+    "pos": 92,
+    "name": "Steve DeVercelly",
+    "class_code": "BST",
+    "car_number": "25",
+    "raw_time": 68.851,
+    "pax_index": 0.835,
+    "indexed_time": 57.491
+  },
+  {
+    "pos": 93,
+    "name": "Donna Littlejohn",
+    "class_code": "L/CAMS",
+    "car_number": "111",
+    "raw_time": 67.919,
+    "pax_index": 0.847,
+    "indexed_time": 57.527
+  },
+  {
+    "pos": 94,
+    "name": "Michelle Schaeffer",
+    "class_code": "EST",
+    "car_number": "26",
+    "raw_time": 70.624,
+    "pax_index": 0.815,
+    "indexed_time": 57.559
+  },
+  {
+    "pos": 95,
+    "name": "Ryan Clark",
+    "class_code": "DST",
+    "car_number": "89",
+    "raw_time": 70.271,
+    "pax_index": 0.82,
+    "indexed_time": 57.622
+  },
+  {
+    "pos": 96,
+    "name": "Joseph Romano",
+    "class_code": "XA",
+    "car_number": "56",
+    "raw_time": 67.166,
+    "pax_index": 0.861,
+    "indexed_time": 57.83
+  },
+  {
+    "pos": 97,
+    "name": "Ashley Ludwick",
+    "class_code": "HS",
+    "car_number": "13",
+    "raw_time": 74.142,
+    "pax_index": 0.78,
+    "indexed_time": 57.831
+  },
+  {
+    "pos": 98,
+    "name": "Marcus Way",
+    "class_code": "R/GST",
+    "car_number": "1",
+    "raw_time": 71.243,
+    "pax_index": 0.812,
+    "indexed_time": 57.849
+  },
+  {
+    "pos": 99,
+    "name": "Jerry Sturgill",
+    "class_code": "PRT/FSP",
+    "car_number": "18",
+    "raw_time": 69.47,
+    "pax_index": 0.833,
+    "indexed_time": 57.869
+  },
+  {
+    "pos": 100,
+    "name": "Trevor Grott",
+    "class_code": "EST",
+    "car_number": "73",
+    "raw_time": 71.133,
+    "pax_index": 0.815,
+    "indexed_time": 57.973
+  },
+  {
+    "pos": 101,
+    "name": "Jason Timely Gent Amistadi",
+    "class_code": "XP",
+    "car_number": "73",
+    "raw_time": 65.051,
+    "pax_index": 0.892,
+    "indexed_time": 58.025
+  },
+  {
+    "pos": 102,
+    "name": "Thomas Crump",
+    "class_code": "CAM/CAM",
+    "car_number": "127",
+    "raw_time": 70.081,
+    "pax_index": 0.828,
+    "indexed_time": 58.027
+  },
+  {
+    "pos": 103,
+    "name": "David Murdock",
+    "class_code": "ES",
+    "car_number": "9",
+    "raw_time": 73.709,
+    "pax_index": 0.788,
+    "indexed_time": 58.083
+  },
+  {
+    "pos": 104,
+    "name": "Frank Saubier",
+    "class_code": "CS",
+    "car_number": "3",
+    "raw_time": 71.385,
+    "pax_index": 0.814,
+    "indexed_time": 58.107
+  },
+  {
+    "pos": 105,
+    "name": "Mikayla Hockman",
+    "class_code": "GST",
+    "car_number": "117",
+    "raw_time": 71.92,
+    "pax_index": 0.812,
+    "indexed_time": 58.399
+  },
+  {
+    "pos": 106,
+    "name": "Tonya Howell",
+    "class_code": "ES",
+    "car_number": "91",
+    "raw_time": 74.111,
+    "pax_index": 0.788,
+    "indexed_time": 58.399
+  },
+  {
+    "pos": 107,
+    "name": "Lisa Keyes",
+    "class_code": "XA",
+    "car_number": "131",
+    "raw_time": 67.879,
+    "pax_index": 0.861,
+    "indexed_time": 58.444
+  },
+  {
+    "pos": 108,
+    "name": "Denver Sells",
+    "class_code": "HS",
+    "car_number": "107",
+    "raw_time": 75.004,
+    "pax_index": 0.78,
+    "indexed_time": 58.503
+  },
+  {
+    "pos": 109,
+    "name": "Justin Bitar",
+    "class_code": "DST",
+    "car_number": "77",
+    "raw_time": 71.633,
+    "pax_index": 0.82,
+    "indexed_time": 58.739
+  },
+  {
+    "pos": 110,
+    "name": "Seth Trexler",
+    "class_code": "R/EST",
+    "car_number": "25",
+    "raw_time": 72.089,
+    "pax_index": 0.815,
+    "indexed_time": 58.753
+  },
+  {
+    "pos": 111,
+    "name": "Kyle Bonin",
+    "class_code": "CAM/CAM",
+    "car_number": "260",
+    "raw_time": 71.183,
+    "pax_index": 0.828,
+    "indexed_time": 58.94
+  },
+  {
+    "pos": 112,
+    "name": "Bryan Wofford",
+    "class_code": "EVX",
+    "car_number": "11",
+    "raw_time": 70.376,
+    "pax_index": 0.839,
+    "indexed_time": 59.045
+  },
+  {
+    "pos": 113,
+    "name": "Derek Stewart",
+    "class_code": "SST",
+    "car_number": "68",
+    "raw_time": 70.596,
+    "pax_index": 0.838,
+    "indexed_time": 59.159
+  },
+  {
+    "pos": 114,
+    "name": "James Soucie",
+    "class_code": "XA",
+    "car_number": "66",
+    "raw_time": 68.725,
+    "pax_index": 0.861,
+    "indexed_time": 59.172
+  },
+  {
+    "pos": 115,
+    "name": "Bryan Hayes",
+    "class_code": "AS",
+    "car_number": "5",
+    "raw_time": 71.308,
+    "pax_index": 0.83,
+    "indexed_time": 59.186
+  },
+  {
+    "pos": 116,
+    "name": "Austin Zeigler",
+    "class_code": "BS",
+    "car_number": "13",
+    "raw_time": 72.475,
+    "pax_index": 0.823,
+    "indexed_time": 59.647
+  },
+  {
+    "pos": 117,
+    "name": "Steve Hall",
+    "class_code": "M/HS",
+    "car_number": "47",
+    "raw_time": 76.483,
+    "pax_index": 0.78,
+    "indexed_time": 59.657
+  },
+  {
+    "pos": 118,
+    "name": "Dave Addington",
+    "class_code": "CAM/CAM",
+    "car_number": "35",
+    "raw_time": 72.17,
+    "pax_index": 0.828,
+    "indexed_time": 59.757
+  },
+  {
+    "pos": 119,
+    "name": "Troy Hudson",
+    "class_code": "XA",
+    "car_number": "23",
+    "raw_time": 69.53,
+    "pax_index": 0.861,
+    "indexed_time": 59.865
+  },
+  {
+    "pos": 120,
+    "name": "Stanley Peters",
+    "class_code": "M/ES",
+    "car_number": "9",
+    "raw_time": 76.243,
+    "pax_index": 0.788,
+    "indexed_time": 60.079
+  },
+  {
+    "pos": 121,
+    "name": "Brian Kempert",
+    "class_code": "CST",
+    "car_number": "216",
+    "raw_time": 72.524,
+    "pax_index": 0.829,
+    "indexed_time": 60.122
+  },
+  {
+    "pos": 122,
+    "name": "Kal Saber",
+    "class_code": "DST",
+    "car_number": "177",
+    "raw_time": 73.324,
+    "pax_index": 0.82,
+    "indexed_time": 60.126
+  },
+  {
+    "pos": 123,
+    "name": "Andy Harris",
+    "class_code": "ES",
+    "car_number": "155",
+    "raw_time": 76.313,
+    "pax_index": 0.788,
+    "indexed_time": 60.135
+  },
+  {
+    "pos": 124,
+    "name": "W Dean Furr",
+    "class_code": "XP",
+    "car_number": "56",
+    "raw_time": 67.461,
+    "pax_index": 0.892,
+    "indexed_time": 60.175
+  },
+  {
+    "pos": 125,
+    "name": "Christopher Soucie",
+    "class_code": "XA",
+    "car_number": "4",
+    "raw_time": 70.031,
+    "pax_index": 0.861,
+    "indexed_time": 60.297
+  },
+  {
+    "pos": 126,
+    "name": "Mark Alascio",
+    "class_code": "CAM/CAM",
+    "car_number": "64",
+    "raw_time": 71.258,
+    "pax_index": 0.847,
+    "indexed_time": 60.356
+  },
+  {
+    "pos": 127,
+    "name": "Joe Jackson",
+    "class_code": "CAM/CAM",
+    "car_number": "68",
+    "raw_time": 73.155,
+    "pax_index": 0.828,
+    "indexed_time": 60.572
+  },
+  {
+    "pos": 128,
+    "name": "Nick Salevan",
+    "class_code": "R/DS",
+    "car_number": "86",
+    "raw_time": 74.795,
+    "pax_index": 0.811,
+    "indexed_time": 60.659
+  },
+  {
+    "pos": 129,
+    "name": "Harley Kirkland",
+    "class_code": "CAM/CAM",
+    "car_number": "14",
+    "raw_time": 73.384,
+    "pax_index": 0.828,
+    "indexed_time": 60.762
+  },
+  {
+    "pos": 130,
+    "name": "Tristan Stephens",
+    "class_code": "XA",
+    "car_number": "821",
+    "raw_time": 70.876,
+    "pax_index": 0.861,
+    "indexed_time": 61.024
+  },
+  {
+    "pos": 131,
+    "name": "Scott Grumbles",
+    "class_code": "BS",
+    "car_number": "8",
+    "raw_time": 74.256,
+    "pax_index": 0.823,
+    "indexed_time": 61.113
+  },
+  {
+    "pos": 132,
+    "name": "Ian Woolcock",
+    "class_code": "DST",
+    "car_number": "83",
+    "raw_time": 74.586,
+    "pax_index": 0.82,
+    "indexed_time": 61.161
+  },
+  {
+    "pos": 133,
+    "name": "Brandon Badgett",
+    "class_code": "EST",
+    "car_number": "99",
+    "raw_time": 75.625,
+    "pax_index": 0.815,
+    "indexed_time": 61.634
+  },
+  {
+    "pos": 134,
+    "name": "Krishna Ramalingam",
+    "class_code": "R/DS",
+    "car_number": "7",
+    "raw_time": 76.162,
+    "pax_index": 0.811,
+    "indexed_time": 61.767
+  },
+  {
+    "pos": 135,
+    "name": "Homero Gomez",
+    "class_code": "R/CAMS",
+    "car_number": "48",
+    "raw_time": 73.174,
+    "pax_index": 0.847,
+    "indexed_time": 61.978
+  },
+  {
+    "pos": 136,
+    "name": "Sam Evans",
+    "class_code": "CS",
+    "car_number": "1",
+    "raw_time": 76.159,
+    "pax_index": 0.814,
+    "indexed_time": 61.993
+  },
+  {
+    "pos": 137,
+    "name": "Joshua Greene",
+    "class_code": "GS",
+    "car_number": "22",
+    "raw_time": 76.867,
+    "pax_index": 0.809,
+    "indexed_time": 62.185
+  },
+  {
+    "pos": 138,
+    "name": "Daniel Todd",
+    "class_code": "R/XA",
+    "car_number": "15",
+    "raw_time": 72.273,
+    "pax_index": 0.861,
+    "indexed_time": 62.227
+  },
+  {
+    "pos": 139,
+    "name": "Campbell Hemminghaus",
+    "class_code": "CAM/CAM",
+    "car_number": "27",
+    "raw_time": 75.756,
+    "pax_index": 0.828,
+    "indexed_time": 62.726
+  },
+  {
+    "pos": 140,
+    "name": "Jordan Taylor",
+    "class_code": "PRT/DP",
+    "car_number": "57",
+    "raw_time": 72.701,
+    "pax_index": 0.863,
+    "indexed_time": 62.741
+  },
+  {
+    "pos": 141,
+    "name": "Adam Guilmet",
+    "class_code": "CST",
+    "car_number": "32",
+    "raw_time": 76.367,
+    "pax_index": 0.829,
+    "indexed_time": 63.308
+  },
+  {
+    "pos": 142,
+    "name": "Carli Aul",
+    "class_code": "PST/BS",
+    "car_number": "44",
+    "raw_time": 76.944,
+    "pax_index": 0.823,
+    "indexed_time": 63.325
+  },
+  {
+    "pos": 143,
+    "name": "Gerald Greene",
+    "class_code": "CS",
+    "car_number": "2",
+    "raw_time": 78.22,
+    "pax_index": 0.814,
+    "indexed_time": 63.671
+  },
+  {
+    "pos": 144,
+    "name": "Ryan Callari",
+    "class_code": "STO",
+    "car_number": "3",
+    "raw_time": 64.193,
+    "pax_index": 1,
+    "indexed_time": 64.193
+  },
+  {
+    "pos": 145,
+    "name": "Brad Davis",
+    "class_code": "CAM/CAM",
+    "car_number": "9",
+    "raw_time": 78.236,
+    "pax_index": 0.828,
+    "indexed_time": 64.779
+  },
+  {
+    "pos": 146,
+    "name": "Joe Coxey",
+    "class_code": "SMOD/SM",
+    "car_number": "24",
+    "raw_time": 75.589,
+    "pax_index": 0.857,
+    "indexed_time": 64.78
+  },
+  {
+    "pos": 147,
+    "name": "Kevin Wofford",
+    "class_code": "SMOD/SM",
+    "car_number": "82",
+    "raw_time": 74.738,
+    "pax_index": 0.87,
+    "indexed_time": 65.022
+  },
+  {
+    "pos": 148,
+    "name": "Hannah Luttrell",
+    "class_code": "DST",
+    "car_number": "4",
+    "raw_time": 79.377,
+    "pax_index": 0.82,
+    "indexed_time": 65.089
+  },
+  {
+    "pos": 149,
+    "name": "Matthew Weatherly",
+    "class_code": "CAM/CAM",
+    "car_number": "1",
+    "raw_time": 79.749,
+    "pax_index": 0.819,
+    "indexed_time": 65.314
+  },
+  {
+    "pos": 150,
+    "name": "Frank Vessell",
+    "class_code": "BST",
+    "car_number": "98",
+    "raw_time": 78.886,
+    "pax_index": 0.835,
+    "indexed_time": 65.87
+  },
+  {
+    "pos": 151,
+    "name": "Michael Crawford",
+    "class_code": "XB",
+    "car_number": "13",
+    "raw_time": 77.052,
+    "pax_index": 0.859,
+    "indexed_time": 66.188
+  },
+  {
+    "pos": 152,
+    "name": "Stuart Lasswell",
+    "class_code": "XB",
+    "car_number": "113",
+    "raw_time": 77.813,
+    "pax_index": 0.859,
+    "indexed_time": 66.841
+  },
+  {
+    "pos": 153,
+    "name": "Miles Johnson",
+    "class_code": "XP",
+    "car_number": "6",
+    "raw_time": 76.211,
+    "pax_index": 0.892,
+    "indexed_time": 67.98
+  },
+  {
+    "pos": 154,
+    "name": "Em's Huneycutt",
+    "class_code": "STO",
+    "car_number": "19",
+    "raw_time": 68.897,
+    "pax_index": 1,
+    "indexed_time": 68.897
+  },
+  {
+    "pos": 155,
+    "name": "Zachary Grassburger",
+    "class_code": "NOVC",
+    "car_number": "27",
+    "raw_time": 68.918,
+    "pax_index": 1,
+    "indexed_time": 68.918
+  },
+  {
+    "pos": 156,
+    "name": "Liam Flynn",
+    "class_code": "XA",
+    "car_number": "8",
+    "raw_time": 80.485,
+    "pax_index": 0.861,
+    "indexed_time": 69.298
+  },
+  {
+    "pos": 157,
+    "name": "Sydney Thompson",
+    "class_code": "CS",
+    "car_number": "181",
+    "raw_time": 85.156,
+    "pax_index": 0.814,
+    "indexed_time": 69.317
+  },
+  {
+    "pos": 158,
+    "name": "Daniel Shugan",
+    "class_code": "XB",
+    "car_number": "7",
+    "raw_time": 81.332,
+    "pax_index": 0.859,
+    "indexed_time": 69.864
+  },
+  {
+    "pos": 159,
+    "name": "Bryan Lalonde",
+    "class_code": "STO",
+    "car_number": "63",
+    "raw_time": 69.866,
+    "pax_index": 1,
+    "indexed_time": 69.866
+  },
+  {
+    "pos": 160,
+    "name": "James Soucie",
+    "class_code": "STO",
+    "car_number": "66",
+    "raw_time": 70.178,
+    "pax_index": 1,
+    "indexed_time": 70.178
+  },
+  {
+    "pos": 161,
+    "name": "Holt Gorrell",
+    "class_code": "NOVA",
+    "car_number": "81",
+    "raw_time": 70.904,
+    "pax_index": 1,
+    "indexed_time": 70.904
+  },
+  {
+    "pos": 162,
+    "name": "Azhar Rehman",
+    "class_code": "NOVC",
+    "car_number": "10",
+    "raw_time": 71.546,
+    "pax_index": 1,
+    "indexed_time": 71.546
+  },
+  {
+    "pos": 163,
+    "name": "Guy Tenini",
+    "class_code": "FS",
+    "car_number": "5",
+    "raw_time": 87.643,
+    "pax_index": 0.817,
+    "indexed_time": 71.604
+  },
+  {
+    "pos": 164,
+    "name": "Nolan Pesola",
+    "class_code": "HS",
+    "car_number": "66",
+    "raw_time": 91.978,
+    "pax_index": 0.78,
+    "indexed_time": 71.743
+  },
+  {
+    "pos": 165,
+    "name": "Nathan Paschal",
+    "class_code": "NOVB",
+    "car_number": "86",
+    "raw_time": 72.052,
+    "pax_index": 1,
+    "indexed_time": 72.052
+  },
+  {
+    "pos": 166,
+    "name": "Jeremy Brinkworth",
+    "class_code": "NOVC",
+    "car_number": "9",
+    "raw_time": 72.112,
+    "pax_index": 1,
+    "indexed_time": 72.112
+  },
+  {
+    "pos": 167,
+    "name": "Colin Nelson",
+    "class_code": "R/AM",
+    "car_number": "2",
+    "raw_time": 72.443,
+    "pax_index": 1,
+    "indexed_time": 72.443
+  },
+  {
+    "pos": 168,
+    "name": "Matthew Ham",
+    "class_code": "NOVA",
+    "car_number": "13",
+    "raw_time": 72.999,
+    "pax_index": 1,
+    "indexed_time": 72.999
+  },
+  {
+    "pos": 169,
+    "name": "Keith Carpenter",
+    "class_code": "SMOD/SM",
+    "car_number": "72",
+    "raw_time": 85.96,
+    "pax_index": 0.857,
+    "indexed_time": 73.668
+  },
+  {
+    "pos": 170,
+    "name": "Austin Proctor",
+    "class_code": "NOVB",
+    "car_number": "997",
+    "raw_time": 74.126,
+    "pax_index": 1,
+    "indexed_time": 74.126
+  },
+  {
+    "pos": 171,
+    "name": "Bill DeYoung",
+    "class_code": "NOVA",
+    "car_number": "66",
+    "raw_time": 74.234,
+    "pax_index": 1,
+    "indexed_time": 74.234
+  },
+  {
+    "pos": 172,
+    "name": "Isaiah Alvarado-Ramirez",
+    "class_code": "NOVA",
+    "car_number": "634",
+    "raw_time": 74.376,
+    "pax_index": 1,
+    "indexed_time": 74.376
+  },
+  {
+    "pos": 173,
+    "name": "Joe Paskiewicz",
+    "class_code": "XB",
+    "car_number": "55",
+    "raw_time": 87.047,
+    "pax_index": 0.859,
+    "indexed_time": 74.773
+  },
+  {
+    "pos": 174,
+    "name": "Josephine Nelan",
+    "class_code": "NOVA",
+    "car_number": "2",
+    "raw_time": 75.709,
+    "pax_index": 1,
+    "indexed_time": 75.709
+  },
+  {
+    "pos": 175,
+    "name": "Rob Sosebee",
+    "class_code": "NOVB",
+    "car_number": "71",
+    "raw_time": 75.9,
+    "pax_index": 1,
+    "indexed_time": 75.9
+  },
+  {
+    "pos": 176,
+    "name": "Casey Nelan",
+    "class_code": "R/AM",
+    "car_number": "4",
+    "raw_time": 75.924,
+    "pax_index": 1,
+    "indexed_time": 75.924
+  },
+  {
+    "pos": 177,
+    "name": "Ryan Nelson",
+    "class_code": "R/AM",
+    "car_number": "13",
+    "raw_time": 75.937,
+    "pax_index": 1,
+    "indexed_time": 75.937
+  },
+  {
+    "pos": 178,
+    "name": "Tucker Graves",
+    "class_code": "NOVB",
+    "car_number": "11",
+    "raw_time": 76.118,
+    "pax_index": 1,
+    "indexed_time": 76.118
+  },
+  {
+    "pos": 179,
+    "name": "Kevin Guzman",
+    "class_code": "NOVA",
+    "car_number": "67",
+    "raw_time": 76.427,
+    "pax_index": 1,
+    "indexed_time": 76.427
+  },
+  {
+    "pos": 180,
+    "name": "Ken Miles",
+    "class_code": "NOVA",
+    "car_number": "1",
+    "raw_time": 76.491,
+    "pax_index": 1,
+    "indexed_time": 76.491
+  },
+  {
+    "pos": 181,
+    "name": "Brandon Carlson",
+    "class_code": "NOVA",
+    "car_number": "58",
+    "raw_time": 77.821,
+    "pax_index": 1,
+    "indexed_time": 77.821
+  },
+  {
+    "pos": 182,
+    "name": "Eric Towery",
+    "class_code": "NOVC",
+    "car_number": "75",
+    "raw_time": 77.839,
+    "pax_index": 1,
+    "indexed_time": 77.839
+  },
+  {
+    "pos": 183,
+    "name": "Zach Rackley",
+    "class_code": "NOVC",
+    "car_number": "84",
+    "raw_time": 78.001,
+    "pax_index": 1,
+    "indexed_time": 78.001
+  },
+  {
+    "pos": 184,
+    "name": "Talena Stewart",
+    "class_code": "NOVB",
+    "car_number": "8",
+    "raw_time": 78.028,
+    "pax_index": 1,
+    "indexed_time": 78.028
+  },
+  {
+    "pos": 185,
+    "name": "Mark Soucie",
+    "class_code": "STO",
+    "car_number": "7",
+    "raw_time": 78.055,
+    "pax_index": 1,
+    "indexed_time": 78.055
+  },
+  {
+    "pos": 186,
+    "name": "Georgia (June) Landry",
+    "class_code": "NOVA",
+    "car_number": "155",
+    "raw_time": 78.773,
+    "pax_index": 1,
+    "indexed_time": 78.773
+  },
+  {
+    "pos": 187,
+    "name": "Logan Duncan",
+    "class_code": "NOVA",
+    "car_number": "18",
+    "raw_time": 78.854,
+    "pax_index": 1,
+    "indexed_time": 78.854
+  },
+  {
+    "pos": 188,
+    "name": "Bryton Webber",
+    "class_code": "NOVC",
+    "car_number": "29",
+    "raw_time": 79.065,
+    "pax_index": 1,
+    "indexed_time": 79.065
+  },
+  {
+    "pos": 189,
+    "name": "Allison Sosebee",
+    "class_code": "NOVB",
+    "car_number": "103",
+    "raw_time": 79.393,
+    "pax_index": 1,
+    "indexed_time": 79.393
+  },
+  {
+    "pos": 190,
+    "name": "Sujan Guditi",
+    "class_code": "NOVB",
+    "car_number": "12",
+    "raw_time": 81.475,
+    "pax_index": 1,
+    "indexed_time": 81.475
+  },
+  {
+    "pos": 191,
+    "name": "Kevin Patel",
+    "class_code": "NOVC",
+    "car_number": "26",
+    "raw_time": 82.843,
+    "pax_index": 1,
+    "indexed_time": 82.843
+  },
+  {
+    "pos": 192,
+    "name": "Federico Cardoso",
+    "class_code": "NOVC",
+    "car_number": "17",
+    "raw_time": 83.261,
+    "pax_index": 1,
+    "indexed_time": 83.261
+  },
+  {
+    "pos": 193,
+    "name": "Brenden Rogan",
+    "class_code": "NOVC",
+    "car_number": "56",
+    "raw_time": 85.622,
+    "pax_index": 1,
+    "indexed_time": 85.622
+  },
+  {
+    "pos": 194,
+    "name": "Charlie Knight",
+    "class_code": "NOVC",
+    "car_number": "46",
+    "raw_time": 88.605,
+    "pax_index": 1,
+    "indexed_time": 88.605
+  },
+  {
+    "pos": 195,
+    "name": "Vic Venettozzi",
+    "class_code": "NOVC",
+    "car_number": "38",
+    "raw_time": 103.202,
+    "pax_index": 1,
+    "indexed_time": 103.202
+  }
+]
