@@ -1,44 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import {
-  ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, ReferenceArea,
-} from 'recharts'
 import ChartCard from '../shared/ChartCard'
-import { venueColor } from '../shared/venueColors'
-import { linReg, getYearBands, TrendBadge } from './chartUtils.jsx'
+import { linReg, TrendBadge } from './chartUtils.jsx'
 import { coneChartData } from './coneUtils.js'
 
-const COLORS = { grid: '#e5e7eb', fg: '#6b7280' }
-
-function CustomTooltip({ active, payload }) {
-  if (!active || !payload?.length) return null
-  const d = payload[0].payload
-  return (
-    <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[160px]">
-      <div className="font-semibold mb-1">{d.label}</div>
-      <div className="text-fg-muted">
-        Cones: <span className="text-fg font-semibold">{d.totalCones}</span>
-      </div>
-      <div className="text-fg-muted">
-        {d.conedRuns} coned run{d.conedRuns !== 1 ? 's' : ''} of {d.totalRuns}
-      </div>
-    </div>
-  )
-}
+const CONE_ICON = `${import.meta.env.BASE_URL}cone.svg`
+const CONE_W = 16   // px — width of each cone icon
+const CONE_H = 22   // px — height of each cone icon (matches SVG ~1.38 aspect ratio)
 
 export default function ConeBarChart({ data }) {
   const navigate = useNavigate()
   const base = coneChartData(data)
   if (base.length === 0) return null
 
-  const tickMap = Object.fromEntries(base.map(d => [d.id, d.tick]))
   const overallReg = linReg(base.map(d => ({ x: d.i, y: d.totalCones })))
   const slope = overallReg?.slope ?? null
-  const chartData = base.map(d => ({
-    ...d,
-    trend: overallReg ? parseFloat((overallReg.slope * d.i + overallReg.intercept).toFixed(2)) : null,
-  }))
-  const yearBands = getYearBands(chartData)
+  const maxCones = Math.max(...base.map(d => d.totalCones), 1)
+  const chartH = maxCones * CONE_H
 
   return (
     <ChartCard
@@ -46,59 +23,61 @@ export default function ConeBarChart({ data }) {
       subtitle="Total cones hit — lower is better"
       headerRight={<TrendBadge slope={slope} positiveIsGood={false} decimals={2} />}
     >
-      <ResponsiveContainer width="100%" height={200}>
-        <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
-          {yearBands.map(band => (
-            <ReferenceArea
-              key={band.year}
-              x1={band.x1}
-              x2={band.x2}
-              fill={band.fill}
-              strokeOpacity={0}
-              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -2 }}
-              ifOverflow="extendDomain"
-            />
-          ))}
-          <XAxis
-            dataKey="id"
-            tickFormatter={id => tickMap[id] ?? id}
-            tick={{ fill: COLORS.fg, fontSize: 11 }}
-            axisLine={false}
-            tickLine={false}
+      <div className="flex items-end gap-0.5 overflow-x-auto">
+        {base.map(d => (
+          <EventColumn
+            key={d.id}
+            d={d}
+            chartH={chartH}
+            onClick={() => navigate(`/event/${d.id}`)}
           />
-          <YAxis
-            allowDecimals={false}
-            tick={{ fill: COLORS.fg, fontSize: 11 }}
-            axisLine={false}
-            tickLine={false}
-            width={28}
-          />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.04)' }} />
-          <Bar
-            dataKey="totalCones"
-            radius={[4, 4, 0, 0]}
-            maxBarSize={48}
-            minPointSize={2}
-            onClick={d => navigate(`/event/${d.id}`)}
-            style={{ cursor: 'pointer' }}
-            isAnimationActive={false}
-          >
-            {chartData.map(entry => (
-              <Cell key={entry.id} fill={venueColor(entry.venue)} fillOpacity={0.85} />
-            ))}
-          </Bar>
-          <Line
-            dataKey="trend"
-            stroke="#94a3b8"
-            strokeWidth={2}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            isAnimationActive={false}
-          />
-        </ComposedChart>
-      </ResponsiveContainer>
+        ))}
+      </div>
     </ChartCard>
+  )
+}
+
+function EventColumn({ d, chartH, onClick }) {
+  return (
+    <div
+      className="relative flex flex-col items-center cursor-pointer group"
+      style={{ flex: 1, minWidth: CONE_W + 4 }}
+      onClick={onClick}
+    >
+      {/* Tooltip */}
+      <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 z-10 px-2.5 py-1.5 text-xs rounded bg-surface-2 border border-border shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-100">
+        <div className="font-semibold text-fg mb-0.5">{d.label}</div>
+        <div className="text-fg-muted">
+          Cones: <span className="text-fg font-semibold">{d.totalCones}</span>
+        </div>
+        <div className="text-fg-muted">
+          {d.conedRuns} coned run{d.conedRuns !== 1 ? 's' : ''} of {d.totalRuns}
+        </div>
+      </div>
+
+      {/* Cone stack — flex-col-reverse so first cone sits at the bottom */}
+      <div
+        className="flex flex-col-reverse items-center justify-start"
+        style={{ height: chartH }}
+      >
+        {d.totalCones === 0
+          ? <div className="w-3 h-px bg-border rounded" />
+          : Array.from({ length: d.totalCones }).map((_, i) => (
+              <img
+                key={i}
+                src={CONE_ICON}
+                alt="cone"
+                style={{ width: CONE_W, height: CONE_H }}
+                className="object-contain"
+              />
+            ))
+        }
+      </div>
+
+      {/* X-axis label */}
+      <div className="text-[10px] text-fg-subtle mt-1.5 tabular-nums leading-none">
+        {d.tick}
+      </div>
+    </div>
   )
 }

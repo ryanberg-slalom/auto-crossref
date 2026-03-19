@@ -18,21 +18,21 @@ export default function ConeStats({ attendedEvents }) {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <StatCard
+      <StatCard labelClassName="text-orange-700"
         label="Total Cones"
         value={totalCones}
         sub={`avg ${avgConedRunsPerEvent.toFixed(1)} coned runs / event`}
       />
-      <StatCard
+      <StatCard labelClassName="text-orange-700"
         label="Worst Event"
         value={worstCones > 0 ? `${worstCones} cones` : '—'}
         sub={worstEvent && worstCones > 0 ? `${worstEvent.season} E${worstEvent.event_number}` : null}
       />
-      <StatCard
+      <StatCard labelClassName="text-orange-700"
         label="Longest Clean Streak"
         value={`${longestStreak} runs`}
       />
-      <StatCard
+      <StatCard labelClassName="text-orange-700"
         label="Current Streak"
         value={`${currentStreak} runs`}
         sub={lastConeSub}
