@@ -13,14 +13,14 @@ export default function DashboardPage() {
   const navigate = useNavigate()
   const setSubnav = useContext(SubnavContext)
 
-  const sorted = [...attendedEvents].sort((a, b) => a.event_number - b.event_number)
+  const sorted = [...attendedEvents].sort((a, b) => a.date.localeCompare(b.date))
 
   useEffect(() => {
     setSubnav(
       <div className="flex items-center gap-3 min-w-0 w-full">
         <span className="text-sm font-extrabold text-fg">Dashboard</span>
         <span className="text-fg-subtle text-xs">·</span>
-        <span className="text-xs text-fg-muted">{season} Season</span>
+        <span className="text-xs text-fg-muted">{season}</span>
         <div className="flex-1" />
         <span className="text-xs text-fg-muted">
           {subject.name} · {subject.class}
@@ -74,7 +74,7 @@ function EventsTable({ events, navigate }) {
       <table className="w-full text-xs">
         <thead>
           <tr className="border-b border-border bg-subnav">
-            {['Event', 'Date', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Hyp.'].map(h => (
+            {['Year', 'Event', 'Date', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Hyp.'].map(h => (
               <th
                 key={h}
                 className="px-4 py-2 text-left font-medium uppercase tracking-wider text-fg-subtle"
@@ -111,6 +111,9 @@ function EventRow({ event: e, ryan: r, index: i, total, navigate }) {
       ].join(' ')}
       onClick={() => navigate(`/event/${e.id}`)}
     >
+      <td className="px-4 py-2.5 tabular-nums text-fg-subtle">
+        {e.season}
+      </td>
       <td className="px-4 py-2.5 font-medium text-fg">
         <span
           className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-middle shrink-0"

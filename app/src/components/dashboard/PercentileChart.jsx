@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, LabelList,
+  ResponsiveContainer, Cell, LabelList, ReferenceArea,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
 import { venueColor } from '../shared/venueColors'
@@ -16,7 +16,6 @@ const TREND = {
   zmax: '#7a1414',
 }
 
-// Returns { slope, intercept } for least-squares linear fit over [{x, y}] points
 function linReg(points) {
   const n = points.length
   if (n < 2) return null
@@ -27,6 +26,27 @@ function linReg(points) {
   const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
   const intercept = (sumY - slope * sumX) / n
   return { slope, intercept }
+}
+
+// Returns [{year, x1, x2, fill}] for alternating year band backgrounds
+function getYearBands(chartData) {
+  const seen = []
+  const yearMap = {}
+  chartData.forEach(d => {
+    const year = String(d.id).split('-')[0]
+    if (!yearMap[year]) {
+      yearMap[year] = { year, ids: [] }
+      seen.push(year)
+    }
+    yearMap[year].ids.push(d.id)
+  })
+  return seen.map((year, idx) => ({
+    year,
+    x1: yearMap[year].ids[0],
+    x2: yearMap[year].ids[yearMap[year].ids.length - 1],
+    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.03)' : 'transparent',
+    showLabel: true,
+  }))
 }
 
 function CustomTooltip({ active, payload }) {
@@ -50,14 +70,17 @@ export default function PercentileChart({ data }) {
 
   const base = data.map((e, i) => ({
     i,
-    eventNum: `#${e.event_number}`,
+    id: e.id,
+    tick: `#${e.event_number}`,
     percentile: e.ryan.pax_percentile,
     rank: e.ryan.pax_rank,
     total: e.ryan.pax_total,
-    label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
+    label: `${e.season} Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     id: e.id,
     venue: e.venue,
   }))
+
+  const tickMap = Object.fromEntries(base.map(d => [d.id, d.tick]))
 
   const michelinReg = linReg(base.filter(d => d.venue === 'michelin').map(d => ({ x: d.i, y: d.percentile })))
   const zmaxReg    = linReg(base.filter(d => d.venue === 'zmax').map(d => ({ x: d.i, y: d.percentile })))
@@ -68,13 +91,27 @@ export default function PercentileChart({ data }) {
     trendZmax:     zmaxReg    ? parseFloat((zmaxReg.slope    * d.i + zmaxReg.intercept).toFixed(1))    : null,
   }))
 
+  const yearBands = getYearBands(chartData)
+
   return (
     <ChartCard title="Percentile" subtitle="% of field beaten — higher is better">
       <ResponsiveContainer width="100%" height={260}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+          {yearBands.map(band => (
+            <ReferenceArea
+              key={band.year}
+              x1={band.x1}
+              x2={band.x2}
+              fill={band.fill}
+              strokeOpacity={0}
+              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -18 }}
+              ifOverflow="extendDomain"
+            />
+          ))}
           <XAxis
-            dataKey="eventNum"
+            dataKey="id"
+            tickFormatter={id => tickMap[id] ?? id}
             tick={{ fill: COLORS.fg, fontSize: 11 }}
             axisLine={false}
             tickLine={false}
@@ -91,7 +128,7 @@ export default function PercentileChart({ data }) {
           <Bar
             dataKey="percentile"
             radius={[4, 4, 0, 0]}
-            maxBarSize={64}
+            maxBarSize={48}
             minPointSize={4}
             onClick={d => navigate(`/event/${d.id}`)}
             style={{ cursor: 'pointer' }}
@@ -104,7 +141,7 @@ export default function PercentileChart({ data }) {
               style={{ fontSize: 11, fontWeight: 600, fill: COLORS.fg }}
             />
             {chartData.map(entry => (
-              <Cell key={entry.eventNum} fill={venueColor(entry.venue)} fillOpacity={0.85} />
+              <Cell key={entry.id} fill={venueColor(entry.venue)} fillOpacity={0.85} />
             ))}
           </Bar>
           <Line
@@ -115,6 +152,7 @@ export default function PercentileChart({ data }) {
             dot={false}
             activeDot={false}
             isAnimationActive={false}
+            connectNulls={false}
           />
           <Line
             dataKey="trendZmax"
@@ -124,6 +162,7 @@ export default function PercentileChart({ data }) {
             dot={false}
             activeDot={false}
             isAnimationActive={false}
+            connectNulls={false}
           />
         </ComposedChart>
       </ResponsiveContainer>

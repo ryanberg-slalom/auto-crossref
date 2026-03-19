@@ -55,7 +55,19 @@ export default function AppShell({ children }) {
   const [subnav, setSubnav] = useState(null)
   const { events } = useSeasonData()
 
-  const sortedEvents = [...events].sort((a, b) => a.event_number - b.event_number)
+  // Group events by season year, most recent first
+  const eventsByYear = {}
+  events.forEach(event => {
+    const year = event.season ?? 2025
+    if (!eventsByYear[year]) eventsByYear[year] = []
+    eventsByYear[year].push(event)
+  })
+  const yearGroups = Object.entries(eventsByYear)
+    .sort(([a], [b]) => Number(b) - Number(a))
+    .map(([year, evts]) => ({
+      year: Number(year),
+      events: [...evts].sort((a, b) => a.event_number - b.event_number),
+    }))
 
   return (
     <SubnavContext.Provider value={setSubnav}>
@@ -109,20 +121,22 @@ export default function AppShell({ children }) {
               Dashboard
             </Link>
 
-            {/* Events section */}
-            <div className="mt-3">
-              <div className="flex items-center gap-2 px-3 py-1 mb-0.5">
-                <CalendarDaysIcon className="w-3.5 h-3.5 shrink-0 text-fg-subtle" />
-                <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-fg-subtle">
-                  Events
-                </span>
+            {/* Events section — grouped by year */}
+            {yearGroups.map(({ year, events: yearEvents }) => (
+              <div key={year} className="mt-3">
+                <div className="flex items-center gap-2 px-3 py-1 mb-0.5">
+                  <CalendarDaysIcon className="w-3.5 h-3.5 shrink-0 text-fg-subtle" />
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-fg-subtle">
+                    {year}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-px">
+                  {yearEvents.map(event => (
+                    <EventNavItem key={event.id} event={event} />
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-px">
-                {sortedEvents.map(event => (
-                  <EventNavItem key={event.id} event={event} />
-                ))}
-              </div>
-            </div>
+            ))}
 
             {/* Competitors */}
             <div className="mt-3">

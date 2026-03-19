@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceArea,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
 import { venueColor } from '../shared/venueColors'
@@ -8,6 +8,25 @@ import { venueColor } from '../shared/venueColors'
 const COLORS = {
   grid: '#e5e7eb',
   fg: '#6b7280',
+}
+
+function getYearBands(chartData) {
+  const seen = []
+  const yearMap = {}
+  chartData.forEach(d => {
+    const year = String(d.id).split('-')[0]
+    if (!yearMap[year]) {
+      yearMap[year] = { year, ids: [] }
+      seen.push(year)
+    }
+    yearMap[year].ids.push(d.id)
+  })
+  return seen.map((year, idx) => ({
+    year,
+    x1: yearMap[year].ids[0],
+    x2: yearMap[year].ids[yearMap[year].ids.length - 1],
+    fill: idx % 2 === 1 ? 'rgba(0,0,0,0.03)' : 'transparent',
+  }))
 }
 
 function CustomTooltip({ active, payload }) {
@@ -29,23 +48,38 @@ function CustomTooltip({ active, payload }) {
 export default function GapBarChart({ data }) {
   const navigate = useNavigate()
 
-  const chartData = data.map(e => ({
-    eventNum: `#${e.event_number}`,
+  const allPoints = data.map(e => ({
+    id: e.id,
+    tick: `#${e.event_number}`,
     gapPct: e.ryan.pax_gap_pct,
     gapSec: e.ryan.pax_gap_seconds,
     leaderTime: e.ryan.pax_leader_time,
-    label: `Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
-    id: e.id,
+    label: `${e.season} Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     venue: e.venue,
   })).filter(d => d.gapPct !== null)
+
+  const tickMap = Object.fromEntries(allPoints.map(d => [d.id, d.tick]))
+  const yearBands = getYearBands(allPoints)
 
   return (
     <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better">
       <ResponsiveContainer width="100%" height={220}>
-        <BarChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+        <BarChart data={allPoints} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
+          {yearBands.map(band => (
+            <ReferenceArea
+              key={band.year}
+              x1={band.x1}
+              x2={band.x2}
+              fill={band.fill}
+              strokeOpacity={0}
+              label={{ value: band.year, position: 'insideTopLeft', fontSize: 9, fill: 'rgba(0,0,0,0.2)', dy: -2 }}
+              ifOverflow="extendDomain"
+            />
+          ))}
           <XAxis
-            dataKey="eventNum"
+            dataKey="id"
+            tickFormatter={id => tickMap[id] ?? id}
             tick={{ fill: COLORS.fg, fontSize: 11 }}
             axisLine={false}
             tickLine={false}
@@ -61,13 +95,14 @@ export default function GapBarChart({ data }) {
           <Bar
             dataKey="gapPct"
             radius={[4, 4, 0, 0]}
-            maxBarSize={64}
+            maxBarSize={48}
             onClick={(d) => navigate(`/event/${d.id}`)}
             style={{ cursor: 'pointer' }}
+            isAnimationActive={false}
           >
-            {chartData.map((entry) => (
+            {allPoints.map((entry) => (
               <Cell
-                key={entry.eventNum}
+                key={entry.id}
                 fill={venueColor(entry.venue)}
                 fillOpacity={0.85}
               />

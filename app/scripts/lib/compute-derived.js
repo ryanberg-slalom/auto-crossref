@@ -12,7 +12,7 @@
  * @param {string} params.ryanName - "Ryan Berg"
  * @returns {object} derived metrics for Ryan's event entry
  */
-export function computeDerived({ paxResults, rawResults, ryanIndexedTime, ryanRawTime, ryanName = 'Ryan Berg' }) {
+export function computeDerived({ paxResults, rawResults, ryanIndexedTime, ryanRawTime, ryanName = 'Ryan Berg', ryanClassCode = 'FS' }) {
   // --- PAX ranking ---
   // Sort by indexed_time ascending
   const sortedPax = [...paxResults].sort((a, b) => a.indexed_time - b.indexed_time)
@@ -49,17 +49,28 @@ export function computeDerived({ paxResults, rawResults, ryanIndexedTime, ryanRa
   const pstDrivers = paxResults.filter(d => d.class_code.toUpperCase().startsWith('PST'))
   const pstSorted = [...pstDrivers].sort((a, b) => a.indexed_time - b.indexed_time)
 
-  // Add Ryan's hypothetical entry and re-sort
-  const ryanPstEntry = { name: ryanName, indexed_time: ryanIndexedTime }
-  const pstWithRyan = [...pstSorted, ryanPstEntry].sort((a, b) => a.indexed_time - b.indexed_time)
-  const pstRank = pstWithRyan.findIndex(d => d.name === ryanName) + 1
-  const pstTotal = pstWithRyan.length
+  // If Ryan is already in PST (e.g. class PST/FS), use his actual rank directly.
+  // Otherwise insert him hypothetically.
+  const ryanAlreadyInPst = pstDrivers.some(d => d.name === ryanName)
+  let pstRank, pstTotal
+  if (ryanAlreadyInPst) {
+    pstRank = pstSorted.findIndex(d => d.name === ryanName) + 1
+    pstTotal = pstSorted.length
+  } else {
+    const pstWithRyan = [...pstSorted, { name: ryanName, indexed_time: ryanIndexedTime }]
+      .sort((a, b) => a.indexed_time - b.indexed_time)
+    pstRank = pstWithRyan.findIndex(d => d.name === ryanName) + 1
+    pstTotal = pstWithRyan.length
+  }
 
   // PST percentile (% of PST field Ryan would beat)
   const pstPercentile = parseFloat((((pstTotal - pstRank) / pstTotal) * 100).toFixed(1))
 
-  // --- FS class results ---
-  const fsDrivers = paxResults.filter(d => d.class_code === 'FS')
+  // --- Class results (FS, or PST/* if Ryan competes in PST) ---
+  const isRyanPst = ryanClassCode.toUpperCase().startsWith('PST')
+  const fsDrivers = isRyanPst
+    ? paxResults.filter(d => d.class_code.toUpperCase().startsWith('PST'))
+    : paxResults.filter(d => d.class_code === ryanClassCode)
   const fsSorted = [...fsDrivers].sort((a, b) => a.indexed_time - b.indexed_time)
   const fsRank = fsSorted.findIndex(d => d.name === ryanName) + 1
   const fsTotal = fsSorted.length
