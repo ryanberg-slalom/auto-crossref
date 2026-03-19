@@ -6,6 +6,9 @@ import SeasonSummary from '../components/dashboard/SeasonSummary'
 import PercentileChart from '../components/dashboard/PercentileChart'
 import GapBarChart from '../components/dashboard/GapBarChart'
 import PstRankChart from '../components/dashboard/PstRankChart'
+import ConeStats from '../components/dashboard/ConeStats'
+import ConeBarChart from '../components/dashboard/ConeBarChart'
+import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import { venueColor } from '../components/shared/venueColors'
 
 export default function DashboardPage() {
@@ -56,6 +59,17 @@ export default function DashboardPage() {
         <PercentileChart data={sorted} />
         <GapBarChart data={sorted} />
         <PstRankChart data={sorted} />
+      </div>
+
+      <div>
+        <h2 className="text-xs font-semibold mb-2 uppercase tracking-wider text-fg-subtle">
+          Cone Tracker
+        </h2>
+        <div className="flex flex-col gap-4">
+          <ConeStats attendedEvents={sorted} />
+          <ConeBarChart data={sorted} />
+          <ConeStackedChart data={sorted} />
+        </div>
       </div>
 
       <div>
