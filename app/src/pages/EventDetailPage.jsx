@@ -38,7 +38,7 @@ export default function EventDetailPage() {
   const { attendedEvents, subject } = useSeasonData()
   const setSubnav = useContext(SubnavContext)
 
-  const sorted = [...attendedEvents].sort((a, b) => a.event_number - b.event_number)
+  const sorted = [...attendedEvents].sort((a, b) => a.date.localeCompare(b.date))
   const idx = result ? sorted.findIndex(e => e.id === id) : -1
   const prevEvent = idx > 0 ? sorted[idx - 1] : null
   const nextEvent = idx < sorted.length - 1 ? sorted[idx + 1] : null
@@ -119,6 +119,7 @@ export default function EventDetailPage() {
 
   const { event } = result
   const ryan = event.ryan
+  const isActualPst = ryan?.class_code?.toUpperCase().startsWith('PST') ?? false
 
   return (
     <div className="flex flex-col gap-5">
@@ -155,12 +156,14 @@ export default function EventDetailPage() {
               pstRank={ryan.hypothetical_pst_rank}
               pstTotal={ryan.hypothetical_pst_total}
               pstPercentile={ryan.hypothetical_pst_percentile}
+              isActualPst={isActualPst}
             />
           </div>
 
           <RunTimeline
             runs={ryan.runs}
             scoringType={event.scoring_type}
+            venue={event.venue}
             bestRawTime={ryan.best_raw_time}
           />
 
@@ -184,6 +187,7 @@ export default function EventDetailPage() {
               ryan={ryan}
               ryanCar={subject?.car}
               ryanName={RYAN_NAME}
+              isActualPst={isActualPst}
             />
           )}
         </>

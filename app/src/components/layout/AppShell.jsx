@@ -17,12 +17,12 @@ function EventNavItem({ event }) {
 
   if (!event.ryan_attended) {
     return (
-      <div className="flex items-center gap-2 px-3 py-[5px] rounded text-[11px] text-fg-subtle opacity-40 cursor-default select-none">
+      <div className="flex items-center gap-2 px-3 py-[5px] rounded text-xs text-fg-subtle opacity-40 cursor-default select-none">
         <span
           className="w-1.5 h-1.5 rounded-full shrink-0"
           style={{ backgroundColor: venueColor(event.venue) }}
         />
-        <span className="font-medium shrink-0">#{event.event_number}</span>
+        <span className="font-semibold shrink-0">#{event.event_number}</span>
         <span className="truncate">{dateStr} · {VENUE_LABEL[event.venue]}</span>
       </div>
     )
@@ -32,18 +32,18 @@ function EventNavItem({ event }) {
     <Link
       to={`/event/${event.id}`}
       className={[
-        'flex items-center gap-2 px-3 py-[5px] rounded text-[11px] no-underline',
+        'flex items-center gap-2 px-3 py-[5px] rounded text-xs no-underline',
         active
           ? 'bg-bmw-blue/10 text-bmw-blue font-medium'
-          : 'text-fg-muted hover:bg-surface-3 hover:text-fg',
+          : 'text-fg hover:bg-surface-3',
       ].join(' ')}
     >
       <span
         className="w-1.5 h-1.5 rounded-full shrink-0"
         style={{ backgroundColor: venueColor(event.venue) }}
       />
-      <span className="font-medium shrink-0">#{event.event_number}</span>
-      <span className={['truncate', active ? 'opacity-70' : 'text-fg-subtle'].join(' ')}>
+      <span className="font-semibold shrink-0">#{event.event_number}</span>
+      <span className={['truncate', active ? 'opacity-70' : 'text-fg-muted'].join(' ')}>
         {dateStr} · {VENUE_LABEL[event.venue]}
       </span>
     </Link>
@@ -66,7 +66,7 @@ export default function AppShell({ children }) {
     .sort(([a], [b]) => Number(b) - Number(a))
     .map(([year, evts]) => ({
       year: Number(year),
-      events: [...evts].sort((a, b) => a.event_number - b.event_number),
+      events: [...evts].sort((a, b) => b.event_number - a.event_number),
     }))
 
   return (

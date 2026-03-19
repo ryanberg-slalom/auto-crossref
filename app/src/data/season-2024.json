@@ -3629,8 +3629,8 @@
         {
           "name": "Nathan Carson",
           "class_code": "ES",
-          "car_number": "1121",
-          "raw_time": 36.683,
+          "car_number": "112",
+          "raw_time": 136.683,
           "pax_index": 0.792,
           "indexed_time": 108.253,
           "pos": 74
@@ -3698,8 +3698,8 @@
         {
           "name": "Ken Bury",
           "class_code": "M/FS",
-          "car_number": "1121",
-          "raw_time": 35.19,
+          "car_number": "112",
+          "raw_time": 135.19,
           "pax_index": 0.814,
           "indexed_time": 110.045,
           "pos": 81,
@@ -3708,8 +3708,8 @@
         {
           "name": "Justin Bitar",
           "class_code": "STS",
-          "car_number": "771",
-          "raw_time": 36.67,
+          "car_number": "77",
+          "raw_time": 136.67000000000002,
           "pax_index": 0.816,
           "indexed_time": 111.523,
           "pos": 82,
@@ -3728,8 +3728,8 @@
         {
           "name": "Sam Evans",
           "class_code": "BS",
-          "car_number": "11",
-          "raw_time": 37.223,
+          "car_number": "1",
+          "raw_time": 137.223,
           "pax_index": 0.818,
           "indexed_time": 112.248,
           "pos": 84
@@ -3747,8 +3747,8 @@
         {
           "name": "Richard Finch",
           "class_code": "STR",
-          "car_number": "281",
-          "raw_time": 37.872,
+          "car_number": "28",
+          "raw_time": 137.872,
           "pax_index": 0.832,
           "indexed_time": 114.71,
           "pos": 86,
@@ -3757,8 +3757,8 @@
         {
           "name": "Joshua Harvey",
           "class_code": "IISTH",
-          "car_number": "741",
-          "raw_time": 41.798,
+          "car_number": "74",
+          "raw_time": 141.798,
           "pax_index": 0.812,
           "indexed_time": 115.14,
           "pos": 87
@@ -3766,8 +3766,8 @@
         {
           "name": "Stanley Peters",
           "class_code": "ES",
-          "car_number": "91",
-          "raw_time": 45.961,
+          "car_number": "9",
+          "raw_time": 145.961,
           "pax_index": 0.792,
           "indexed_time": 115.601,
           "pos": 88
@@ -3775,8 +3775,8 @@
         {
           "name": "Joshua Harvey",
           "class_code": "STH",
-          "car_number": "1741",
-          "raw_time": 47.735,
+          "car_number": "174",
+          "raw_time": 147.735,
           "pax_index": 0.812,
           "indexed_time": 119.961,
           "pos": 89
@@ -3784,8 +3784,8 @@
         {
           "name": "Kal Saber",
           "class_code": "STS",
-          "car_number": "1771",
-          "raw_time": 47.599,
+          "car_number": "177",
+          "raw_time": 147.599,
           "pax_index": 0.816,
           "indexed_time": 120.441,
           "pos": 90,
@@ -3794,8 +3794,8 @@
         {
           "name": "Jean Markowski",
           "class_code": "M/CS",
-          "car_number": "121",
-          "raw_time": 49.165,
+          "car_number": "12",
+          "raw_time": 149.165,
           "pax_index": 0.813,
           "indexed_time": 121.271,
           "pos": 91,
@@ -3804,8 +3804,8 @@
         {
           "name": "Wit Poston",
           "class_code": "STR",
-          "car_number": "1281",
-          "raw_time": 50.07,
+          "car_number": "128",
+          "raw_time": 150.07,
           "pax_index": 0.832,
           "indexed_time": 124.858,
           "pos": 92,
@@ -13710,8 +13710,8 @@
         {
           "name": "Jack Brinkley",
           "class_code": "ES",
-          "car_number": "291",
-          "raw_time": 38.184,
+          "car_number": "29",
+          "raw_time": 138.184,
           "pax_index": 0.792,
           "indexed_time": 109.442,
           "pos": 60,
@@ -13759,8 +13759,8 @@
         {
           "name": "Nathan Carson",
           "class_code": "ES",
-          "car_number": "1121",
-          "raw_time": 38.831,
+          "car_number": "112",
+          "raw_time": 138.83100000000002,
           "pax_index": 0.792,
           "indexed_time": 109.954,
           "pos": 65
@@ -13807,8 +13807,8 @@
         {
           "name": "Sarah Rogers",
           "class_code": "STX",
-          "car_number": "561",
-          "raw_time": 35.026,
+          "car_number": "56",
+          "raw_time": 135.026,
           "pax_index": 0.819,
           "indexed_time": 110.586,
           "pos": 70,
@@ -13827,8 +13827,8 @@
         {
           "name": "Ted Wormald",
           "class_code": "DS",
-          "car_number": "1591",
-          "raw_time": 37.025,
+          "car_number": "159",
+          "raw_time": 137.025,
           "pax_index": 0.81,
           "indexed_time": 110.99,
           "pos": 72,
@@ -13876,8 +13876,8 @@
         {
           "name": "Marc Hutchison",
           "class_code": "R/DS",
-          "car_number": "131",
-          "raw_time": 39.244,
+          "car_number": "13",
+          "raw_time": 139.244,
           "pax_index": 0.81,
           "indexed_time": 112.788,
           "pos": 77,
@@ -13886,8 +13886,8 @@
         {
           "name": "Phillip Prewitt",
           "class_code": "AS",
-          "car_number": "71",
-          "raw_time": 37.452,
+          "car_number": "7",
+          "raw_time": 137.452,
           "pax_index": 0.824,
           "indexed_time": 113.26,
           "pos": 78,
@@ -13906,8 +13906,8 @@
         {
           "name": "Simon Wyatt",
           "class_code": "R/CS",
-          "car_number": "741",
-          "raw_time": 40.147,
+          "car_number": "74",
+          "raw_time": 140.147,
           "pax_index": 0.813,
           "indexed_time": 113.94,
           "pos": 80,
@@ -13916,8 +13916,8 @@
         {
           "name": "David Murdock",
           "class_code": "ES",
-          "car_number": "911",
-          "raw_time": 44.587,
+          "car_number": "91",
+          "raw_time": 144.587,
           "pax_index": 0.792,
           "indexed_time": 114.513,
           "pos": 81
@@ -13925,8 +13925,8 @@
         {
           "name": "Gary Bennett, Sr.",
           "class_code": "M/STS",
-          "car_number": "661",
-          "raw_time": 41.633,
+          "car_number": "66",
+          "raw_time": 141.633,
           "pax_index": 0.816,
           "indexed_time": 115.573,
           "pos": 82,
@@ -13935,8 +13935,8 @@
         {
           "name": "Tonya Howell",
           "class_code": "L/ES",
-          "car_number": "911",
-          "raw_time": 45.954,
+          "car_number": "91",
+          "raw_time": 145.954,
           "pax_index": 0.792,
           "indexed_time": 115.596,
           "pos": 83,
@@ -13945,8 +13945,8 @@
         {
           "name": "Blake Myers",
           "class_code": "R/XA",
-          "car_number": "5281",
-          "raw_time": 37.054,
+          "car_number": "528",
+          "raw_time": 137.054,
           "pax_index": 0.844,
           "indexed_time": 115.674,
           "pos": 84,
@@ -13955,8 +13955,8 @@
         {
           "name": "Nick Myers",
           "class_code": "STU",
-          "car_number": "951",
-          "raw_time": 38.977,
+          "car_number": "95",
+          "raw_time": 138.977,
           "pax_index": 0.833,
           "indexed_time": 115.768,
           "pos": 85
@@ -13964,8 +13964,8 @@
         {
           "name": "Dana Lyons",
           "class_code": "R/XB",
-          "car_number": "31",
-          "raw_time": 36.45,
+          "car_number": "3",
+          "raw_time": 136.45,
           "pax_index": 0.849,
           "indexed_time": 115.846,
           "pos": 86,
@@ -13974,8 +13974,8 @@
         {
           "name": "Stanley Peters",
           "class_code": "ES",
-          "car_number": "91",
-          "raw_time": 48.408,
+          "car_number": "9",
+          "raw_time": 148.40800000000002,
           "pax_index": 0.792,
           "indexed_time": 117.539,
           "pos": 87
@@ -13983,8 +13983,8 @@
         {
           "name": "Ashley Ludwick",
           "class_code": "XA",
-          "car_number": "1291",
-          "raw_time": 40.737,
+          "car_number": "129",
+          "raw_time": 140.737,
           "pax_index": 0.844,
           "indexed_time": 118.782,
           "pos": 88,
@@ -13993,8 +13993,8 @@
         {
           "name": "Brittany Blier",
           "class_code": "STS",
-          "car_number": "611",
-          "raw_time": 47.268,
+          "car_number": "61",
+          "raw_time": 147.268,
           "pax_index": 0.816,
           "indexed_time": 120.171,
           "pos": 89,
@@ -14003,8 +14003,8 @@
         {
           "name": "Trevon Myers",
           "class_code": "STU",
-          "car_number": "1951",
-          "raw_time": 48.474,
+          "car_number": "195",
+          "raw_time": 148.474,
           "pax_index": 0.833,
           "indexed_time": 123.679,
           "pos": 90,
@@ -14013,8 +14013,8 @@
         {
           "name": "Nathan Brainerd",
           "class_code": "XP",
-          "car_number": "421",
-          "raw_time": 39.546,
+          "car_number": "42",
+          "raw_time": 139.546,
           "pax_index": 0.887,
           "indexed_time": 123.777,
           "pos": 91
@@ -14022,8 +14022,8 @@
         {
           "name": "Ean Bass",
           "class_code": "XP",
-          "car_number": "1421",
-          "raw_time": 42.605,
+          "car_number": "142",
+          "raw_time": 142.605,
           "pax_index": 0.887,
           "indexed_time": 126.491,
           "pos": 92,

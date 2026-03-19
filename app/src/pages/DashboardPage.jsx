@@ -62,7 +62,7 @@ export default function DashboardPage() {
         <h2 className="text-xs font-semibold mb-2 uppercase tracking-wider text-fg-subtle">
           Events
         </h2>
-        <EventsTable events={sorted} navigate={navigate} />
+        <EventsTable events={[...sorted].reverse()} navigate={navigate} />
       </div>
     </div>
   )
@@ -74,7 +74,7 @@ function EventsTable({ events, navigate }) {
       <table className="w-full text-xs">
         <thead>
           <tr className="border-b border-border bg-subnav">
-            {['Year', 'Event', 'Date', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Hyp.'].map(h => (
+            {['Year', 'Event', 'Date', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Rank'].map(h => (
               <th
                 key={h}
                 className="px-4 py-2 text-left font-medium uppercase tracking-wider text-fg-subtle"

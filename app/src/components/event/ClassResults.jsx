@@ -5,11 +5,16 @@ import DataTable from '../shared/DataTable'
 const helper = createColumnHelper()
 
 export default function ClassResults({ paxResults, classCode, ryanName }) {
+  const isPst = classCode.toUpperCase().startsWith('PST')
+  const displayClass = isPst ? 'PST' : classCode
+
   const classDrivers = useMemo(() =>
     paxResults
-      .filter(d => d.class_code === classCode)
+      .filter(d => isPst
+        ? d.class_code.toUpperCase().startsWith('PST')
+        : d.class_code === classCode)
       .sort((a, b) => a.indexed_time - b.indexed_time),
-    [paxResults, classCode]
+    [paxResults, classCode, isPst]
   )
 
   const columns = useMemo(() => [
@@ -58,7 +63,7 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
     <div>
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
-          {classCode} Class Results
+          {displayClass} Class Results
         </h2>
         <span className="text-xs text-fg-muted">
           {classDrivers.length} driver{classDrivers.length !== 1 ? 's' : ''}
@@ -67,7 +72,7 @@ export default function ClassResults({ paxResults, classCode, ryanName }) {
       <DataTable
         columns={columns}
         data={classDrivers}
-        emptyMessage={`No ${classCode} drivers at this event`}
+        emptyMessage={`No ${displayClass} drivers at this event`}
         getRowClassName={row => row.name === ryanName
           ? 'bg-bmw-blue/5 [box-shadow:inset_0_1px_0_0_rgba(28,105,212,0.2),inset_0_-1px_0_0_rgba(28,105,212,0.2)]'
           : ''}

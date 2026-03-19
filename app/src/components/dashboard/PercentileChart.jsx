@@ -11,10 +11,6 @@ const COLORS = {
   fg: '#6b7280',
 }
 
-const TREND = {
-  michelin: '#001a40',
-  zmax: '#7a1414',
-}
 
 function linReg(points) {
   const n = points.length
@@ -82,19 +78,24 @@ export default function PercentileChart({ data }) {
 
   const tickMap = Object.fromEntries(base.map(d => [d.id, d.tick]))
 
-  const michelinReg = linReg(base.filter(d => d.venue === 'michelin').map(d => ({ x: d.i, y: d.percentile })))
-  const zmaxReg    = linReg(base.filter(d => d.venue === 'zmax').map(d => ({ x: d.i, y: d.percentile })))
+  const overallReg = linReg(base.map(d => ({ x: d.i, y: d.percentile })))
+  const slope = overallReg?.slope ?? null
+  // Higher percentile = improving
+  const trendBadge = slope !== null ? (
+    <span className={`text-xs font-semibold tabular-nums ${slope >= 0 ? 'text-success' : 'text-accent'}`}>
+      {slope >= 0 ? '↑' : '↓'} {slope >= 0 ? '+' : ''}{slope.toFixed(1)}% / event
+    </span>
+  ) : null
 
   const chartData = base.map(d => ({
     ...d,
-    trendMichelin: michelinReg ? parseFloat((michelinReg.slope * d.i + michelinReg.intercept).toFixed(1)) : null,
-    trendZmax:     zmaxReg    ? parseFloat((zmaxReg.slope    * d.i + zmaxReg.intercept).toFixed(1))    : null,
+    trend: overallReg ? parseFloat((overallReg.slope * d.i + overallReg.intercept).toFixed(1)) : null,
   }))
 
   const yearBands = getYearBands(chartData)
 
   return (
-    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better">
+    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better" headerRight={trendBadge}>
       <ResponsiveContainer width="100%" height={260}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
@@ -137,7 +138,7 @@ export default function PercentileChart({ data }) {
             <LabelList
               dataKey="percentile"
               position="top"
-              formatter={v => `${v}%`}
+              formatter={v => `${Math.round(v)}%`}
               style={{ fontSize: 11, fontWeight: 600, fill: COLORS.fg }}
             />
             {chartData.map(entry => (
@@ -145,24 +146,13 @@ export default function PercentileChart({ data }) {
             ))}
           </Bar>
           <Line
-            dataKey="trendMichelin"
-            stroke={TREND.michelin}
+            dataKey="trend"
+            stroke="#94a3b8"
             strokeWidth={2}
             strokeDasharray="5 3"
             dot={false}
             activeDot={false}
             isAnimationActive={false}
-            connectNulls={false}
-          />
-          <Line
-            dataKey="trendZmax"
-            stroke={TREND.zmax}
-            strokeWidth={2}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            isAnimationActive={false}
-            connectNulls={false}
           />
         </ComposedChart>
       </ResponsiveContainer>

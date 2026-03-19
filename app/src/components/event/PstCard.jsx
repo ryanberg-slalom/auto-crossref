@@ -1,15 +1,17 @@
-export default function PstCard({ indexedTime, pstRank, pstTotal, pstPercentile }) {
+export default function PstCard({ indexedTime, pstRank, pstTotal, pstPercentile, isActualPst }) {
   const barWidth = pstRank && pstTotal ? Math.max(4, Math.round((pstRank / pstTotal) * 100)) : 0
 
   return (
     <div className="p-5 flex flex-col gap-3 rounded-lg bg-surface-2 border border-border">
       <div className="flex items-center justify-between">
         <span className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
-          Hypothetical PST
+          PST {!isActualPst && 'Hypothetical'}
         </span>
-        <span className="text-xs px-2 py-0.5 rounded bg-surface-3 text-fg-subtle border border-border">
-          if you ran PST
-        </span>
+        {!isActualPst && (
+          <span className="text-xs px-2 py-0.5 rounded bg-surface-3 text-fg-subtle border border-border">
+            if you ran PST
+          </span>
+        )}
       </div>
 
       {pstRank ? (

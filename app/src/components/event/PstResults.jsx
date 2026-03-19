@@ -23,7 +23,7 @@ function DeltaCell({ value, ryanValue, isRyan }) {
   )
 }
 
-export default function PstResults({ paxResults, ryan, ryanCar, ryanName = RYAN_NAME }) {
+export default function PstResults({ paxResults, ryan, ryanCar, ryanName = RYAN_NAME, isActualPst }) {
   const { rows, ryanRaw, ryanPax } = useMemo(() => {
     const pst = paxResults.filter(d => d.class_code?.startsWith('PST'))
 
@@ -109,7 +109,7 @@ export default function PstResults({ paxResults, ryan, ryanCar, ryanName = RYAN_
     <div>
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-xs font-extrabold uppercase tracking-wider text-fg-subtle">
-          PST Results (Hypothetical)
+          PST Results{!isActualPst && ' (Hypothetical)'}
         </h2>
         <span className="text-xs text-fg-muted">
           {rows.length - 1} PST drivers + your indexed time

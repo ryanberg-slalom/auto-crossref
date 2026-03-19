@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceArea,
+  ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, ReferenceArea,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
 import { venueColor } from '../shared/venueColors'
@@ -8,6 +8,18 @@ import { venueColor } from '../shared/venueColors'
 const COLORS = {
   grid: '#e5e7eb',
   fg: '#6b7280',
+}
+
+function linReg(points) {
+  const n = points.length
+  if (n < 2) return null
+  const sumX  = points.reduce((s, p) => s + p.x, 0)
+  const sumY  = points.reduce((s, p) => s + p.y, 0)
+  const sumXY = points.reduce((s, p) => s + p.x * p.y, 0)
+  const sumXX = points.reduce((s, p) => s + p.x * p.x, 0)
+  const slope = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+  const intercept = (sumY - slope * sumX) / n
+  return { slope, intercept }
 }
 
 function getYearBands(chartData) {
@@ -61,10 +73,23 @@ export default function GapBarChart({ data }) {
   const tickMap = Object.fromEntries(allPoints.map(d => [d.id, d.tick]))
   const yearBands = getYearBands(allPoints)
 
+  const overallReg = linReg(allPoints.map((d, i) => ({ x: i, y: d.gapPct })))
+  const chartData = allPoints.map((d, i) => ({
+    ...d,
+    trend: overallReg ? parseFloat((overallReg.slope * i + overallReg.intercept).toFixed(2)) : null,
+  }))
+  const slope = overallReg?.slope ?? null
+  // Lower gap = improving, so negative slope is good
+  const trendBadge = slope !== null ? (
+    <span className={`text-xs font-semibold tabular-nums ${slope <= 0 ? 'text-success' : 'text-accent'}`}>
+      {slope >= 0 ? '↑' : '↓'} {slope >= 0 ? '+' : ''}{slope.toFixed(2)}% / event
+    </span>
+  ) : null
+
   return (
-    <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better">
+    <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better" headerRight={trendBadge}>
       <ResponsiveContainer width="100%" height={220}>
-        <BarChart data={allPoints} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
+        <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           {yearBands.map(band => (
             <ReferenceArea
@@ -100,7 +125,7 @@ export default function GapBarChart({ data }) {
             style={{ cursor: 'pointer' }}
             isAnimationActive={false}
           >
-            {allPoints.map((entry) => (
+            {chartData.map((entry) => (
               <Cell
                 key={entry.id}
                 fill={venueColor(entry.venue)}
@@ -108,7 +133,16 @@ export default function GapBarChart({ data }) {
               />
             ))}
           </Bar>
-        </BarChart>
+          <Line
+            dataKey="trend"
+            stroke="#94a3b8"
+            strokeWidth={2}
+            strokeDasharray="5 3"
+            dot={false}
+            activeDot={false}
+            isAnimationActive={false}
+          />
+        </ComposedChart>
       </ResponsiveContainer>
     </ChartCard>
   )

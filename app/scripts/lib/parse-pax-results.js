@@ -94,7 +94,7 @@ export function parsePaxResults(text) {
 
     const intPart = rawTimeMatch[1]
     const frac = '.' + rawTimeMatch[2]
-    const { carNum, rawTime } = splitCarNumAndTime(intPart, frac)
+    let { carNum, rawTime } = splitCarNumAndTime(intPart, frac)
     if (rawTime < 35 || rawTime > 300) continue
 
     // --- Indexed time: decimal immediately after the PAX index ---
@@ -102,6 +102,23 @@ export function parsePaxResults(text) {
     const idxTimeMatch = textAfterPax.match(/^(\d{2,3}\.\d{3})/)
     if (!idxTimeMatch) continue
     const indexedTime = parseFloat(idxTimeMatch[1])
+
+    // Validate rawTime × paxIdx ≈ indexedTime.
+    // For dual-run events with raw times 100–199s, the 2-digit slice grabs only the
+    // last two digits (e.g. "138" → "38"), making rawTime off by exactly 100.
+    // Detect and fix: if adding 100 brings the product within 5% of indexedTime, apply it.
+    if (indexedTime > 0 && paxIdx > 0) {
+      const relErr = Math.abs(rawTime * paxIdx - indexedTime) / indexedTime
+      if (relErr > 0.15) {
+        const adjusted = rawTime + 100
+        const adjRelErr = Math.abs(adjusted * paxIdx - indexedTime) / indexedTime
+        if (adjRelErr < 0.05) {
+          rawTime = adjusted
+          // The 2-digit extraction also stole one digit from carNum; give it back
+          if (carNum.length > 0) carNum = carNum.slice(0, -1)
+        }
+      }
+    }
 
     // --- Class and name extraction ---
     // textBeforeRaw: everything before "intPart + frac" at the end of textBeforePax

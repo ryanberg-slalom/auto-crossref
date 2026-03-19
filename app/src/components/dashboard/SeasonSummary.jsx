@@ -1,7 +1,6 @@
 import StatCard from '../shared/StatCard'
 
 export default function SeasonSummary({ attendedEvents }) {
-  const attended = attendedEvents.length
   const bestRank = Math.min(...attendedEvents.map(e => e.ryan.pax_rank))
   const bestPercentile = Math.max(...attendedEvents.map(e => e.ryan.pax_percentile))
   // Best indexed time: single-course events only (dual-run times are sums, not comparable)
@@ -15,12 +14,7 @@ export default function SeasonSummary({ attendedEvents }) {
   const bestPstEvent = pstEvents.find(e => e.ryan.hypothetical_pst_rank === bestPstRank)
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-      <StatCard
-        label="Events Attended"
-        value={`${attended}/10`}
-        sub="2025 season"
-      />
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
       <StatCard
         label="Best PAX Rank"
         value={`#${bestRank}`}

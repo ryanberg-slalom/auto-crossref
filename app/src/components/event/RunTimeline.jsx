@@ -1,6 +1,6 @@
 const CONE_ICON = `${import.meta.env.BASE_URL}cone.svg`
 
-export default function RunTimeline({ runs, scoringType, bestRawTime }) {
+export default function RunTimeline({ runs, scoringType, venue, bestRawTime }) {
   if (!runs || runs.length === 0) {
     return (
       <div className="rounded bg-surface-2 border border-border p-5 text-xs text-fg-subtle">
@@ -20,7 +20,11 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
       <div className={isDualRun ? 'grid grid-cols-2 gap-6' : 'flex flex-col gap-2'}>
         {sessions.map(session => {
           const sessionRuns = runs.filter(r => r.session === session)
-          const sessionLabel = isDualRun ? (session === 'a' ? 'AM Session' : 'PM Session') : null
+          const sessionLabel = isDualRun
+            ? (venue === 'zmax'
+              ? (session === 'a' ? 'Day 1' : 'Day 2')
+              : (session === 'a' ? 'AM Session' : 'PM Session'))
+            : null
           const sessionBest = isDualRun
             ? Math.min(...sessionRuns.filter(r => !r.dnf && r.scored_time !== null).map(r => r.scored_time))
             : null
@@ -43,8 +47,7 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
                     key={run.run_number}
                     run={run}
                     prevRun={i > 0 ? sessionRuns[i - 1] : null}
-                    bestRawTime={bestRawTime}
-                    isDualRun={isDualRun}
+                    sessionBest={isDualRun ? sessionBest : bestRawTime}
                   />
                 ))}
               </div>
@@ -64,8 +67,8 @@ export default function RunTimeline({ runs, scoringType, bestRawTime }) {
   )
 }
 
-function RunRow({ run, prevRun, bestRawTime, isDualRun }) {
-  const isBest = !run.dnf && run.scored_time === bestRawTime && !isDualRun
+function RunRow({ run, prevRun, sessionBest }) {
+  const isBest = !run.dnf && run.scored_time === sessionBest
 
   const delta = prevRun && !run.dnf && prevRun.scored_time !== null && run.scored_time !== null
     ? run.scored_time - prevRun.scored_time
