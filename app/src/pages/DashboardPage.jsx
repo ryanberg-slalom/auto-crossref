@@ -9,6 +9,7 @@ import PstRankChart from '../components/dashboard/PstRankChart'
 import ConeStats from '../components/dashboard/ConeStats'
 import ConeBarChart from '../components/dashboard/ConeBarChart'
 import ConeStackedChart from '../components/dashboard/ConeStackedChart'
+import RunProgressionChart from '../components/dashboard/RunProgressionChart'
 import { venueColor } from '../components/shared/venueColors'
 
 export default function DashboardPage() {
@@ -59,6 +60,7 @@ export default function DashboardPage() {
         <PercentileChart data={sorted} />
         <GapBarChart data={sorted} />
         <PstRankChart data={sorted} />
+        <RunProgressionChart data={sorted} />
       </div>
 
       <div>
