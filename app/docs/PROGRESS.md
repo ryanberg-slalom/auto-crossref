@@ -48,10 +48,13 @@
 - [x] `src/components/shared/DataTable.jsx` — TanStack Table wrapper, `getRowClassName`, column `meta` for alignment
 - [x] `src/components/shared/venueColors.js` — Michelin (navy) / ZMAX (red) color constants
 - [x] `src/components/dashboard/SeasonSummary.jsx` — 4 stat cards
-- [x] `src/components/dashboard/PercentileChart.jsx` — venue-colored bars + per-venue best-fit trend lines
-- [x] `src/components/dashboard/GapBarChart.jsx` — venue-colored bars, click-through to event
+- [x] `src/components/dashboard/chartUtils.jsx` — shared: `getYearBands`, `linReg`, `TrendBadge`, `tireChangeLines`; all charts import from here
+- [x] `src/components/dashboard/PercentileChart.jsx` — venue-colored bars + trend line + slope badge
+- [x] `src/components/dashboard/GapBarChart.jsx` — venue-colored bars, click-through to event; null `pax_gap_pct` events included in x-axis (no bar) with trend regression skipping them
+- [x] `src/components/dashboard/RunProgressionChart.jsx` — skinny per-run bars grouped by session; quality = run_time / session_worst × 100; best run color-coded green/amber/red by finish position; DNFs at fixed 78%; dual-session split with spacer gaps; y-axis hidden, domain 75–100% (offset trick)
 - [x] `src/components/dashboard/PstRankChart.jsx` — percentile bars + trend lines + `(rank of total)` labels
 - [x] `src/pages/DashboardPage.jsx` — charts + events table with venue dots
+- [x] All dashboard charts: x-axis shows year-only labels (forced ticks at year boundaries); alternating year-band backgrounds at `rgba(0,0,0,0.07)`
 
 ---
 
@@ -102,9 +105,28 @@ Compare performance against a specific rival across all shared events.
 
 ---
 
+## Manual JSON Corrections
+
+Changes made directly to season JSON files (will be overwritten if those events are re-parsed):
+
+| Event | Field | Old | New | Source |
+|---|---|---|---|---|
+| 2023-E04 | `pax_leader_time` | 0 | 103.563 | Mike Casino (manually looked up) |
+| 2023-E04 | `pax_gap_seconds` | 112.411 | 8.848 | computed |
+| 2023-E04 | `pax_gap_pct` | null | 8.54 | computed |
+| 2024-E04 | `pax_leader_time` | 0 | 83.794 | Jonathan Mudge (manually looked up) |
+| 2024-E04 | `pax_gap_seconds` | 92.59 | 8.796 | computed |
+| 2024-E04 | `pax_gap_pct` | null | 10.50 | computed |
+| 2025-E10 | `ryan.runs` | mangled (interleaved sessions, null times, phantom rerun) | 8 correct runs across sessions a+b | manually corrected from user's memory |
+
+---
+
 ## Known Limitations / Future Improvements
 
 - **Event titles**: Several events use placeholder titles ("Event 2", "Event 3", etc.) — could extract from PDF headers
 - **Event 8 fallback**: pdf-parse CIDFont extraction also fails for E8; Ryan didn't attend so full-field data is unavailable. Would need a different extraction approach (e.g., pdftotext CLI) if E8 data is ever needed.
 - **Chunk size**: The single JS bundle is ~832KB (recharts + season JSON). Acceptable for personal use; could be split with dynamic imports if needed.
 - **Dual-run indexed time chart**: Excluded from trend chart since dual-run times (sum of sessions) aren't comparable to single-course times. Could add a separate dual-run chart.
+- **Dual-run `pax_leader_time: 0`**: Parser fails to extract combined leader time for some dual-run events. `RUN_OVERRIDES` or a post-parse correction step would be the right long-term fix.
+- **`base_time: null` with `dnf: false`**: Parser can produce invalid run entries. All consumers guard with `r.base_time != null`.
+- **`RunTimeline`**: Guards against `scored_time: null` on non-DNF runs — renders `—` rather than crashing.

@@ -60,8 +60,9 @@ PST (Pro Street Tire) is a catch-all indexed class where drivers compete using t
 
 - **Gap to PAX leader**: Bar chart of `(ryan_indexed - leader_indexed) / leader_indexed × 100` per event
 - **Percentile trend**: Bar chart of `% of field beaten` per event
+- **Run Progression**: Dense skinny-bar chart — one bar per run, in chronological order, grouped by session. Y-axis = run quality as % of session worst time (slowest run = 100%, fastest = lowest). Best run color-coded by its position in the session: green = last run (finished strong), amber = middle, red = first run (peaked early). DNF runs rendered as a stub bar at fixed 78%. Dual-session events split into visually separated groups with a spacer gap. No y-axis labels. Height ~90px. Positioned between GapBarChart and PstRankChart.
 - **PST rank**: Bar chart of percentile within PST field (labeled "Hypothetical" only pre-2026)
-- All three charts include: single combined trend line, slope label in card header (colored green = improving, red = declining), alternating year-band backgrounds, event `id` as x-axis key with `#N` tick labels
+- All performance charts: single combined trend line, slope label in card header (colored green = improving, red = declining), alternating year-band backgrounds (`rgba(0,0,0,0.07)` on odd years). X-axis shows **year labels only** (one per year, at the left edge of that year's first event) — no per-event number labels. Event identity is via hover tooltip.
 - **Season summary cards**: Best PAX rank, best percentile, closest to leader, best PST rank
 - **Events table**: All attended events, reverse-chronological, with Year column
 
@@ -245,7 +246,7 @@ autox2/
     src/
       components/
         layout/       AppShell
-        dashboard/    SeasonSummary, GapBarChart, PercentileChart, PstRankChart
+        dashboard/    SeasonSummary, GapBarChart, PercentileChart, PstRankChart, RunProgressionChart, chartUtils.jsx
         event/        RunTimeline, PositionCard, PstCard, FieldHistogram, ClassResults, PstResults
         shared/       StatCard, ChartCard, DataTable, venueColors.js
       data/
@@ -317,6 +318,27 @@ autox2/
 ---
 
 ## Parsing Architecture
+
+### Shared Chart Utilities
+
+`app/src/components/dashboard/chartUtils.jsx` — imported by all dashboard charts. Do not duplicate these inline:
+- `getYearBands(chartData)` — returns `[{year, x1, x2, fill}]` for alternating year-band ReferenceAreas
+- `linReg(points)` — least-squares linear regression on `{x, y}` points
+- `TrendBadge` — renders `↑ +1.2% / event` slope label with green/accent color
+- `tireChangeLines(chartData)` — returns a `<Customized>` element drawing vertical tire-change annotations
+
+### Known Data Quality Issues
+
+**Dual-run `pax_leader_time: 0` bug**: For some dual-run events the parser fails to find the PAX leader's combined time and writes `0`. This causes `pax_gap_pct: null` (guarded against divide-by-zero in `compute-derived.js`). Any chart consuming gap data must handle null gracefully — include the event in the x-axis but skip it for trend regression. Known affected events (patched manually in JSON):
+- 2023-E04: leader = Mike Casino, 103.563 → `pax_gap_seconds: 8.848`, `pax_gap_pct: 8.54`
+- 2024-E04: leader = Jonathan Mudge, 83.794 → `pax_gap_seconds: 8.796`, `pax_gap_pct: 10.50`
+
+**`base_time: null` with `dnf: false`**: The parser can emit a run entry with no time and no DNF flag (confirmed in 2025-E10 run 3). All code consuming `ryan.runs` must guard with `r.base_time != null` in addition to `!r.dnf` before using the time value.
+
+**2025-E10 run data**: Parser produced interleaved session assignments, wrong times, and a phantom rerun. Corrected manually:
+- Session a (Course 1): 68.039 · 68.200(1c) · 66.766(1c) · DNF
+- Session b (Course 2): DNF · DNF · 65.686 · 64.208
+- `best_raw_time: 130.974` (66.766 + 64.208, scored times) and `official_indexed_time: 107.006` unchanged.
 
 ### `parse-all-seasons.js`
 
