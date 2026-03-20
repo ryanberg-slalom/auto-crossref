@@ -59,8 +59,8 @@ export default function DashboardPage() {
       <div className="flex flex-col gap-4">
         <PercentileChart data={sorted} />
         <GapBarChart data={sorted} />
-        <PstRankChart data={sorted} />
         <RunProgressionChart data={sorted} />
+        <PstRankChart data={sorted} />
       </div>
 
       <div>

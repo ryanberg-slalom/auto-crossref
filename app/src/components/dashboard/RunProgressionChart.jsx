@@ -31,17 +31,22 @@ function CustomTooltip({ active, payload }) {
       <div className="font-semibold mb-1">{d.eventLabel}</div>
       <div className="text-fg-muted">
         Run {d.runNumber}:{' '}
-        <span className="text-fg">{d.baseTime.toFixed(3)}</span>
-        {d.cones > 0 && <span className="text-fg-muted"> (+{d.cones})</span>}
+        {d.dnf
+          ? <span className="text-accent">DNF</span>
+          : <><span className="text-fg">{d.baseTime.toFixed(3)}</span>
+            {d.cones > 0 && <span className="text-fg-muted"> (+{d.cones})</span>}</>
+        }
       </div>
       {d.isBest && (
         <div className={`font-medium mt-0.5 ${d.isLastOfSession ? 'text-success' : d.isFirstOfSession ? 'text-accent' : 'text-amber-500'}`}>
           Best run {d.isLastOfSession ? '(last ✓)' : d.isFirstOfSession ? '(first)' : '(middle)'}
         </div>
       )}
-      <div className="text-fg-muted mt-0.5">
-        Quality: <span className="text-fg">{d.quality.toFixed(1)}%</span>
-      </div>
+      {d.quality != null && (
+        <div className="text-fg-muted mt-0.5">
+          Quality: <span className="text-fg">{d.quality.toFixed(1)}%</span>
+        </div>
+      )}
     </div>
   )
 }
@@ -53,7 +58,7 @@ export default function RunProgressionChart({ data }) {
   const chartData = []
 
   data.forEach((e, eIdx) => {
-    const allRuns = (e.ryan?.runs ?? []).filter(r => !r.rerun && !r.dnf && r.base_time != null)
+    const allRuns = (e.ryan?.runs ?? []).filter(r => !r.rerun && (r.dnf || r.base_time != null))
     if (!allRuns.length) return
 
     const eventLabel = `${e.season} Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`
@@ -64,15 +69,16 @@ export default function RunProgressionChart({ data }) {
 
     sessions.forEach((session, sIdx) => {
       const sessionRuns = allRuns.filter(r => r.session === session).sort((a, b) => a.run_number - b.run_number)
-      const sessionBest = Math.min(...sessionRuns.map(r => r.base_time))
-      const sessionWorst = Math.max(...sessionRuns.map(r => r.base_time))
+      const validTimes = sessionRuns.filter(r => !r.dnf).map(r => r.base_time)
+      const sessionBest = Math.min(...validTimes)
+      const sessionWorst = Math.max(...validTimes)
 
       if (chartData.length > 0) {
         chartData.push({ key: `spacer-${e.id}-${session}`, quality: null })
       }
 
       const entries = sessionRuns.map((r, rIdx) => {
-        const quality = parseFloat(((r.base_time / sessionWorst) * 100).toFixed(2))
+        const quality = r.dnf ? null : parseFloat(((r.base_time / sessionWorst) * 100).toFixed(2))
         return {
           key: `${e.id}-s${r.session}-r${r.run_number}`,
           eventId: e.id,
@@ -81,11 +87,12 @@ export default function RunProgressionChart({ data }) {
           session,
           baseTime: r.base_time,
           cones: r.cones,
-          isBest: r.base_time === sessionBest,
+          dnf: r.dnf,
+          isBest: !r.dnf && r.base_time === sessionBest,
           isFirstOfSession: rIdx === 0,
           isLastOfSession: rIdx === sessionRuns.length - 1,
           quality,
-          displayQuality: Math.max(0, quality - 75),
+          displayQuality: r.dnf ? 3 : Math.max(0, quality - 75),
         }
       })
 

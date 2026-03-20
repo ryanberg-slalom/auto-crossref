@@ -5583,7 +5583,7 @@
           },
           {
             "run_number": 2,
-            "session": "b",
+            "session": "a",
             "base_time": 66.2,
             "scored_time": 68.2,
             "cones": 1,
@@ -5593,9 +5593,9 @@
           {
             "run_number": 3,
             "session": "a",
-            "base_time": null,
-            "scored_time": null,
-            "cones": 0,
+            "base_time": 64.766,
+            "scored_time": 66.766,
+            "cones": 1,
             "dnf": false,
             "rerun": false
           },
@@ -5605,14 +5605,14 @@
             "base_time": null,
             "scored_time": null,
             "cones": 0,
-            "dnf": false,
-            "rerun": true
+            "dnf": true,
+            "rerun": false
           },
           {
             "run_number": 5,
-            "session": "a",
-            "base_time": 73.164,
-            "scored_time": 73.164,
+            "session": "b",
+            "base_time": null,
+            "scored_time": null,
             "cones": 0,
             "dnf": true,
             "rerun": false
@@ -5620,33 +5620,15 @@
           {
             "run_number": 6,
             "session": "b",
-            "base_time": 64.766,
-            "scored_time": 66.766,
-            "cones": 1,
+            "base_time": null,
+            "scored_time": null,
+            "cones": 0,
             "dnf": true,
             "rerun": false
           },
           {
             "run_number": 7,
-            "session": "a",
-            "base_time": 66.255,
-            "scored_time": 66.255,
-            "cones": 0,
-            "dnf": false,
-            "rerun": false
-          },
-          {
-            "run_number": 8,
             "session": "b",
-            "base_time": 66.359,
-            "scored_time": 66.359,
-            "cones": 0,
-            "dnf": false,
-            "rerun": false
-          },
-          {
-            "run_number": 9,
-            "session": "a",
             "base_time": 65.686,
             "scored_time": 65.686,
             "cones": 0,
@@ -5654,7 +5636,7 @@
             "rerun": false
           },
           {
-            "run_number": 10,
+            "run_number": 8,
             "session": "b",
             "base_time": 64.208,
             "scored_time": 64.208,

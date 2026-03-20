@@ -69,12 +69,11 @@ export default function GapBarChart({ data }) {
     leaderTime: e.ryan.pax_leader_time,
     label: `${e.season} Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     venue: e.venue,
-  })).filter(d => d.gapPct !== null)
-
+  }))
 
   const yearBands = getYearBands(allPoints)
 
-  const overallReg = linReg(allPoints.map((d, i) => ({ x: i, y: d.gapPct })))
+  const overallReg = linReg(allPoints.flatMap((d, i) => d.gapPct !== null ? [{ x: i, y: d.gapPct }] : []))
   const chartData = allPoints.map((d, i) => ({
     ...d,
     trend: overallReg ? parseFloat((overallReg.slope * i + overallReg.intercept).toFixed(2)) : null,
