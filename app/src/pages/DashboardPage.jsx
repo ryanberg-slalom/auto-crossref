@@ -25,10 +25,25 @@ const CONDITIONS = [
   { key: 'rainy', label: 'Rainy' },
 ]
 
+const TEMPS = [
+  { key: 'all', label: 'All' },
+  { key: 'cold', label: 'Cold' },
+  { key: 'mild', label: 'Mild' },
+  { key: 'hot', label: 'Hot' },
+]
+
 function eventCondition(event) {
   const precip = event.weather?.precipitation_in
   if (precip == null) return null
   return precip >= 0.1 ? 'rainy' : 'dry'
+}
+
+function eventTemp(event) {
+  const maxF = event.weather?.temp_max_f
+  if (maxF == null) return null
+  if (maxF < 50) return 'cold'
+  if (maxF < 80) return 'mild'
+  return 'hot'
 }
 
 export default function DashboardPage() {
@@ -37,11 +52,13 @@ export default function DashboardPage() {
   const setSubnav = useContext(SubnavContext)
   const [venueFilter, setVenueFilter] = useState('all')
   const [conditionsFilter, setConditionsFilter] = useState('all')
+  const [tempFilter, setTempFilter] = useState('all')
 
   const sorted = [...attendedEvents]
     .sort((a, b) => a.date.localeCompare(b.date))
     .filter(e => venueFilter === 'all' || e.venue === venueFilter)
     .filter(e => conditionsFilter === 'all' || eventCondition(e) === conditionsFilter)
+    .filter(e => tempFilter === 'all' || eventTemp(e) === tempFilter)
 
   useEffect(() => {
     setSubnav(
@@ -52,16 +69,18 @@ export default function DashboardPage() {
         setVenueFilter={setVenueFilter}
         conditionsFilter={conditionsFilter}
         setConditionsFilter={setConditionsFilter}
+        tempFilter={tempFilter}
+        setTempFilter={setTempFilter}
       />
     )
     return () => setSubnav(null)
-  }, [season, subject, venueFilter, conditionsFilter, setSubnav])
+  }, [season, subject, venueFilter, conditionsFilter, tempFilter, setSubnav])
 
   return (
     <div className="flex flex-col gap-6">
       <div className="-mx-6 -mt-18 h-72 overflow-hidden z-0 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
         <img
-          src={`${import.meta.env.BASE_URL}Foggy cone sunrise 1.jpeg`}
+          src={`${import.meta.env.BASE_URL}Foggy cone sunrise 1-optimized.jpeg`}
           alt="Season cover"
           className="w-full h-full object-cover"
         />
@@ -104,7 +123,7 @@ export default function DashboardPage() {
   )
 }
 
-function VenueSubnav({ season, subject, venueFilter, setVenueFilter, conditionsFilter, setConditionsFilter }) {
+function VenueSubnav({ season, subject, venueFilter, setVenueFilter, conditionsFilter, setConditionsFilter, tempFilter, setTempFilter }) {
   return (
     <div className="flex items-center gap-3 min-w-0 w-full">
       <span className="text-sm font-extrabold text-fg">Dashboard</span>
@@ -147,13 +166,31 @@ function VenueSubnav({ season, subject, venueFilter, setVenueFilter, conditionsF
                 'text-xs px-2 py-0.5 border-y border-r transition-colors',
                 isFirst ? 'rounded-l border-l' : '',
                 isLast ? 'rounded-r' : '',
+                active ? 'bg-surface-3 border-border text-fg' : 'bg-transparent border-border text-fg-muted',
               ].join(' ')}
-              style={active
-                ? { backgroundColor: 'var(--color-surface-3)', borderColor: 'var(--color-border)', color: 'var(--color-fg)' }
-                : { backgroundColor: 'transparent', borderColor: 'var(--color-border)', color: 'var(--color-fg-muted)' }
-              }
             >
               {c.label}
+            </button>
+          )
+        })}
+      </div>
+      <div className="flex items-center">
+        {TEMPS.map((t, i) => {
+          const active = tempFilter === t.key
+          const isFirst = i === 0
+          const isLast = i === TEMPS.length - 1
+          return (
+            <button
+              key={t.key}
+              onClick={() => setTempFilter(t.key)}
+              className={[
+                'text-xs px-2 py-0.5 border-y border-r transition-colors',
+                isFirst ? 'rounded-l border-l' : '',
+                isLast ? 'rounded-r' : '',
+                active ? 'bg-surface-3 border-border text-fg' : 'bg-transparent border-border text-fg-muted',
+              ].join(' ')}
+            >
+              {t.label}
             </button>
           )
         })}
