@@ -7,7 +7,7 @@ import { pluralize } from '../../utils/pluralize.js'
 const CONE_ICON = `${import.meta.env.BASE_URL}cone.svg`
 const CONE_W = 16    // px — width of each cone icon
 const MAX_CONE_H = 28 // px — max height per cone; scales down if many cones
-const CHART_H = 160  // px — fixed chart area height
+const CHART_H = 107  // px — fixed chart area height
 
 export default function ConeBarChart({ data }) {
   const navigate = useNavigate()

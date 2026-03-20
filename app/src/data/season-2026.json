@@ -2931,6 +2931,11 @@
         "hypothetical_pst_percentile": 14.8,
         "fs_class_rank": 23,
         "fs_class_total": 27
+      },
+      "weather": {
+        "temp_min_f": 62,
+        "temp_max_f": 78,
+        "precipitation_in": 0.01
       }
     }
   ]

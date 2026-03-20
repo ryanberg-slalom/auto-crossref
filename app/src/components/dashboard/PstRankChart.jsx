@@ -4,7 +4,7 @@ import {
   ResponsiveContainer, Cell, LabelList, ReferenceArea,
 } from 'recharts'
 import ChartCard from '../shared/ChartCard'
-import { venueColor } from '../shared/venueColors'
+import { venueColor, venueTextClass } from '../shared/venueColors'
 import { tireChangeLines } from './chartUtils.jsx'
 
 const COLORS = {
@@ -51,7 +51,7 @@ function CustomTooltip({ active, payload }) {
     <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[160px]">
       <div className="font-semibold mb-1">{d.label}</div>
       <div className="text-fg-muted">
-        PST rank: <span style={{ color: venueColor(d.venue), fontWeight: 600 }}>{d.rank}</span> of {d.total}
+        PST rank: <span className={`font-semibold ${venueTextClass(d.venue)}`}>{d.rank}</span> of {d.total}
       </div>
       <div className="text-fg-muted">
         Percentile: <span className="text-fg">{d.percentile}%</span>
@@ -98,7 +98,7 @@ export default function PstRankChart({ data }) {
 
   return (
     <ChartCard title="PST Rank" subtitle="Where your indexed time places among PST competitors — higher is better" headerRight={trendBadge}>
-      <ResponsiveContainer width="100%" height={260}>
+      <ResponsiveContainer width="100%" height={174}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           {yearBands.map(band => (

@@ -49,8 +49,13 @@ function CustomTooltip({ active, payload }) {
     <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[170px]">
       <div className="font-semibold mb-1">{d.label}</div>
       <div className="text-fg-muted">
-        Gap: <span className="text-bmw-blue font-semibold">{d.gapPct}%</span> ({d.gapSec > 0 ? '+' : ''}{Number(d.gapSec).toFixed(3)})
+        PAX gap: <span className="text-bmw-blue font-semibold">{d.gapPct}%</span> ({d.gapSec > 0 ? '+' : ''}{Number(d.gapSec).toFixed(3)}s)
       </div>
+      {d.rawGapSec != null && (
+        <div className="text-fg-muted">
+          Raw to make up: <span className="text-fg font-semibold">+{Number(d.rawGapSec).toFixed(3)}s</span>
+        </div>
+      )}
       <div className="text-fg-muted">
         Leader: <span className="text-fg">{Number(d.leaderTime).toFixed(3)}</span>
       </div>
@@ -66,6 +71,7 @@ export default function GapBarChart({ data }) {
     tick: `#${e.event_number}`,
     gapPct: e.ryan.pax_gap_pct,
     gapSec: e.ryan.pax_gap_seconds,
+    rawGapSec: e.ryan.pax_gap_seconds != null ? e.ryan.pax_gap_seconds / e.ryan.pax_index : null,
     leaderTime: e.ryan.pax_leader_time,
     label: `${e.season} Event ${e.event_number} — ${new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
     venue: e.venue,
@@ -88,7 +94,7 @@ export default function GapBarChart({ data }) {
 
   return (
     <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better" headerRight={trendBadge}>
-      <ResponsiveContainer width="100%" height={220}>
+      <ResponsiveContainer width="100%" height={147}>
         <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           {yearBands.map(band => (

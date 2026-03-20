@@ -67,7 +67,7 @@ export default function ConeStackedChart({ data }) {
         </div>
       }
     >
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height={134}>
         <BarChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
           {yearBands.map(band => (

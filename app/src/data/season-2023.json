@@ -1715,6 +1715,11 @@
         "hypothetical_pst_percentile": 21.4,
         "fs_class_rank": 1,
         "fs_class_total": 4
+      },
+      "weather": {
+        "temp_min_f": 59,
+        "temp_max_f": 75,
+        "precipitation_in": 0.2
       }
     },
     {
@@ -4969,6 +4974,14 @@
         "hypothetical_pst_percentile": 11.1,
         "fs_class_rank": 4,
         "fs_class_total": 4
+      },
+      "weather": {
+        "temp_min_f": 49,
+        "temp_max_f": 54,
+        "precipitation_in": 0.09,
+        "day2_temp_min_f": 47,
+        "day2_temp_max_f": 64,
+        "day2_precipitation_in": 0.04
       }
     },
     {
@@ -6545,6 +6558,11 @@
         "hypothetical_pst_percentile": 9.1,
         "fs_class_rank": 1,
         "fs_class_total": 2
+      },
+      "weather": {
+        "temp_min_f": 50,
+        "temp_max_f": 76,
+        "precipitation_in": 0
       }
     },
     {
@@ -9233,6 +9251,14 @@
         "hypothetical_pst_percentile": 29.4,
         "fs_class_rank": 3,
         "fs_class_total": 7
+      },
+      "weather": {
+        "temp_min_f": 59,
+        "temp_max_f": 89,
+        "precipitation_in": 0.04,
+        "day2_temp_min_f": 61,
+        "day2_temp_max_f": 81,
+        "day2_precipitation_in": 0
       }
     },
     {
@@ -10501,6 +10527,11 @@
         "hypothetical_pst_percentile": 6.7,
         "fs_class_rank": 2,
         "fs_class_total": 4
+      },
+      "weather": {
+        "temp_min_f": 63,
+        "temp_max_f": 84,
+        "precipitation_in": 0.01
       }
     },
     {
@@ -12698,6 +12729,11 @@
         "hypothetical_pst_percentile": 0,
         "fs_class_rank": 3,
         "fs_class_total": 3
+      },
+      "weather": {
+        "temp_min_f": 70,
+        "temp_max_f": 92,
+        "precipitation_in": 0.13
       }
     },
     {
@@ -15085,6 +15121,11 @@
         "hypothetical_pst_percentile": 4.2,
         "fs_class_rank": 1,
         "fs_class_total": 5
+      },
+      "weather": {
+        "temp_min_f": 65,
+        "temp_max_f": 88,
+        "precipitation_in": 0
       }
     },
     {
@@ -17263,6 +17304,11 @@
         "hypothetical_pst_percentile": 0,
         "fs_class_rank": 2,
         "fs_class_total": 4
+      },
+      "weather": {
+        "temp_min_f": 59,
+        "temp_max_f": 83,
+        "precipitation_in": 0
       }
     },
     {
@@ -18433,7 +18479,12 @@
           "raw_time": 1046.988
         }
       ],
-      "ryan": null
+      "ryan": null,
+      "weather": {
+        "temp_min_f": 59,
+        "temp_max_f": 82,
+        "precipitation_in": 0
+      }
     }
   ]
 }

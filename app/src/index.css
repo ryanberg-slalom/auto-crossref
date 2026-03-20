@@ -44,6 +44,10 @@
   --color-success: #16a34a;
   --color-warning: #d97706;
 
+  /* Venue colors — used as bg-michelin, text-michelin, bg-zmax, text-zmax */
+  --color-michelin: #003566;
+  --color-zmax: #C92120;
+
   /* Typography */
   --font-sans: 'Mona Sans', system-ui, sans-serif;
   --font-mono: 'Mona Sans Mono', ui-monospace, monospace;

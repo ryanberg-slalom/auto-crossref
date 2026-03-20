@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSeasonData } from '../hooks/useSeasonData'
 import { SubnavContext } from '../contexts/SubnavContext'
-import { VENUE_COLORS } from '../components/shared/venueColors'
+import { venueBgClass } from '../components/shared/venueColors'
 import SeasonSummary from '../components/dashboard/SeasonSummary'
 import PercentileChart from '../components/dashboard/PercentileChart'
 import GapBarChart from '../components/dashboard/GapBarChart'
@@ -11,7 +11,7 @@ import ConeStats from '../components/dashboard/ConeStats'
 import ConeBarChart from '../components/dashboard/ConeBarChart'
 import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import RunProgressionChart from '../components/dashboard/RunProgressionChart'
-import { venueColor } from '../components/shared/venueColors'
+import WeatherBadge from '../components/shared/WeatherBadge'
 
 const VENUES = [
   { key: 'all', label: 'All' },
@@ -19,15 +19,29 @@ const VENUES = [
   { key: 'zmax', label: 'ZMAX' },
 ]
 
+const CONDITIONS = [
+  { key: 'all', label: 'All' },
+  { key: 'dry', label: 'Dry' },
+  { key: 'rainy', label: 'Rainy' },
+]
+
+function eventCondition(event) {
+  const precip = event.weather?.precipitation_in
+  if (precip == null) return null
+  return precip >= 0.1 ? 'rainy' : 'dry'
+}
+
 export default function DashboardPage() {
   const { attendedEvents, subject, season } = useSeasonData()
   const navigate = useNavigate()
   const setSubnav = useContext(SubnavContext)
   const [venueFilter, setVenueFilter] = useState('all')
+  const [conditionsFilter, setConditionsFilter] = useState('all')
 
   const sorted = [...attendedEvents]
     .sort((a, b) => a.date.localeCompare(b.date))
     .filter(e => venueFilter === 'all' || e.venue === venueFilter)
+    .filter(e => conditionsFilter === 'all' || eventCondition(e) === conditionsFilter)
 
   useEffect(() => {
     setSubnav(
@@ -36,16 +50,18 @@ export default function DashboardPage() {
         subject={subject}
         venueFilter={venueFilter}
         setVenueFilter={setVenueFilter}
+        conditionsFilter={conditionsFilter}
+        setConditionsFilter={setConditionsFilter}
       />
     )
     return () => setSubnav(null)
-  }, [season, subject, venueFilter, setSubnav])
+  }, [season, subject, venueFilter, conditionsFilter, setSubnav])
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="-mx-6 -mt-20 h-72 overflow-hidden z-0 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
+      <div className="-mx-6 -mt-18 h-72 overflow-hidden z-0 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
         <img
-          src={`${import.meta.env.BASE_URL}cover-image-1-optimized.jpeg`}
+          src={`${import.meta.env.BASE_URL}Foggy cone sunrise 1.jpeg`}
           alt="Season cover"
           className="w-full h-full object-cover"
         />
@@ -88,7 +104,7 @@ export default function DashboardPage() {
   )
 }
 
-function VenueSubnav({ season, subject, venueFilter, setVenueFilter }) {
+function VenueSubnav({ season, subject, venueFilter, setVenueFilter, conditionsFilter, setConditionsFilter }) {
   return (
     <div className="flex items-center gap-3 min-w-0 w-full">
       <span className="text-sm font-extrabold text-fg">Dashboard</span>
@@ -97,7 +113,6 @@ function VenueSubnav({ season, subject, venueFilter, setVenueFilter }) {
       <div className="flex items-center ml-2">
         {VENUES.map((v, i) => {
           const active = venueFilter === v.key
-          const color = v.key !== 'all' ? VENUE_COLORS[v.key] : null
           const isFirst = i === 0
           const isLast = i === VENUES.length - 1
           return (
@@ -108,15 +123,37 @@ function VenueSubnav({ season, subject, venueFilter, setVenueFilter }) {
                 'text-xs px-2 py-0.5 border-y border-r transition-colors',
                 isFirst ? 'rounded-l border-l' : '',
                 isLast ? 'rounded-r' : '',
+                active && v.key === 'michelin' ? 'bg-michelin border-michelin text-white' :
+                active && v.key === 'zmax'     ? 'bg-zmax border-zmax text-white' :
+                active                         ? 'bg-surface-3 border-border text-fg' :
+                                                 'bg-transparent border-border text-fg-muted',
               ].join(' ')}
-              style={active && color
-                ? { backgroundColor: color, borderColor: color, color: '#fff' }
-                : active
-                  ? { backgroundColor: 'var(--color-surface-3)', borderColor: 'var(--color-border)', color: 'var(--color-fg)' }
-                  : { backgroundColor: 'transparent', borderColor: 'var(--color-border)', color: 'var(--color-fg-muted)' }
-              }
             >
               {v.label}
+            </button>
+          )
+        })}
+      </div>
+      <div className="flex items-center">
+        {CONDITIONS.map((c, i) => {
+          const active = conditionsFilter === c.key
+          const isFirst = i === 0
+          const isLast = i === CONDITIONS.length - 1
+          return (
+            <button
+              key={c.key}
+              onClick={() => setConditionsFilter(c.key)}
+              className={[
+                'text-xs px-2 py-0.5 border-y border-r transition-colors',
+                isFirst ? 'rounded-l border-l' : '',
+                isLast ? 'rounded-r' : '',
+              ].join(' ')}
+              style={active
+                ? { backgroundColor: 'var(--color-surface-3)', borderColor: 'var(--color-border)', color: 'var(--color-fg)' }
+                : { backgroundColor: 'transparent', borderColor: 'var(--color-border)', color: 'var(--color-fg-muted)' }
+              }
+            >
+              {c.label}
             </button>
           )
         })}
@@ -138,7 +175,7 @@ function EventsTable({ events, navigate }) {
       <table className="w-full text-xs">
         <thead>
           <tr className="border-b border-border bg-subnav">
-            {['Year', 'Event', 'Date', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Rank'].map(h => (
+            {['Year', 'Event', 'Date', 'Weather', 'PAX Rank', 'Percentile', 'Indexed', 'Gap', 'PST Rank'].map(h => (
               <th
                 key={h}
                 className="px-4 py-2 text-left font-medium uppercase tracking-wider text-fg-subtle"
@@ -179,10 +216,7 @@ function EventRow({ event: e, ryan: r, index: i, total, navigate }) {
         {e.season}
       </td>
       <td className="px-4 py-2.5 font-medium text-fg">
-        <span
-          className="inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-middle shrink-0"
-          style={{ backgroundColor: venueColor(e.venue) }}
-        />
+        <span className={`inline-block w-[7px] h-[7px] rounded-full mr-1.5 align-middle shrink-0 ${venueBgClass(e.venue)}`} />
         #{e.event_number}
         {e.scoring_type === 'dual_run' && (
           <span className="ml-1.5 px-1 text-xs text-fg-subtle border border-border rounded-sm">
@@ -192,6 +226,12 @@ function EventRow({ event: e, ryan: r, index: i, total, navigate }) {
       </td>
       <td className="px-4 py-2.5 text-fg-muted">
         {new Date(e.date + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+      </td>
+      <td className="px-4 py-2.5 whitespace-nowrap">
+        {e.weather
+          ? <WeatherBadge weather={e.weather} compact />
+          : <span className="text-fg-subtle">—</span>
+        }
       </td>
       <td className="px-4 py-2.5 font-semibold tabular-nums text-bmw-blue">
         {r.pax_rank} / {r.pax_total}

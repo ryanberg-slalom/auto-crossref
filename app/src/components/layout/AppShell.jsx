@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { HomeIcon, CalendarDaysIcon, UserGroupIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import { SubnavContext } from '../../contexts/SubnavContext'
 import { useSeasonData } from '../../hooks/useSeasonData'
-import { venueColor } from '../shared/venueColors'
+import { venueBgClass, venueTextClass } from '../shared/venueColors'
 
 const VENUE_LABEL = { michelin: 'Michelin', zmax: 'ZMAX' }
 
@@ -17,13 +17,11 @@ function EventNavItem({ event }) {
 
   if (!event.ryan_attended) {
     return (
-      <div className="flex items-center gap-2 px-3 py-[5px] rounded text-xs text-fg-subtle opacity-40 cursor-default select-none">
-        <span
-          className="w-1.5 h-1.5 rounded-full shrink-0"
-          style={{ backgroundColor: venueColor(event.venue) }}
-        />
-        <span className="font-semibold shrink-0">#{event.event_number}</span>
-        <span className="truncate">{dateStr} · {VENUE_LABEL[event.venue]}</span>
+      <div className="flex items-center gap-1 pl-4 pr-3 py-[5px] rounded text-xs text-fg-subtle opacity-40 cursor-default select-none">
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${venueBgClass(event.venue)}`} />
+        <span className={`pl-2 font-semibold shrink-0 ${venueTextClass(event.venue)}`}>{VENUE_LABEL[event.venue]}</span>
+        <span className="font-bold shrink-0">#{event.event_number}</span>
+        <span className="pl-2 truncate">{dateStr}</span>
       </div>
     )
   }
@@ -32,19 +30,17 @@ function EventNavItem({ event }) {
     <Link
       to={`/event/${event.id}`}
       className={[
-        'flex items-center gap-2 px-3 py-[5px] rounded text-xs no-underline',
+        'flex items-center gap-1 pl-4 pr-3 py-[5px] rounded text-xs no-underline',
         active
           ? 'bg-bmw-blue/10 text-bmw-blue font-medium'
           : 'text-fg hover:bg-surface-3',
       ].join(' ')}
     >
-      <span
-        className="w-1.5 h-1.5 rounded-full shrink-0"
-        style={{ backgroundColor: venueColor(event.venue) }}
-      />
-      <span className="font-semibold shrink-0">#{event.event_number}</span>
-      <span className={['truncate', active ? 'opacity-70' : 'text-fg-muted'].join(' ')}>
-        {dateStr} · {VENUE_LABEL[event.venue]}
+      <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${venueBgClass(event.venue)}`} />
+      <span className={`pl-2 font-semibold shrink-0 ${venueTextClass(event.venue)}`}>{VENUE_LABEL[event.venue]}</span>
+      <span className="font-bold shrink-0">#{event.event_number}</span>
+      <span className={['pl-2 truncate', active ? 'opacity-70' : 'text-fg-muted'].join(' ')}>
+        {dateStr}
       </span>
     </Link>
   )

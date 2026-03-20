@@ -4,7 +4,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { useEvent } from '../hooks/useEvent'
 import { useSeasonData } from '../hooks/useSeasonData'
 import { SubnavContext } from '../contexts/SubnavContext'
-import { venueColor } from '../components/shared/venueColors'
+import { venueTextClass } from '../components/shared/venueColors'
+import WeatherBadge from '../components/shared/WeatherBadge'
 import PositionCard from '../components/event/PositionCard'
 import PstCard from '../components/event/PstCard'
 import RunTimeline from '../components/event/RunTimeline'
@@ -48,6 +49,7 @@ export default function EventDetailPage() {
 
     const { event } = result
     const venueName = event.venue === 'michelin' ? 'Michelin' : 'ZMAX'
+    const isTwoDayDual = event.venue === 'zmax' && event.scoring_type === 'dual_run'
     const dateStr = new Date(event.date + 'T12:00:00').toLocaleDateString('en-US', {
       month: 'short', day: 'numeric',
     })
@@ -65,15 +67,18 @@ export default function EventDetailPage() {
         {/* Metadata pills */}
         <div className="flex items-center gap-2 shrink-0 text-xs text-fg-muted">
           <span className="text-fg-subtle">·</span>
-          <span
-            className="flex items-center gap-1 font-medium"
-            style={{ color: venueColor(event.venue) }}
-          >
+          <span className={`flex items-center gap-1 font-medium ${venueTextClass(event.venue)}`}>
             <span className="text-[7px] leading-none">●</span>
             {venueName}
           </span>
           <span className="text-fg-subtle">·</span>
           <span>{dateStr}</span>
+          {event.weather && (
+            <>
+              <span className="text-fg-subtle">·</span>
+              <WeatherBadge weather={event.weather} twoDay={isTwoDayDual} />
+            </>
+          )}
           <span className="text-fg-subtle">·</span>
           <span>{event.total_drivers_pax} drivers</span>
           {event.scoring_type === 'dual_run' && (
