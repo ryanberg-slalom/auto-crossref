@@ -226,7 +226,8 @@ Schema rules:
 
 ### Styling Rules
 
-- **All DOM styling must use Tailwind utility classes.** `style` props only for: (1) dynamic computed values, (2) Recharts SVG props, (3) runtime dynamic colors from helper functions (e.g. `venueColor()`).
+- **All DOM styling must use Tailwind utility classes.** `style` props only for: (1) genuinely dynamic computed values, (2) Recharts SVG props (`fill`, `stroke`, etc.).
+- **Venue colors use Tailwind theme classes.** `--color-michelin: #003566` and `--color-zmax: #C92120` are declared in `@theme {}` in `index.css`. Use `bg-michelin`, `text-michelin`, `bg-zmax`, `text-zmax`, `border-michelin`, `border-zmax` for all DOM elements. `venueColor()` from `venueColors.js` is reserved for Recharts SVG fill/stroke props only. `venueBgClass(venue)` and `venueTextClass(venue)` return the appropriate Tailwind class strings for DOM use.
 - **Tailwind v4**: `--color-*` → `text-*`/`bg-*`/`border-*`; opacity modifiers: `bg-bmw-blue/10`, `border-bmw-blue/20`
 - **Time display**: Always `.toFixed(3)`, no unit suffix
 - **Percent labels on bar charts**: `Math.round(v)` — whole numbers only

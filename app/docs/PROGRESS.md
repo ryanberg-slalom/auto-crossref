@@ -1,6 +1,6 @@
 # Implementation Progress
 
-## Status: Phases 1–3 Complete ✅
+## Status: Phases 1–4 Complete ✅
 
 ---
 
@@ -70,11 +70,24 @@
 
 ---
 
-## Phase 4 — Infrastructure (not started)
+## Phase 4 — Weather Enrichment ✅
 
-- [ ] `add-event.js` utility for appending new season events
-- [ ] Multi-season JSON structure (`season-2025.json`, `season-2026.json`)
-- [ ] Season selector in nav
+- [x] `scripts/fetch-weather.js` — fetches Open-Meteo Historical Archive API for all events; idempotent; ZMAX 2-day dual-run events get `day2_*` fields; 300ms rate-limit between requests
+- [x] `weather` field populated in all season JSONs (2023–2026); future events left `null` and re-runnable
+- [x] `src/components/shared/WeatherBadge.jsx` — renders temp range + precipitation label; `compact` prop for table cells; `twoDay` prop for ZMAX dual-run subnav display
+- [x] `EventDetailPage.jsx` — weather pill in subnav header between date and driver count; omitted gracefully when `null`
+- [x] `DashboardPage.jsx` — `Weather` column in events table; `—` for missing data
+- [x] Dashboard conditions filter (All / Dry / Rainy) in subnav, same segmented-button style as venue filter
+
+---
+
+## UI Improvements (alongside Phase 4)
+
+- [x] Dashboard chart heights reduced 33%: PercentileChart 260→174, GapBarChart 220→147, PstRankChart 260→174, ConeBarChart 160→107, ConeStackedChart 200→134 (RunProgressionChart unchanged)
+- [x] Gap to PAX Leader tooltip now shows "Raw to make up: +X.XXXs" (`pax_gap_seconds / pax_index`)
+- [x] Sidebar nav event links reordered: `● Venue  #N  date` (venue name immediately beside the dot)
+- [x] Sidebar event number is `font-bold`; venue name is `font-semibold` in venue color
+- [x] Venue colors moved from inline `style` props to Tailwind theme variables (`--color-michelin`, `--color-zmax`); `venueBgClass()` and `venueTextClass()` helpers in `venueColors.js`; `venueColor()` reserved for Recharts SVG fills only
 
 ---
 
