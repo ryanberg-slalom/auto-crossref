@@ -1,7 +1,8 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSeasonData } from '../hooks/useSeasonData'
 import { SubnavContext } from '../contexts/SubnavContext'
+import { VENUE_COLORS } from '../components/shared/venueColors'
 import SeasonSummary from '../components/dashboard/SeasonSummary'
 import PercentileChart from '../components/dashboard/PercentileChart'
 import GapBarChart from '../components/dashboard/GapBarChart'
@@ -12,30 +13,33 @@ import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import RunProgressionChart from '../components/dashboard/RunProgressionChart'
 import { venueColor } from '../components/shared/venueColors'
 
+const VENUES = [
+  { key: 'all', label: 'All' },
+  { key: 'michelin', label: 'Michelin' },
+  { key: 'zmax', label: 'ZMAX' },
+]
+
 export default function DashboardPage() {
   const { attendedEvents, subject, season } = useSeasonData()
   const navigate = useNavigate()
   const setSubnav = useContext(SubnavContext)
+  const [venueFilter, setVenueFilter] = useState('all')
 
-  const sorted = [...attendedEvents].sort((a, b) => a.date.localeCompare(b.date))
+  const sorted = [...attendedEvents]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .filter(e => venueFilter === 'all' || e.venue === venueFilter)
 
   useEffect(() => {
     setSubnav(
-      <div className="flex items-center gap-3 min-w-0 w-full">
-        <span className="text-sm font-extrabold text-fg">Dashboard</span>
-        <span className="text-fg-subtle text-xs">·</span>
-        <span className="text-xs text-fg-muted">{season}</span>
-        <div className="flex-1" />
-        <span className="text-xs text-fg-muted">
-          {subject.name} · {subject.class}
-        </span>
-        <span className="text-xs px-2 py-0.5 font-medium text-fg-muted bg-surface-3 border border-border rounded">
-          PAX {subject.pax_index}
-        </span>
-      </div>
+      <VenueSubnav
+        season={season}
+        subject={subject}
+        venueFilter={venueFilter}
+        setVenueFilter={setVenueFilter}
+      />
     )
     return () => setSubnav(null)
-  }, [season, subject, setSubnav])
+  }, [season, subject, venueFilter, setSubnav])
 
   return (
     <div className="flex flex-col gap-6">
@@ -80,6 +84,50 @@ export default function DashboardPage() {
         </h2>
         <EventsTable events={[...sorted].reverse()} navigate={navigate} />
       </div>
+    </div>
+  )
+}
+
+function VenueSubnav({ season, subject, venueFilter, setVenueFilter }) {
+  return (
+    <div className="flex items-center gap-3 min-w-0 w-full">
+      <span className="text-sm font-extrabold text-fg">Dashboard</span>
+      <span className="text-fg-subtle text-xs">·</span>
+      <span className="text-xs text-fg-muted">{season}</span>
+      <div className="flex items-center ml-2">
+        {VENUES.map((v, i) => {
+          const active = venueFilter === v.key
+          const color = v.key !== 'all' ? VENUE_COLORS[v.key] : null
+          const isFirst = i === 0
+          const isLast = i === VENUES.length - 1
+          return (
+            <button
+              key={v.key}
+              onClick={() => setVenueFilter(v.key)}
+              className={[
+                'text-xs px-2 py-0.5 border-y border-r transition-colors',
+                isFirst ? 'rounded-l border-l' : '',
+                isLast ? 'rounded-r' : '',
+              ].join(' ')}
+              style={active && color
+                ? { backgroundColor: color, borderColor: color, color: '#fff' }
+                : active
+                  ? { backgroundColor: 'var(--color-surface-3)', borderColor: 'var(--color-border)', color: 'var(--color-fg)' }
+                  : { backgroundColor: 'transparent', borderColor: 'var(--color-border)', color: 'var(--color-fg-muted)' }
+              }
+            >
+              {v.label}
+            </button>
+          )
+        })}
+      </div>
+      <div className="flex-1" />
+      <span className="text-xs text-fg-muted">
+        {subject.name} · {subject.class}
+      </span>
+      <span className="text-xs px-2 py-0.5 font-medium text-fg-muted bg-surface-3 border border-border rounded">
+        PAX {subject.pax_index}
+      </span>
     </div>
   )
 }
