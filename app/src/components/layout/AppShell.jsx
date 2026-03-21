@@ -122,7 +122,7 @@ export default function AppShell({ children }) {
               <div key={year} className="mt-3">
                 <div className="flex items-center gap-2 px-3 py-1 mb-0.5">
                   <CalendarDaysIcon className="w-3.5 h-3.5 shrink-0 text-fg-subtle" />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-fg-subtle">
+                  <span className="text-xs font-semibold uppercase tracking-[0.08em] text-fg-subtle">
                     {year}
                   </span>
                 </div>

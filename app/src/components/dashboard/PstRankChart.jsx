@@ -96,8 +96,37 @@ export default function PstRankChart({ data }) {
 
   const yearBands = getYearBands(chartData)
 
+  const summary = (() => {
+    const n = base.length
+    if (n < 2) return null
+    const avg = base.reduce((s, d) => s + d.percentile, 0) / n
+    const best = base.reduce((a, b) => a.rank < b.rank ? a : b)
+    const hasPodium = best.rank <= 3
+
+    const position = avg >= 70
+      ? 'You\'re a consistent PST contender'
+      : avg >= 55
+      ? 'You hold your own in the PST field'
+      : avg >= 40
+      ? 'You\'re mid-pack against PST competition'
+      : 'PST pace is still a gap to close'
+
+    const trendQ = slope === null ? '.'
+      : slope >= 1.5  ? ', and climbing fast.'
+      : slope >= 0.3  ? ', with an upward trend.'
+      : slope <= -1.5 ? ', but the trend is heading the wrong way.'
+      : slope <= -0.3 ? ', though results have softened lately.'
+      : '.'
+
+    const bestLine = hasPodium
+      ? ` You've podiumed in PST (${best.rank} of ${best.total} at ${best.label}) — that pace exists.`
+      : ` Best result was ${best.rank} of ${best.total} at ${best.label}.`
+
+    return <>{position}{trendQ}{bestLine}</>
+  })()
+
   return (
-    <ChartCard title="PST Rank" subtitle="Where your indexed time places among PST competitors — higher is better" headerRight={trendBadge}>
+    <ChartCard title="PST Rank" subtitle="Where your indexed time places among PST competitors — higher is better" headerRight={trendBadge} summary={summary}>
       <ResponsiveContainer width="100%" height={174}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />

@@ -94,8 +94,39 @@ export default function PercentileChart({ data }) {
 
   const yearBands = getYearBands(chartData)
 
+  const summary = (() => {
+    if (base.length < 2) return null
+    const avg = base.reduce((s, d) => s + d.percentile, 0) / base.length
+    const best = base.reduce((a, b) => a.percentile > b.percentile ? a : b)
+    const worst = base.reduce((a, b) => a.percentile < b.percentile ? a : b)
+    const spread = best.percentile - worst.percentile
+
+    const position = avg >= 68 ? 'a top-third driver'
+      : avg >= 55 ? 'a consistently above-average driver'
+      : avg >= 45 ? 'a midfield driver'
+      : avg >= 33 ? 'slightly below average across the field'
+      : 'in the lower half of the field'
+
+    const trendQ = slope === null ? ''
+      : slope >= 1.5  ? ', and improving fast'
+      : slope >= 0.4  ? ', and trending upward'
+      : slope <= -1.5 ? ', but on a real downward slide'
+      : slope <= -0.4 ? ', but drifting down recently'
+      : ' and holding steady'
+
+    const s2 = spread > 30
+      ? `Results range from ${Math.round(worst.percentile)} to ${Math.round(best.percentile)}% — wide variability that suggests real upside exists, but it isn't locked in yet.`
+      : avg >= 55 && best.percentile < 75
+      ? `The ceiling hasn't cracked the top quarter yet — the jump from good to great is still ahead.`
+      : avg < 55 && best.percentile >= 65
+      ? `Your best result (${Math.round(best.percentile)}%, ${best.label}) shows top-half pace is there — the challenge is making it the norm, not the exception.`
+      : `Peak result: ${Math.round(best.percentile)}% at ${best.label}.`
+
+    return <>You're {position}{trendQ}. {s2}</>
+  })()
+
   return (
-    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better" headerRight={trendBadge}>
+    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better" headerRight={trendBadge} summary={summary}>
       <ResponsiveContainer width="100%" height={174}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />

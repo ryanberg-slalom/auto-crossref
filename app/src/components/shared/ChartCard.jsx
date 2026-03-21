@@ -1,4 +1,4 @@
-export default function ChartCard({ title, subtitle, headerRight, children }) {
+export default function ChartCard({ title, subtitle, headerRight, summary, children }) {
   return (
     <div className="p-5 flex flex-col gap-4 rounded-lg bg-surface-2 border border-border">
       <div className="flex items-start justify-between gap-4">
@@ -11,6 +11,9 @@ export default function ChartCard({ title, subtitle, headerRight, children }) {
         {headerRight}
       </div>
       <div className="flex-1">{children}</div>
+      {summary && (
+        <p className="text-xs text-fg-muted leading-relaxed border-t border-border pt-3 -mb-1">{summary}</p>
+      )}
     </div>
   )
 }

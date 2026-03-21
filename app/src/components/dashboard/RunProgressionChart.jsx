@@ -112,10 +112,43 @@ export default function RunProgressionChart({ data }) {
 
   if (!chartData.length) return null
 
+  const summary = (() => {
+    let finishedStrong = 0, peakedEarly = 0, totalSessions = 0, totalDnfs = 0, totalRuns = 0
+    data.forEach(e => {
+      const allRuns = (e.ryan?.runs ?? []).filter(r => !r.rerun && (r.dnf || r.base_time != null))
+      const sessions = [...new Set(allRuns.map(r => r.session))].sort()
+      sessions.forEach(session => {
+        const sessionRuns = allRuns.filter(r => r.session === session).sort((a, b) => a.run_number - b.run_number)
+        const valid = sessionRuns.filter(r => !r.dnf && r.base_time != null)
+        totalRuns += sessionRuns.length
+        totalDnfs += sessionRuns.filter(r => r.dnf).length
+        if (valid.length === 0) return
+        totalSessions++
+        const bestTime = Math.min(...valid.map(r => r.base_time))
+        const bestIdx = sessionRuns.findIndex(r => !r.dnf && r.base_time === bestTime)
+        if (bestIdx === sessionRuns.length - 1) finishedStrong++
+        else if (bestIdx === 0) peakedEarly++
+      })
+    })
+    if (totalSessions < 2) return null
+    const finishLine = finishedStrong > peakedEarly * 1.5
+      ? `You're a late-session driver — you tend to find more time as the runs pile up, which is a good sign for consistency.`
+      : peakedEarly > finishedStrong * 1.5
+      ? `You're leaving time on the table by peaking early. The first run is your best more often than not — later runs should be opportunities, not step-backs.`
+      : finishedStrong >= peakedEarly
+      ? `Your best run is about as likely to come last as first — slight lean toward finishing strong, which is where you want to be.`
+      : `No strong pattern yet in when your best run falls — worth watching as more events accumulate.`
+    const dnfLine = totalDnfs > 0
+      ? ` ${totalDnfs} DNF${totalDnfs !== 1 ? 's' : ''} in ${totalRuns} runs — each one is a gift to the field.`
+      : ` No DNFs across ${totalRuns} runs — clean execution.`
+    return <>{finishLine}{dnfLine}</>
+  })()
+
   return (
     <ChartCard
       title="Run Progression"
       subtitle="Best run: green = last, amber = middle, red = first"
+      summary={summary}
     >
       <ResponsiveContainer width="100%" height={90}>
         <BarChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>

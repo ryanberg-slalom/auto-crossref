@@ -92,8 +92,36 @@ export default function GapBarChart({ data }) {
     </span>
   ) : null
 
+  const summary = (() => {
+    const valid = allPoints.filter(d => d.gapPct !== null)
+    if (valid.length < 2) return null
+    const avg = valid.reduce((s, d) => s + d.gapPct, 0) / valid.length
+    const best = valid.reduce((a, b) => a.gapPct < b.gapPct ? a : b)
+
+    const position = avg <= 2
+      ? 'You\'re consistently running near the front'
+      : avg <= 5
+      ? 'You\'re in striking distance of the top on a good day'
+      : avg <= 10
+      ? 'There\'s a real gap to close before you\'re contending'
+      : 'You\'re currently well off the pace at the front'
+
+    const trendQ = slope === null ? '.'
+      : slope <= -0.5 ? ', and the gap is closing.'
+      : slope <= -0.1 ? ', with a gradual improvement trend.'
+      : slope >= 0.5  ? ', and the gap has been growing — worth attention.'
+      : slope >= 0.1  ? ', though the gap has drifted slightly wider.'
+      : '.'
+
+    const bestRaw = best.rawGapSec != null
+      ? ` Your best result was only +${best.gapPct.toFixed(1)}% back (${Number(best.rawGapSec).toFixed(2)}s raw) — that's the ceiling of your current pace.`
+      : ` Your best result put you ${best.gapPct.toFixed(1)}% back — that's your current ceiling.`
+
+    return <>{position}{trendQ}{bestRaw}</>
+  })()
+
   return (
-    <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better" headerRight={trendBadge}>
+    <ChartCard title="Gap to PAX Leader" subtitle="How far behind the top indexed time — lower is better" headerRight={trendBadge} summary={summary}>
       <ResponsiveContainer width="100%" height={147}>
         <ComposedChart data={chartData} margin={{ top: 8, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
