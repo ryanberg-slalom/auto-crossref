@@ -11,6 +11,7 @@ import ConeStats from '../components/dashboard/ConeStats'
 import ConeBarChart from '../components/dashboard/ConeBarChart'
 import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import RunProgressionChart from '../components/dashboard/RunProgressionChart'
+import PeerGroupSection from '../components/dashboard/PeerGroupSection'
 import WeatherBadge from '../components/shared/WeatherBadge'
 
 const VENUES = [
@@ -101,6 +102,8 @@ export default function DashboardPage() {
         <RunProgressionChart data={sorted} />
         <PstRankChart data={sorted} />
       </div>
+
+      <PeerGroupSection events={sorted} />
 
       <div>
         <h2 className="text-xs font-semibold mb-2 uppercase tracking-wider text-fg-subtle">
