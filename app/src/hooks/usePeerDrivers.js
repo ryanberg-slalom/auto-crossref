@@ -116,15 +116,22 @@ export function usePeerDrivers(events) {
     // Build per-event lookup maps for each peer
     const peerEventMaps = peersWithStats.map(peer => {
       const m = new Map()
-      peer.sharedEvents.forEach(se => m.set(se.eventId, se.percentile))
+      peer.sharedEvents.forEach(se => m.set(se.eventId, { percentile: se.percentile, indexedTime: se.indexedTime }))
       return m
     })
 
-    // One chart point per event
+    // One chart point per event; include indexed times for raw gap computation in tooltip
     const chartData = events.map(event => {
-      const point = { id: event.id, ryan: event.ryan?.pax_percentile ?? null }
+      const point = {
+        id: event.id,
+        ryan: event.ryan?.pax_percentile ?? null,
+        ryanIndexed: event.ryan?.official_indexed_time ?? null,
+        ryanPaxIndex: event.ryan?.pax_index ?? null,
+      }
       peersWithStats.forEach((peer, idx) => {
-        point[peer.name] = peerEventMaps[idx].get(event.id) ?? null
+        const data = peerEventMaps[idx].get(event.id)
+        point[peer.name] = data?.percentile ?? null
+        point[`${peer.name}_ix`] = data?.indexedTime ?? null
       })
       return point
     })

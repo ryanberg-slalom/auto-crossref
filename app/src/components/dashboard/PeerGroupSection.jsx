@@ -15,12 +15,29 @@ const COLORS = {
   highlight: '#f97316',
 }
 
+function rawGap(ryanIndexed, targetIndexed, ryanPaxIndex) {
+  if (ryanIndexed == null || targetIndexed == null || !ryanPaxIndex) return null
+  return parseFloat(((ryanIndexed - targetIndexed) / ryanPaxIndex).toFixed(3))
+}
+
+function formatRawGap(gap) {
+  if (gap == null) return null
+  const abs = Math.abs(gap).toFixed(3)
+  return gap > 0 ? `need −${abs}s` : `+${abs}s ahead`
+}
+
 function CustomTooltip({ active, payload, selectedPeer }) {
   if (!active || !payload?.length) return null
   const ryanEntry = payload.find(p => p.dataKey === 'ryan')
   const avgEntry = payload.find(p => p.dataKey === 'peerAvg')
   const highlightEntry = selectedPeer ? payload.find(p => p.dataKey === selectedPeer) : null
   const d = payload[0]?.payload
+  const peerGap = highlightEntry?.value != null
+    ? formatRawGap(rawGap(d?.ryanIndexed, d?.[`${selectedPeer}_ix`], d?.ryanPaxIndex))
+    : null
+  const avgGap = avgEntry?.value != null
+    ? formatRawGap(rawGap(d?.ryanIndexed, d?.peerAvgIndexed, d?.ryanPaxIndex))
+    : null
   return (
     <div className="px-3 py-2 text-xs rounded bg-surface-2 border border-border shadow-[0_2px_8px_rgba(0,0,0,0.08)] text-fg min-w-[150px]">
       <div className="font-semibold mb-1">{d?.id}</div>
@@ -30,11 +47,13 @@ function CustomTooltip({ active, payload, selectedPeer }) {
       {highlightEntry?.value != null && (
         <div style={{ color: '#f97316' }} className="font-medium">
           {selectedPeer}: {highlightEntry.value.toFixed(1)}%
+          {peerGap && <span className="ml-1.5 font-normal text-fg-muted">({peerGap})</span>}
         </div>
       )}
       {avgEntry?.value != null && (
         <div className="text-fg-muted">
           Peer avg: <span className="text-fg">{avgEntry.value.toFixed(1)}%</span>
+          {avgGap && <span className="ml-1.5 text-fg">({avgGap})</span>}
           {d?.peerCount != null && <span className="text-fg-subtle"> ({d.peerCount} drivers)</span>}
         </div>
       )}
@@ -67,9 +86,11 @@ export default function PeerGroupSection({ events }) {
   const peerNames = activePeers.map(p => p.name)
   const avgChartData = chartData.map(point => {
     const vals = peerNames.map(n => point[n]).filter(v => v != null)
+    const ixVals = peerNames.map(n => point[`${n}_ix`]).filter(v => v != null)
     return {
       ...point,
       peerAvg: vals.length > 0 ? parseFloat((vals.reduce((s, v) => s + v, 0) / vals.length).toFixed(1)) : null,
+      peerAvgIndexed: ixVals.length > 0 ? parseFloat((ixVals.reduce((s, v) => s + v, 0) / ixVals.length).toFixed(3)) : null,
       peerCount: vals.length,
     }
   })
