@@ -72,14 +72,14 @@ export default function AppShell({ children }) {
         {/* Full-width primary navbar */}
         <header className="sticky top-0 z-50 flex h-12 bg-nav border-b border-border">
           {/* Brand area — same width as sidebar */}
-          <div className="w-60 shrink-0 flex items-center gap-2.5 px-4 border-r border-border">
+          <Link to="/" className="w-60 shrink-0 flex items-center gap-2.5 px-4 border-r border-border no-underline">
             <div className="w-[22px] h-[22px] rounded-[3px] flex items-center justify-center text-white text-[8px] font-bold tracking-[0.05em] shrink-0 bg-[linear-gradient(135deg,var(--color-bmw-blue)_50%,var(--color-bmw-navy)_50%)]">
               AX
             </div>
             <span className="text-sm font-black text-fg tracking-tight">
               Auto <span className="text-bmw-blue">Crossref</span>
             </span>
-          </div>
+          </Link>
           {/* Navbar content — injected by pages */}
           <div className="flex-1 flex items-center min-w-0 px-5 [box-shadow:0_4px_12px_0_rgba(0,0,0,0.06)] [clip-path:inset(0px_0px_-20px_0px)]">
             {subnav}

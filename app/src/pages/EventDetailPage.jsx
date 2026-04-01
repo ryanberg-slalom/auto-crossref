@@ -48,6 +48,9 @@ export default function EventDetailPage() {
     if (!result) return
 
     const { event } = result
+    const year = event.id.split('-')[0]
+    document.title = `${event.title} ${year} • Auto Crossref`
+
     const venueName = event.venue === 'michelin' ? 'Michelin' : 'ZMAX'
     const isTwoDayDual = event.venue === 'zmax' && event.scoring_type === 'dual_run'
     const dateStr = new Date(event.date + 'T12:00:00').toLocaleDateString('en-US', {
