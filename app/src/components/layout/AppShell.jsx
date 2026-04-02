@@ -72,21 +72,26 @@ export default function AppShell({ children }) {
         {/* Full-width primary navbar */}
         <header className="sticky top-0 z-50 flex h-12 bg-nav border-b border-border">
           {/* Brand area — same width as sidebar */}
-          <Link to="/" className="w-60 shrink-0 flex items-center gap-2.5 px-4 border-r border-border no-underline">
+          <Link to="/" className="w-60 shrink-0 flex items-center gap-2 px-4 border-r border-border no-underline">
             <svg viewBox="0 0 22 22" width="22" height="22" className="shrink-0" xmlns="http://www.w3.org/2000/svg">
               <defs>
+                <clipPath id="logo-shape">
+                  <rect width="22" height="22" rx="3"/>
+                </clipPath>
                 <clipPath id="cone-logo">
-                  <polygon points="11,2.5 4.5,18 17.5,18"/>
+                  <polygon points="11,2 4.5,19.5 17.5,19.5"/>
                 </clipPath>
               </defs>
-              <rect width="22" height="22" rx="3" fill="#3a3f4a"/>
-              <polygon points="11,2.5 4.5,18 17.5,18" fill="#f97316"/>
-              <polygon points="11,2.5 14.5,10.5 15.7,13.5 17.5,18" fill="#000" opacity="0.1"/>
-              <g clipPath="url(#cone-logo)">
-                <line x1="-5" y1="-8" x2="27" y2="34" stroke="white" strokeWidth="3" strokeLinecap="butt" opacity="0.88"/>
-                <line x1="27" y1="-8" x2="-5" y2="34" stroke="white" strokeWidth="3" strokeLinecap="butt" opacity="0.88"/>
+              <g clipPath="url(#logo-shape)">
+                <rect width="22" height="22" fill="#3a3f4a"/>
+                <polygon points="11,2 4.5,19.5 17.5,19.5" fill="#f97316"/>
+                <polygon points="11,2 14.5,10 15.7,13 17.5,19.5" fill="#000" opacity="0.1"/>
+                <g clipPath="url(#cone-logo)">
+                  <line x1="-5" y1="-7.5" x2="27" y2="34.5" stroke="white" strokeWidth="3" strokeLinecap="butt" opacity="0.88"/>
+                  <line x1="27" y1="-7.5" x2="-5" y2="34.5" stroke="white" strokeWidth="3" strokeLinecap="butt" opacity="0.88"/>
+                </g>
+                <rect x="0" y="19.5" width="22" height="2.5" fill="#c2550a"/>
               </g>
-              <rect x="3.5" y="18" width="15" height="2.5" rx="1" fill="#c2550a"/>
             </svg>
             <span className="text-sm font-black text-fg tracking-tight">
               Auto <span className="text-orange-700">Crossref</span>
