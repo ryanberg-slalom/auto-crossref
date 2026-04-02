@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { HomeIcon, CalendarDaysIcon, UserGroupIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import { SubnavContext } from '../../contexts/SubnavContext'
 import { useSeasonData } from '../../hooks/useSeasonData'
-import { venueBgClass, venueTextClass } from '../shared/venueColors'
+import { venueBgClass } from '../shared/venueColors'
 
 const VENUE_LABEL = { michelin: 'Michelin', zmax: 'ZMAX' }
 
@@ -19,7 +19,7 @@ function EventNavItem({ event }) {
     return (
       <div className="flex items-center gap-1 pl-4 pr-3 py-[5px] rounded text-xs text-fg-subtle opacity-40 cursor-default select-none">
         <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${venueBgClass(event.venue)}`} />
-        <span className={`pl-2 font-semibold shrink-0 ${venueTextClass(event.venue)}`}>{VENUE_LABEL[event.venue]}</span>
+        <span className="pl-2 font-semibold shrink-0">{VENUE_LABEL[event.venue]}</span>
         <span className="font-bold shrink-0">#{event.event_number}</span>
         <span className="pl-2 truncate">{dateStr}</span>
       </div>
@@ -37,7 +37,7 @@ function EventNavItem({ event }) {
       ].join(' ')}
     >
       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${venueBgClass(event.venue)}`} />
-      <span className={`pl-2 font-semibold shrink-0 ${venueTextClass(event.venue)}`}>{VENUE_LABEL[event.venue]}</span>
+      <span className="pl-2 font-semibold shrink-0">{VENUE_LABEL[event.venue]}</span>
       <span className="font-bold shrink-0">#{event.event_number}</span>
       <span className={['pl-2 truncate', active ? 'opacity-70' : 'text-fg-muted'].join(' ')}>
         {dateStr}
