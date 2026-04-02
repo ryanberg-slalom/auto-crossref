@@ -83,7 +83,7 @@ export default function DashboardPage() {
     <div className="flex flex-col gap-6">
       <div className="-mx-6 -mt-18 h-72 overflow-hidden z-0 [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]">
         <img
-          src={`${import.meta.env.BASE_URL}Foggy cone sunrise 1-optimized.jpeg`}
+          src={`${import.meta.env.BASE_URL}558766540_10116331002846307_1863611152442060381_n.jpg`}
           alt="Season cover"
           className="w-full h-full object-cover"
         />
