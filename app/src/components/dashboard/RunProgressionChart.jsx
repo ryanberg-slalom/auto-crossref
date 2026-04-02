@@ -147,7 +147,14 @@ export default function RunProgressionChart({ data }) {
   return (
     <ChartCard
       title="Run Progression"
-      subtitle="Best run: green = last, amber = middle, red = first"
+      subtitle="Best run position per session"
+      headerRight={
+        <div className="flex items-center gap-2.5 text-xs text-fg-muted">
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 inline-block" />Last</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-500 inline-block" />Middle</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" />First</span>
+        </div>
+      }
       summary={summary}
     >
       <ResponsiveContainer width="100%" height={90}>

@@ -126,7 +126,15 @@ export default function PercentileChart({ data }) {
   })()
 
   return (
-    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better" headerRight={trendBadge} summary={summary}>
+    <ChartCard title="Percentile" subtitle="% of field beaten — higher is better" headerRight={
+      <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2.5 text-xs text-fg-muted">
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-zmax inline-block" />ZMAX</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-michelin inline-block" />Michelin</span>
+        </div>
+        {trendBadge}
+      </div>
+    } summary={summary}>
       <ResponsiveContainer width="100%" height={174}>
         <ComposedChart data={chartData} margin={{ top: 24, right: 12, left: 0, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={COLORS.grid} vertical={false} />
