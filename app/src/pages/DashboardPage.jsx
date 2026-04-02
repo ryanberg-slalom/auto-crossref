@@ -61,7 +61,7 @@ export default function DashboardPage() {
     .filter(e => conditionsFilter === 'all' || eventCondition(e) === conditionsFilter)
     .filter(e => tempFilter === 'all' || eventTemp(e) === tempFilter)
 
-  useEffect(() => { document.title = 'Dashboard • Auto Crossref' }, [])
+  useEffect(() => { document.title = 'Auto Crossref' }, [])
 
   useEffect(() => {
     setSubnav(
