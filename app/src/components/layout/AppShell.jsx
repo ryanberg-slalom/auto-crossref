@@ -32,7 +32,7 @@ function EventNavItem({ event }) {
       className={[
         'flex items-center gap-1 pl-4 pr-3 py-[5px] rounded text-xs no-underline',
         active
-          ? 'bg-orange-100/60 text-orange-700 font-medium'
+          ? 'bg-orange-100/80 text-orange-700 font-medium'
           : 'text-fg hover:bg-surface-3',
       ].join(' ')}
     >
@@ -126,7 +126,7 @@ export default function AppShell({ children }) {
               className={[
                 'flex items-center gap-2.5 px-3 py-2 rounded text-xs font-medium no-underline',
                 location.pathname === '/'
-                  ? 'bg-orange-100/60 text-orange-700'
+                  ? 'bg-orange-100/80 text-orange-700'
                   : 'text-fg-muted hover:bg-surface-3 hover:text-fg',
               ].join(' ')}
             >
