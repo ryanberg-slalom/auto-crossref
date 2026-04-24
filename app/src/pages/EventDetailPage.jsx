@@ -12,6 +12,7 @@ import RunTimeline from '../components/event/RunTimeline'
 import FieldHistogram from '../components/event/FieldHistogram'
 import ClassResults from '../components/event/ClassResults'
 import PstResults from '../components/event/PstResults'
+import ClassParticipationCard from '../components/event/ClassParticipationCard'
 
 const RYAN_NAME = 'Ryan Berg'
 
@@ -139,7 +140,7 @@ export default function EventDetailPage() {
         </div>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <PositionCard
               title="PAX Position"
               rank={ryan.pax_rank}
@@ -166,6 +167,7 @@ export default function EventDetailPage() {
               pstPercentile={ryan.hypothetical_pst_percentile}
               isActualPst={isActualPst}
             />
+            <ClassParticipationCard paxResults={event.pax_results} />
           </div>
 
           <RunTimeline

@@ -12,6 +12,7 @@ import ConeBarChart from '../components/dashboard/ConeBarChart'
 import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import RunProgressionChart from '../components/dashboard/RunProgressionChart'
 import PeerGroupSection from '../components/dashboard/PeerGroupSection'
+import ClassParticipationChart from '../components/dashboard/ClassParticipationChart'
 import WeatherBadge from '../components/shared/WeatherBadge'
 
 const VENUES = [
@@ -103,6 +104,7 @@ export default function DashboardPage() {
         <GapBarChart data={sorted} />
         <RunProgressionChart data={sorted} />
         <PstRankChart data={sorted} />
+        <ClassParticipationChart data={sorted} />
       </div>
 
       <PeerGroupSection events={sorted} />
