@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'
-import ChartCard from '../shared/ChartCard'
+import CollapsibleCard from '../shared/CollapsibleCard'
 import { useMustangDrivers } from '../../hooks/useMustangDrivers'
 
 const CHART_H = 100 // px — fixed chart area height
@@ -13,7 +11,6 @@ function formatDelta(delta) {
 
 export default function MustangSection({ events }) {
   const { drivers, chartData } = useMustangDrivers(events)
-  const [isOpen, setIsOpen] = useState(false)
   if (!drivers.length) return null
 
   // Only events where at least one Mustang competed
@@ -33,26 +30,12 @@ export default function MustangSection({ events }) {
     return <>{winLine}{hsLine}</>
   })()
 
-  const ChevronIcon = isOpen ? ChevronUpIcon : ChevronDownIcon
-
   return (
-    <div className="p-5 flex flex-col gap-4 rounded-lg bg-surface-2 border border-border">
-      <button
-        onClick={() => setIsOpen(o => !o)}
-        className="flex items-center justify-between gap-4 text-left w-full"
-      >
-        <div>
-          <h3 className="text-sm font-extrabold text-fg">Mustang Cohort</h3>
-          <p className="text-xs mt-0.5 text-fg-subtle">
-            {isOpen
-              ? 'Events with 2015+ Mustangs running FS or PST/FS PAX'
-              : summary}
-          </p>
-        </div>
-        <ChevronIcon className="w-8 h-8 text-fg-subtle shrink-0" />
-      </button>
-
-      {isOpen && <>
+    <CollapsibleCard
+      title="Mustang Cohort"
+      subtitle="Events with 2015+ Mustangs running FS or PST/FS PAX"
+      summary={summary}
+    >
       {/* Dot chart */}
       <div className="flex items-end gap-1 mt-1">
         {mustangEvents.map((point, idx) => {
@@ -173,10 +156,6 @@ export default function MustangSection({ events }) {
         </table>
       </div>
 
-      {summary && (
-        <p className="text-xs text-fg-muted leading-relaxed border-t border-border pt-3 -mb-1">{summary}</p>
-      )}
-      </>}
-    </div>
+    </CollapsibleCard>
   )
 }

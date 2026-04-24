@@ -105,11 +105,11 @@ export default function DashboardPage() {
         <GapBarChart data={sorted} />
         <RunProgressionChart data={sorted} />
         <PstRankChart data={sorted} />
-        <ClassParticipationChart data={sorted} />
       </div>
 
       <PeerGroupSection events={sorted} />
 
+      <ClassParticipationChart data={sorted} />
       <MustangSection events={sorted} />
 
       <div>

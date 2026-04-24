@@ -2,7 +2,7 @@ import {
   ComposedChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, ReferenceArea,
 } from 'recharts'
-import ChartCard from '../shared/ChartCard'
+import CollapsibleCard from '../shared/CollapsibleCard'
 import { getYearBands } from './chartUtils.jsx'
 
 const CLASS_COLORS = {
@@ -62,7 +62,7 @@ export default function ClassParticipationChart({ data }) {
   })()
 
   return (
-    <ChartCard
+    <CollapsibleCard
       title="Class Participation"
       subtitle="Driver count per event — FS, PST, and SST"
       headerRight={
@@ -136,6 +136,6 @@ export default function ClassParticipationChart({ data }) {
           />
         </ComposedChart>
       </ResponsiveContainer>
-    </ChartCard>
+    </CollapsibleCard>
   )
 }
