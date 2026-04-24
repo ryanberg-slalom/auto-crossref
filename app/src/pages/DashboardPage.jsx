@@ -12,6 +12,7 @@ import ConeBarChart from '../components/dashboard/ConeBarChart'
 import ConeStackedChart from '../components/dashboard/ConeStackedChart'
 import RunProgressionChart from '../components/dashboard/RunProgressionChart'
 import PeerGroupSection from '../components/dashboard/PeerGroupSection'
+import MustangSection from '../components/dashboard/MustangSection'
 import ClassParticipationChart from '../components/dashboard/ClassParticipationChart'
 import WeatherBadge from '../components/shared/WeatherBadge'
 
@@ -108,6 +109,8 @@ export default function DashboardPage() {
       </div>
 
       <PeerGroupSection events={sorted} />
+
+      <MustangSection events={sorted} />
 
       <div>
         <h2 className="text-xs font-semibold mb-2 uppercase tracking-wider text-fg-subtle">
