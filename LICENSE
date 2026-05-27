@@ -1,0 +1,14 @@
+Copyright (c) 2026 Ryan Berg. All rights reserved.
+
+No part of this software, including source code, configuration, and assets,
+may be used, copied, modified, merged, published, distributed, sublicensed,
+or sold without explicit written permission from the copyright holder.
+
+---
+
+DATA FOLDER EXCEPTION
+
+The contents of the `data/` directory consist of autocross event results
+obtained from a public source. No copyright is claimed over that data.
+You are free to use, share, and build upon the contents of the `data/`
+directory without restriction.
